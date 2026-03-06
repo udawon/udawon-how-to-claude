@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { BackgroundCharacters } from "@/components/BackgroundCharacters";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -31,6 +32,7 @@ export default function RootLayout({
         <ThemeProvider>
           <BackgroundCharacters />
           {children}
+          <ScrollToTop />
         </ThemeProvider>
       </body>
     </html>
