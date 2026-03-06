@@ -7,6 +7,16 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "How to Claude - 활용 매뉴얼",
   description: "Claude Code 기능과 활용법을 정리한 레퍼런스 매뉴얼",
+  openGraph: {
+    title: "How to Claude - 활용 매뉴얼",
+    description: "Claude Code 기능과 활용법을 정리한 레퍼런스 매뉴얼",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "How to Claude - 활용 매뉴얼",
+    description: "Claude Code 기능과 활용법을 정리한 레퍼런스 매뉴얼",
+  },
 };
 
 export default function RootLayout({
