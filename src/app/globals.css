@@ -436,9 +436,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-surface);
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
+  background: var(--accent);
+  border: none;
+  color: white;
   cursor: pointer;
   box-shadow: var(--shadow-md);
   transition: all 0.2s ease;
@@ -446,9 +446,8 @@ body {
 }
 
 .scroll-to-top:hover {
-  background: var(--bg-hover);
-  color: var(--text-primary);
-  border-color: var(--text-muted);
+  background: var(--accent-hover);
+  color: white;
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
 }
