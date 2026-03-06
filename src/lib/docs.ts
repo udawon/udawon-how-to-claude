@@ -55,6 +55,13 @@ export const categories: Category[] = [
     icon: "bug",
     order: 5,
   },
+  {
+    slug: "quick-start",
+    title: "처음부터 끝까지",
+    description: "초보자를 위한 A to Z 가이드 — 이것만 따라하면 됩니다",
+    icon: "rocket",
+    order: 6,
+  },
 ];
 
 // 문서 메타데이터

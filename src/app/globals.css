@@ -401,6 +401,40 @@ body {
   transform: translateY(-1px);
 }
 
+/* 공지사항 카드 */
+.card-announcement {
+  position: relative;
+  background: var(--bg-surface);
+  border: 2px solid var(--accent);
+  box-shadow: var(--shadow-sm), 0 0 0 4px var(--accent-soft);
+  transition: all 0.2s ease;
+}
+
+.card-announcement:hover {
+  box-shadow: var(--shadow-md), 0 0 0 6px var(--accent-soft);
+  transform: translateY(-1px);
+}
+
+.icon-box-announcement {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: white;
+}
+
+.announcement-badge {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  background: var(--accent);
+  color: white;
+}
+
 /* 아이콘 박스 */
 .icon-box {
   width: 36px;

@@ -72,13 +72,22 @@ export default function Home() {
             <Link
               key={cat.slug}
               href={`/docs/${cat.slug}`}
-              className="card-hover group rounded-xl p-5"
+              className={`group rounded-xl p-5 ${
+                cat.slug === "quick-start"
+                  ? "card-announcement sm:col-span-2 lg:col-span-3"
+                  : "card-hover"
+              }`}
             >
               <div className="flex items-start justify-between mb-3.5">
-                <div className="icon-box">
+                <div className={cat.slug === "quick-start" ? "icon-box-announcement" : "icon-box"}>
                   <Icon name={cat.icon} className="w-[18px] h-[18px]" />
                 </div>
-                <span className="count-badge">{cat.docs.length}</span>
+                <div className="flex items-center gap-2">
+                  {cat.slug === "quick-start" && (
+                    <span className="announcement-badge">추천</span>
+                  )}
+                  <span className="count-badge">{cat.docs.length}</span>
+                </div>
               </div>
               <h3 className="font-semibold text-[15px] mb-1 text-[var(--text-primary)]">
                 {cat.title}
