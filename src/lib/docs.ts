@@ -5,6 +5,7 @@ import { remark } from "remark";
 import remarkGfm from "remark-gfm";
 import remarkRehype from "remark-rehype";
 import rehypeRaw from "rehype-raw";
+import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 
 // 문서 디렉토리 경로
@@ -131,6 +132,7 @@ export async function getDoc(
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
+    .use(rehypeSlug)
     .use(rehypeStringify)
     .process(content);
   const contentHtml = processedContent.toString();
