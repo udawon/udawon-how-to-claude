@@ -81,7 +81,7 @@ export default function Home() {
               <div className="flex items-start justify-between mb-3.5">
                 <div className="icon-box">
                   {cat.slug === "quick-start" ? (
-                    <ClaudeCharacter pose="happy" size={20} />
+                    <ClaudeCharacter pose="love" size={20} />
                   ) : (
                     <Icon name={cat.icon} className="w-[18px] h-[18px]" />
                   )}
