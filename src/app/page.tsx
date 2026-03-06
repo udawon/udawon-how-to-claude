@@ -79,13 +79,13 @@ export default function Home() {
               }`}
             >
               <div className="flex items-start justify-between mb-3.5">
-                {cat.slug === "quick-start" ? (
-                  <ClaudeCharacter pose="happy" size={36} />
-                ) : (
-                  <div className="icon-box">
+                <div className="icon-box">
+                  {cat.slug === "quick-start" ? (
+                    <ClaudeCharacter pose="happy" size={20} />
+                  ) : (
                     <Icon name={cat.icon} className="w-[18px] h-[18px]" />
-                  </div>
-                )}
+                  )}
+                </div>
                 <div className="flex items-center gap-2">
                   {cat.slug === "quick-start" && (
                     <span className="announcement-badge">추천</span>
