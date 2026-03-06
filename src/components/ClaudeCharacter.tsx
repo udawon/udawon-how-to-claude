@@ -203,7 +203,7 @@ export function ClaudeCharacter({ pose, size = 80, className = "" }: ClaudeChara
     love: (
       <svg width={size} height={size} viewBox="0 0 18 10" fill="none" className={className} style={s}>
         <PixelBody pixels={HAPPY} />
-        <Heart x="14.5" y="0.5" s={0.35} />
+        <Heart x={14.5} y={0.5} s={0.35} />
       </svg>
     ),
 
