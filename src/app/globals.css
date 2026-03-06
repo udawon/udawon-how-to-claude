@@ -403,27 +403,16 @@ body {
 
 /* 공지사항 카드 */
 .card-announcement {
-  position: relative;
   background: var(--bg-surface);
-  border: 2px solid var(--accent);
-  box-shadow: var(--shadow-sm), 0 0 0 4px var(--accent-soft);
+  border: 1px solid var(--accent);
+  box-shadow: var(--shadow-sm);
   transition: all 0.2s ease;
 }
 
 .card-announcement:hover {
-  box-shadow: var(--shadow-md), 0 0 0 6px var(--accent-soft);
+  border-color: var(--accent-hover);
+  box-shadow: var(--shadow-md);
   transform: translateY(-1px);
-}
-
-.icon-box-announcement {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--accent);
-  color: white;
 }
 
 .announcement-badge {
