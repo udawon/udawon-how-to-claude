@@ -260,3 +260,17 @@ Matcher 사용:
 ```
 
 > 출처: [Anthropic 공식 문서 - Hooks 가이드](https://code.claude.com/docs/ko/hooks-guide)
+
+---
+
+## /loop와의 차이
+
+Hooks가 **이벤트** 기반이라면, `/loop`는 **시간** 기반입니다.
+
+| | **Hooks** | **/loop** |
+|--|--|--|
+| **트리거** | "파일 저장할 때마다" | "5분마다" |
+| **지속성** | 영구 (설정 파일 저장) | 임시 (세션 종료 시 사라짐) |
+| **실행 대상** | 쉘 명령어 | Claude 프롬프트 |
+
+자세한 비교는 [/loop 가이드](/workflow/loop)를 참고하세요.
