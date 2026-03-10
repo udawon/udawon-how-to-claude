@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest:*)",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(curl:*)",
+      "Bash(netstat:*)",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "Bash(taskkill:*)",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "WebFetch(domain:www.anthropic.com)",
+      "Bash(code:*)",
+      "Bash(npx next:*)",
+      "mcp__plugin_playwright_playwright__browser_click",
+      "Bash(node:*)",
+      "Bash(tasklist:*)",
+      "Bash(rm:*)",
+      "mcp__plugin_playwright_playwright__browser_evaluate",
+      "Bash(mkdir:*)",
+      "Bash(npm ls:*)",
+      "Bash(grep:*)",
+      "WebFetch(domain:cursor.com)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebSearch",
+      "Bash(git diff-tree:*)",
+      "Bash(git add:*)",
+      "Bash(git push:*)",
+      "Bash(git commit:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Skill(keybindings-help)"
+    ]
+  }
+}
