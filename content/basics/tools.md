@@ -27,6 +27,8 @@ Claude가 알아서 적절한 도구를 골라 사용합니다.
 ### Read - 파일 읽기
 프로젝트 안의 파일 내용을 열어봅니다. 이미지, PDF도 볼 수 있습니다.
 
+**한국어로 말하면:** <span class="keyword-highlight">읽어줘</span> · <span class="keyword-highlight">읽어봐</span> · <span class="keyword-highlight">열어봐</span> · <span class="keyword-highlight">보여줘</span>
+
 **예시 케이스:**
 ```
 "메인 페이지 파일을 읽어봐"
@@ -38,6 +40,8 @@ Claude가 알아서 적절한 도구를 골라 사용합니다.
 ### Write - 새 파일 만들기
 프로젝트에 새 파일을 생성합니다.
 
+**한국어로 말하면:** <span class="keyword-highlight">만들어줘</span> · <span class="keyword-highlight">새로 만들어줘</span> · <span class="keyword-highlight">생성해줘</span> · <span class="keyword-highlight">작성해줘</span>
+
 **예시 케이스:**
 ```
 "회사 소개 페이지를 새로 만들어줘"
@@ -48,6 +52,8 @@ Claude가 알아서 적절한 도구를 골라 사용합니다.
 
 ### Edit - 기존 파일 수정하기
 이미 있는 파일에서 특정 부분만 바꿉니다.
+
+**한국어로 말하면:** <span class="keyword-highlight">수정해줘</span> · <span class="keyword-highlight">바꿔줘</span> · <span class="keyword-highlight">고쳐줘</span> · <span class="keyword-highlight">변경해줘</span>
 
 **예시 케이스:**
 ```
@@ -61,6 +67,8 @@ Claude가 알아서 적절한 도구를 골라 사용합니다.
 ### Glob - 파일 이름으로 찾기
 프로젝트 안에서 특정 이름 패턴의 파일을 검색합니다.
 
+**한국어로 말하면:** <span class="keyword-highlight">어디 있어?</span> · <span class="keyword-highlight">파일 찾아줘</span> · <span class="keyword-highlight">목록 보여줘</span>
+
 **예시 케이스:**
 ```
 "이 프로젝트에서 이미지 파일이 어디에 있는지 찾아줘"
@@ -71,6 +79,8 @@ Claude가 알아서 적절한 도구를 골라 사용합니다.
 
 ### Grep - 파일 내용으로 찾기
 파일들 안에서 특정 단어나 문장이 들어있는 파일을 검색합니다.
+
+**한국어로 말하면:** <span class="keyword-highlight">~라는 단어 찾아줘</span> · <span class="keyword-highlight">어디서 쓰이고 있어?</span> · <span class="keyword-highlight">~가 있는 파일 찾아줘</span>
 
 **예시 케이스:**
 ```
@@ -84,6 +94,8 @@ Claude가 알아서 적절한 도구를 골라 사용합니다.
 
 ### Bash - 명령어 실행
 프로그램 설치, 서버 실행 등 컴퓨터에 직접 명령을 내립니다.
+
+**한국어로 말하면:** <span class="keyword-highlight">설치해줘</span> · <span class="keyword-highlight">실행해줘</span> · <span class="keyword-highlight">빌드해줘</span> · <span class="keyword-highlight">서버 켜줘</span>
 
 **예시 케이스:**
 ```
@@ -99,6 +111,8 @@ Claude가 알아서 적절한 도구를 골라 사용합니다.
 ### AskUserQuestion - 사용자에게 질문하기
 Claude가 판단하기 어려운 부분을 사용자에게 물어봅니다.
 
+**한국어로 말하면:** 사용자가 직접 트리거하지 않습니다. 요청이 <span class="keyword-highlight">모호하거나</span> <span class="keyword-highlight">선택지가 필요할 때</span> Claude가 스스로 판단해서 사용합니다.
+
 **예시 케이스:**
 ```
 "홈페이지 만들어줘"라고 요청했을 때
@@ -112,6 +126,8 @@ Claude가 판단하기 어려운 부분을 사용자에게 물어봅니다.
 
 ### Agent - 다른 에이전트에게 맡기기
 별도의 도우미 에이전트를 불러서 작업을 맡깁니다.
+
+**한국어로 말하면:** <span class="keyword-highlight">파악해줘</span> · <span class="keyword-highlight">분석해줘</span> · <span class="keyword-highlight">조사해줘</span> · <span class="keyword-highlight">정리해줘</span> (범위가 넓은 복잡한 작업)
 
 **예시 케이스:**
 ```
@@ -127,6 +143,8 @@ Claude가 판단하기 어려운 부분을 사용자에게 물어봅니다.
 ### WebSearch - 웹 검색
 Claude의 학습 데이터에 없는 최신 정보나 공식 문서를 실시간으로 검색합니다.
 
+**한국어로 말하면:** <span class="keyword-highlight">검색해줘</span> · <span class="keyword-highlight">최신 정보 알려줘</span> · <span class="keyword-highlight">알아봐줘</span> · <span class="keyword-highlight">찾아봐</span>
+
 **예시 케이스:**
 ```
 "Next.js 16의 새로운 기능이 뭐야?"
@@ -138,6 +156,8 @@ Claude의 학습 데이터에 없는 최신 정보나 공식 문서를 실시간
 
 ### WebFetch - 특정 URL 내용 가져오기
 특정 웹페이지나 공식 문서의 내용을 직접 읽어와서 분석합니다.
+
+**한국어로 말하면:** URL과 함께 <span class="keyword-highlight">읽어줘</span> · <span class="keyword-highlight">분석해줘</span> · <span class="keyword-highlight">요약해줘</span>
 
 **예시 케이스:**
 ```
@@ -152,6 +172,8 @@ Claude의 학습 데이터에 없는 최신 정보나 공식 문서를 실시간
 ### TodoWrite - 작업 목록 관리
 Claude가 여러 단계의 작업을 처리할 때 할 일 목록을 만들고 추적합니다.
 긴 작업에서 어디까지 했는지 놓치지 않습니다.
+
+**한국어로 말하면:** <span class="keyword-highlight">단계별로 해줘</span> · <span class="keyword-highlight">목록 만들고 진행해줘</span> · <span class="keyword-highlight">하나씩 체크하면서 해줘</span>
 
 **예시 케이스:**
 ```
