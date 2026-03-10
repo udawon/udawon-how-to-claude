@@ -32,7 +32,8 @@
       "Bash(git log:*)",
       "Bash(git diff:*)",
       "Bash(cd:*)",
-      "Skill(keybindings-help)"
+      "Skill(keybindings-help)",
+      "Bash(grep -n \"^order:\" C:\\\\Users\\\\udawon\\\\how-to-claude\\\\content\\\\basics\\\\*.md | sort -t: -k3 -n)"
     ]
   }
 }
