@@ -1,7 +1,7 @@
 ---
 title: "단축키 완전 가이드"
 description: "Claude Code에서 사용 가능한 모든 단축키와 실전 활용법"
-order: 4
+order: 3
 tags: ["기본", "단축키", "키보드", "효율"]
 ---
 
