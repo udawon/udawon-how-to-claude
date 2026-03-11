@@ -40,12 +40,12 @@ Claude: "`git commit` 실행할게요"
 {
   "permissions": {
     "allow": [
-      "Bash(git add:*)",
-      "Bash(git commit:*)",
-      "Bash(git push:*)",
-      "Bash(git status:*)",
-      "Bash(git log:*)",
-      "Bash(git diff:*)"
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git status *)",
+      "Bash(git log *)",
+      "Bash(git diff *)"
     ]
   }
 }
@@ -57,14 +57,17 @@ Claude: "`git commit` 실행할게요"
 ### 패턴 문법
 
 ```
-"Bash(git commit:*)"
+"Bash(git commit *)"
        ↑          ↑
    명령어 시작   뒤에 어떤 옵션이 오든 허용
 
-"Bash(git commit:-m *)"  <- -m 옵션이 있을 때만 허용 (더 엄격)
-"Bash(npm run:*)"        <- npm run 뭐든 허용
-"Bash(rm:*)"             <- rm 명령어 전체 허용 (주의해서 사용)
+"Bash(git commit -m *)"  <- -m 옵션이 있을 때만 허용 (더 엄격)
+"Bash(npm run *)"        <- npm run 뭐든 허용
+"Bash(rm *)"             <- rm 명령어 전체 허용 (주의해서 사용)
 ```
+
+> **주의:** 명령어와 `*` 사이에 **공백**이 있어야 합니다.
+> `Bash(git commit *)` (O) vs `Bash(git commit*)` (X)
 
 ---
 

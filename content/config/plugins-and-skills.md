@@ -51,7 +51,7 @@ SKILL.md라는 파일에 적힌 "이렇게 해줘" 지침
 - <span class="keyword-highlight">MCP</span> 서버 — 외부 도구 연결
 - <span class="keyword-highlight">Hooks</span> — 자동화 규칙
 - 에이전트 — 전문 AI 비서
-- LSP 서버 — 코드 지능 (자동 오류 감지)
+- LSP 서버 — 코드를 쓸 때 실수를 자동으로 감지해주는 도구
 
 <div class="example-case">
 
