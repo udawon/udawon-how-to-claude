@@ -23,29 +23,32 @@ Claude Code는 대화가 끝나면 모든 기억을 잃습니다.
 
 ### 메모 없이 교대하면 생기는 문제
 
-```
-세션 1: 로그인 화면 절반 완성
-(세션 종료 - 기억 소멸)
-세션 2: "이 프로젝트 뭐지? 뭘 하고 있었지?"
+<span class="keyword-highlight">세션</span> 1: 로그인 화면 절반 완성
+(<span class="keyword-highlight">세션</span> 종료 - 기억 소멸)
+<span class="keyword-highlight">세션</span> 2: "이 프로젝트 뭐지? 뭘 하고 있었지?"
          -> 처음부터 다시 파악하느라 시간 낭비
          -> 로그인 화면을 다른 방식으로 다시 만들 수 있음
 
+<div class="example-case">
+
 비유: 인수인계 없이 담당자가 바뀌면
+
      "이거 누가 왜 이렇게 해놨지?" 하면서 시간 낭비
-```
+</div>
 
 ### 메모를 남기면 (Harness 적용)
 
-```
-세션 1: 로그인 화면 절반 완성
+<span class="keyword-highlight">세션</span> 1: 로그인 화면 절반 완성
          -> 진행 기록 파일에 "로그인 화면 50% 완료. 다음: 비밀번호 검증"
          -> 기능 목록에 "로그인 UI: 완료 / 비밀번호 검증: 미완료" 업데이트
-(세션 종료)
-세션 2: 진행 기록 읽기 -> "아, 비밀번호 검증부터 하면 되겠구나"
+(<span class="keyword-highlight">세션</span> 종료)
+<span class="keyword-highlight">세션</span> 2: 진행 기록 읽기 -> "아, 비밀번호 검증부터 하면 되겠구나"
          -> 바로 이어서 작업
 
+<div class="example-case">
+
 비유: 교대 근무 시 인수인계 노트를 남기는 것
-```
+</div>
 
 ## 핵심 구조: 2개의 역할
 
@@ -57,8 +60,10 @@ Claude Code는 대화가 끝나면 모든 기억을 잃습니다.
 - **기능 목록** 작성
 
 **예시 케이스:**
-```
-"이 프로젝트의 전체 기능을 목록으로 정리해줘.
+
+<div class="example-case">
+
+"이 프로젝트의 <span class="keyword-highlight">전체 기능을 목록으로 정리해줘</span>.
  각 기능마다 설명과 완료 여부를 포함해서."
 
 -> Claude가 기능 목록 파일을 생성:
@@ -69,10 +74,10 @@ Claude Code는 대화가 끝나면 모든 기억을 잃습니다.
    ...
 
 비유: 이사할 때 "해야 할 일 체크리스트"를 먼저 만드는 것
-     [ ] 가구 배치
-     [ ] 인터넷 설치
-     [ ] 주소 변경
-```
+- [ ] 가구 배치
+- [ ] 인터넷 설치
+- [ ] 주소 변경
+</div>
 
 > **왜 JSON으로 쓰나?** Claude는 마크다운 형식의 목록을 실수로 바꿀 수 있지만,
 > JSON 형식은 함부로 건드리지 않음. 구조화된 데이터가 더 안전.
@@ -89,11 +94,13 @@ Claude Code는 대화가 끝나면 모든 기억을 잃습니다.
 ```
 
 **예시 케이스:**
-```
-매 세션 시작할 때:
-"진행 기록 파일과 기능 목록을 읽고,
- 미완료 기능 중 다음으로 할 1개만 구현해줘.
- 완료 후 진행 기록과 기능 목록을 업데이트해."
+
+<div class="example-case">
+
+매 <span class="keyword-highlight">세션</span> 시작할 때:
+"<span class="keyword-highlight">진행 기록 파일과 기능 목록을 읽고</span>,
+ 미완료 기능 중 <span class="keyword-highlight">다음으로 할 1개만 구현해줘</span>.
+ 완료 후 <span class="keyword-highlight">진행 기록과 기능 목록을 업데이트해</span>."
 
 -> Claude가 알아서:
    1. "아, 상품 목록이 다음이구나"
@@ -103,23 +110,27 @@ Claude Code는 대화가 끝나면 모든 기억을 잃습니다.
 비유: 출근하면 인수인계 노트를 보고,
      오늘 할 일 1개를 처리하고,
      퇴근 전에 다음 사람을 위한 노트를 남기는 것
-```
+</div>
 
 ## 한 번에 다 하면 안 되는 이유
 
-```
-(X) "쇼핑몰 전체를 만들어줘"
+(X) "<span class="keyword-highlight">쇼핑몰 전체를 만들어줘</span>"
 -> 10개 기능 중 5개째에서 기억 용량 초과
    나머지 5개는 미완성, 기록도 없음
-   다음 세션에서 복구에 시간 낭비
+   다음 <span class="keyword-highlight">세션</span>에서 복구에 시간 낭비
+
+<div class="example-case">
 
 비유: 마라톤을 전력 질주로 시작하면 중간에 쓰러지는 것
+</div>
 
-(O) "기능 목록을 확인하고, '장바구니' 기능 1개만 구현해줘"
+(O) "<span class="keyword-highlight">기능 목록을 확인하고, '장바구니' 기능 1개만 구현해줘</span>"
 -> 1개를 확실히 완성하고, 기록을 남기고, 다음으로 넘김
 
+<div class="example-case">
+
 비유: 마라톤을 페이스 조절하면서 구간별로 완주하는 것
-```
+</div>
 
 ## 3겹 기록 시스템
 
@@ -130,31 +141,31 @@ Claude Code는 대화가 끝나면 모든 기억을 잃습니다.
 | **기능 목록** | 전체 진행률 | 체크리스트 |
 
 **예시 케이스:**
-```
-매 세션 종료 시:
+
+<div class="example-case">
+
+매 <span class="keyword-highlight">세션</span> 종료 시:
 "작업을 마무리하기 전에:
- 1. 현재 상태로 저장해
- 2. 진행 기록에 오늘 한 일 적어
- 3. 기능 목록 상태 업데이트해"
+ 1. 현재 상태로 <span class="keyword-highlight">저장해</span>
+ 2. 진행 기록에 오늘 한 일 <span class="keyword-highlight">적어</span>
+ 3. 기능 목록 상태 <span class="keyword-highlight">업데이트해</span>"
 
 비유: 퇴근 전 루틴
      1. 작업 파일 저장
      2. 인수인계 노트 작성
      3. 할 일 목록에 체크
-```
+</div>
 
 ## 실전 적용법
 
 ### CLAUDE.md에 Harness 규칙 적용
 
-```
 아래 내용을 CLAUDE.md 파일에 적어두면
-Claude Code가 매 세션 시작 시 자동으로 읽고 따릅니다.
+Claude Code가 매 <span class="keyword-highlight">세션</span> 시작 시 자동으로 읽고 따릅니다.
 
 CLAUDE.md 수정 방법:
-  방법1: Claude Code 대화창에서 "CLAUDE.md에 아래 내용을 추가해줘" 라고 요청
-  방법2: 직접 프로젝트폴더/.claude/CLAUDE.md 파일을 메모장으로 열어서 수정
-```
+  방법1: Claude Code 대화창에서 "<span class="keyword-highlight">CLAUDE.md에 아래 내용을 추가해줘</span>" 라고 요청
+  방법2: 직접 `프로젝트폴더/.claude/CLAUDE.md` 파일을 메모장으로 열어서 수정
 
 ```markdown
 ## 프로젝트 상태
@@ -170,18 +181,21 @@ CLAUDE.md 수정 방법:
 ```
 
 **예시 케이스:**
-```
-[매 세션 시작할 때 - Claude Code 대화창에서]
 
-"CLAUDE.md와 기능 목록을 읽고 현재 상태를 알려줘.
- 다음으로 할 작업을 제안해줘."
+<div class="example-case">
+
+[매 <span class="keyword-highlight">세션</span> 시작할 때 - Claude Code 대화창에서]
+
+"<span class="keyword-highlight">CLAUDE.md와 기능 목록을 읽고 현재 상태를 알려줘</span>.
+ <span class="keyword-highlight">다음으로 할 작업을 제안해줘</span>."
 
 -> Claude: "상품 목록까지 완료되었고, 다음은 장바구니입니다.
           장바구니 기능을 구현할까요?"
 
 비유: 출근해서 인수인계 노트를 보고
+
      "오늘은 이거 하면 되겠다" 파악하는 것
-```
+</div>
 
 ## 핵심 원칙 요약
 

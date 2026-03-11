@@ -33,7 +33,20 @@
       "Bash(git diff:*)",
       "Bash(cd:*)",
       "Skill(keybindings-help)",
-      "Bash(grep -n \"^order:\" C:\\\\Users\\\\udawon\\\\how-to-claude\\\\content\\\\basics\\\\*.md | sort -t: -k3 -n)"
+      "Bash(grep -n \"^order:\" C:\\\\Users\\\\udawon\\\\how-to-claude\\\\content\\\\basics\\\\*.md | sort -t: -k3 -n)",
+      "WebFetch(domain:claude.com)",
+      "Bash(for dir:*)",
+      "Bash(do for:*)",
+      "Bash(do echo:*)",
+      "Read(//c/Users/udawon/how-to-claude/**)",
+      "Bash(done)",
+      "mcp__plugin_playwright_playwright__browser_snapshot",
+      "Bash(find content:*)",
+      "Bash(explorer \"C:\\\\Users\\\\udawon\\\\how-to-claude\\\\Claude Code Docs\")",
+      "Bash(cmd.exe /c start \"\" \"C:\\\\Users\\\\udawon\\\\how-to-claude\\\\Claude Code Docs\")",
+      "Bash(mkdir -p /c/Users/udawon/how-to-claude/content/claude-code-docs && find \"/c/Users/udawon/how-to-claude/Claude Code Docs\" -name \"*.md\" -exec cp {} /c/Users/udawon/how-to-claude/content/claude-code-docs/ \\\\; && ls /c/Users/udawon/how-to-claude/content/claude-code-docs/ | wc -l)",
+      "Bash(cd C:/Users/udawon/how-to-claude && bash scripts/check-docs-update.sh)",
+      "Bash(cd C:/Users/udawon/how-to-claude && touch content/claude-code-docs/fake-test-page.md && bash scripts/check-docs-update.sh; rm content/claude-code-docs/fake-test-page.md)"
     ]
   }
 }

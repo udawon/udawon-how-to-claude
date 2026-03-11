@@ -6,12 +6,19 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { ClaudeCharacter } from "@/components/ClaudeCharacter";
 
 export default function Home() {
-  const categoryData = categories.map((cat) => ({
-    ...cat,
-    docs: getDocsByCategory(cat.slug),
-  }));
+  const categoryData = categories
+    .filter((cat) => cat.slug !== "claude-code-docs")
+    .map((cat) => ({
+      ...cat,
+      docs: getDocsByCategory(cat.slug),
+    }));
 
-  const totalDocs = categoryData.reduce((sum, cat) => sum + cat.docs.length, 0);
+  const officialDocs = {
+    ...categories.find((cat) => cat.slug === "claude-code-docs")!,
+    docs: getDocsByCategory("claude-code-docs"),
+  };
+
+  const totalDocs = categoryData.reduce((sum, cat) => sum + cat.docs.length, 0) + officialDocs.docs.length;
   const allDocs = categoryData.flatMap((cat) =>
     cat.docs.map((doc) => ({ ...doc, catTitle: cat.title }))
   );
@@ -102,6 +109,39 @@ export default function Home() {
             </Link>
           ))}
         </div>
+      </section>
+
+      {/* 공식 문서 참고 */}
+      <section className="max-w-6xl mx-auto px-5 sm:px-8 pb-14 w-full">
+        <div className="flex items-center gap-3 mb-1">
+          <ClaudeCharacter pose="think" size={36} />
+          <h2 className="section-label !mb-0">공식 문서 참고</h2>
+        </div>
+        <Link
+          href="/docs/claude-code-docs"
+          className="card-hover group rounded-xl p-5 flex items-center justify-between"
+        >
+          <div className="flex items-center gap-4">
+            <div className="icon-box">
+              <Icon name="doc" className="w-[18px] h-[18px]" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-[15px] text-[var(--text-primary)]">
+                {officialDocs.title}
+              </h3>
+              <p className="text-sm text-[var(--text-muted)] mt-0.5">
+                {officialDocs.description}
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="count-badge">{officialDocs.docs.length}</span>
+            <Icon
+              name="arrow"
+              className="w-4 h-4 text-[var(--text-muted)] transition-transform duration-150 group-hover:translate-x-0.5"
+            />
+          </div>
+        </Link>
       </section>
 
       {/* 전체 문서 목록 */}

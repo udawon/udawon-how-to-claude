@@ -63,6 +63,13 @@ export const categories: Category[] = [
     icon: "rocket",
     order: 6,
   },
+  {
+    slug: "claude-code-docs",
+    title: "공식 문서 한국어판",
+    description: "Claude Code 공식 문서를 비개발자도 이해할 수 있게 번역한 가이드",
+    icon: "doc",
+    order: 7,
+  },
 ];
 
 // 문서 메타데이터

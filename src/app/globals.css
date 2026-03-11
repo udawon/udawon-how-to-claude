@@ -30,8 +30,8 @@
 
   --code-bg: #F5F4F1;
   --code-text: #C2410C;
-  --code-block-bg: #1C1C1A;
-  --code-block-text: #E8E6E1;
+  --code-block-bg: #F0EFEC;
+  --code-block-text: #37372F;
 
   color-scheme: light;
 }
@@ -320,6 +320,20 @@ body {
   opacity: 0.8;
 }
 
+/* 키보드 단축키 강조 */
+kbd {
+  display: inline-block;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.85em;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
 /* 한국어 트리거 키워드 강조 */
 .keyword-highlight {
   display: inline-block;
@@ -330,6 +344,35 @@ body {
   font-weight: 600;
   font-size: 0.875em;
   border: 1px solid color-mix(in srgb, var(--accent-text) 20%, transparent);
+}
+
+/* 라이트 모드 강조 보정 */
+[data-theme="light"] .keyword-highlight {
+  background: #FFE0CC;
+  border-color: color-mix(in srgb, var(--accent-text) 35%, transparent);
+}
+
+[data-theme="light"] .markdown-body code {
+  background: #EDECEA;
+}
+
+/* 예시 케이스 박스 */
+.example-case {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--text-muted);
+  border-radius: 0 10px 10px 0;
+  padding: 1rem 1.25rem 1rem 1.5rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-break: keep-all;
+}
+
+.example-case p {
+  margin-top: 0.75em;
+  margin-bottom: 0;
 }
 
 /* ──────────────────────────────────────

@@ -1,12 +1,13 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-03-08T05:01:25.890Z",
+  "lastUpdated": "2026-03-11T03:58:46.894Z",
   "activeFeatures": [
     "how-to-claude",
     "search",
     "[category]",
     "[slug]",
-    ".claude"
+    ".claude",
+    "scripts"
   ],
   "primaryFeature": "how-to-claude",
   "features": {
@@ -19,9 +20,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-06T00:45:21.975Z",
-        "lastUpdated": "2026-03-06T16:07:21.587Z"
+        "lastUpdated": "2026-03-11T03:42:09.577Z"
       },
-      "lastFile": "C:\\Users\\udawon\\how-to-claude\\src\\app\\opengraph-image.tsx"
+      "lastFile": "C:\\Users\\udawon\\how-to-claude\\src\\app\\page.tsx"
     },
     "search": {
       "phase": "do",
@@ -45,7 +46,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-06T00:47:30.019Z",
-        "lastUpdated": "2026-03-06T07:21:25.291Z"
+        "lastUpdated": "2026-03-11T03:46:42.211Z"
       },
       "lastFile": "C:\\Users\\udawon\\how-to-claude\\src\\app\\docs\\[category]\\page.tsx"
     },
@@ -74,6 +75,19 @@
         "lastUpdated": "2026-03-08T05:01:25.890Z"
       },
       "lastFile": "/c/Users/udawon/.claude/statusline.sh"
+    },
+    "scripts": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-11T03:54:58.148Z",
+        "lastUpdated": "2026-03-11T03:58:46.894Z"
+      },
+      "lastFile": "C:/Users/udawon/how-to-claude/scripts/check-docs-update.sh"
     }
   },
   "pipeline": {
@@ -84,7 +98,7 @@
   "session": {
     "startedAt": "2026-03-06T00:14:33.563Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-03-08T05:01:25.890Z"
+    "lastActivity": "2026-03-11T03:58:46.894Z"
   },
   "history": [
     {
@@ -594,6 +608,66 @@
     {
       "timestamp": "2026-03-08T05:01:25.890Z",
       "feature": ".claude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-11T03:20:23.029Z",
+      "feature": "how-to-claude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-11T03:23:02.217Z",
+      "feature": "how-to-claude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-11T03:42:00.324Z",
+      "feature": "how-to-claude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-11T03:42:09.577Z",
+      "feature": "how-to-claude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-11T03:44:31.587Z",
+      "feature": "[category]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-11T03:46:34.700Z",
+      "feature": "[category]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-11T03:46:42.211Z",
+      "feature": "[category]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-11T03:54:58.148Z",
+      "feature": "scripts",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-11T03:58:44.221Z",
+      "feature": "scripts",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-11T03:58:46.894Z",
+      "feature": "scripts",
       "phase": "do",
       "action": "updated"
     }

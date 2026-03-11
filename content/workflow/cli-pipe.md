@@ -9,14 +9,15 @@ tags: ["워크플로우", "CLI", "자동화", "파이프", "CI/CD"]
 
 Claude Code는 대화형 모드 외에 **명령어처럼 한 번만 실행**하는 방식도 지원합니다. 이를 이용해 터미널 파이프나 스크립트에서 Claude를 활용할 수 있습니다.
 
-```
-대화형 모드: claude (대화창 열림)
-명령어 모드: claude -p "프롬프트" (실행 후 종료)
+대화형 모드: `claude` (대화창 열림)
+명령어 모드: `claude -p "프롬프트"` (실행 후 종료)
+
+<div class="example-case">
 
 비유:
 대화형 = 직원을 고용해서 항상 옆에 두기
 명령어 = 심부름 한 번만 시키기
-```
+</div>
 
 ---
 
@@ -52,21 +53,27 @@ npm run build 2>&1 | claude -p "이 빌드 에러의 근본 원인이 뭔지 알
 tail -f server.log | claude -p "이상한 패턴이 보이면 즉시 알려줘"
 ```
 
-```
-예시 케이스:
+**예시 케이스:**
+
+<div class="example-case">
+
 밤 11시, 서버에서 알 수 없는 에러 발생
 
 기존 방법:
 로그 파일 열기 -> 수백 줄 스크롤 -> 에러 패턴 찾기 -> 검색
 
 Claude 활용:
-cat error.log | claude -p "이 로그에서 반복되는 에러 패턴을
-                           찾아서 원인과 해결책을 알려줘"
+
+```bash
+cat error.log | claude -p "이 로그에서 반복되는 에러 패턴을 찾아서 원인과 해결책을 알려줘"
+```
+
 -> 즉시 핵심 분석 완료
 
 비유: 긴 계약서를 변호사에게 줬더니
+
      "3페이지 7번 항목이 문제입니다" 바로 짚어주는 것
-```
+</div>
 
 ### 코드 리뷰 자동화
 
@@ -123,19 +130,24 @@ cat large-log.txt | claude -p "로그 파싱" --output-format stream-json
 }
 ```
 
-```
 사용:
-npm run lint:ai     -> AI 코드 리뷰
-npm run review      -> 변경사항 분석
-npm run explain     -> 프로젝트 설명
 
-예시 케이스:
+```bash
+npm run lint:ai     # AI 코드 리뷰
+npm run review      # 변경사항 분석
+npm run explain     # 프로젝트 설명
+```
+
+**예시 케이스:**
+
+<div class="example-case">
+
 팀에 새 멤버가 합류했을 때:
-npm run explain -> Claude가 프로젝트 전체를 이해하기 쉽게 설명
+`npm run explain` -> Claude가 프로젝트 전체를 이해하기 쉽게 설명
 
 PR 올리기 전:
-npm run review -> 내가 놓친 부분을 Claude가 잡아줌
-```
+`npm run review` -> 내가 놓친 부분을 Claude가 잡아줌
+</div>
 
 ---
 
@@ -157,17 +169,19 @@ git diff --name-only | while read file; do
 done
 ```
 
-```
---allowedTools 옵션:
+`--allowedTools` 옵션:
 배치 작업 시 Claude가 사용할 수 있는 도구를 제한
 
-예시:
+```bash
 --allowedTools "Edit"           # 파일 수정만 허용
 --allowedTools "Bash(npm test)" # 특정 명령어만 허용
 --allowedTools "Read,Grep"      # 읽기만 허용
+```
+
+<div class="example-case">
 
 비유: 아르바이트생에게 "이 서류들만 처리해줘, 다른 건 건드리지 마"
-```
+</div>
 
 ---
 
@@ -232,11 +246,10 @@ cat error-messages.ts | \
 
 ## 주의사항
 
-```
 안전하게 사용하기:
 
-1. --dangerously-skip-permissions
-   모든 권한 확인을 건너뜀 → 빠르지만 위험
+1. `--dangerously-skip-permissions`
+   모든 권한 확인을 건너뜀 -> 빠르지만 위험
    CI/CD 환경이나 격리된 환경에서만 사용
 
 2. 배치 작업 전 테스트
@@ -244,10 +257,12 @@ cat error-messages.ts | \
    "3개 파일로 테스트 -> 결과 확인 -> 전체 실행"
 
 3. 중요 파일 백업
-   대규모 배치 작업 전 git commit으로 백업
+   대규모 배치 작업 전 `git commit`으로 백업
+
+<div class="example-case">
 
 비유:
 Claude = 능력 있는 인턴
 처음엔 작은 일부터 시켜보고
 믿을 수 있으면 더 큰 일을 맡기는 것
-```
+</div>

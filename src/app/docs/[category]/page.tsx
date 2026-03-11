@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { categories, getDocsByCategory } from "@/lib/docs";
+import { categories, getDocsByCategory, DocMeta } from "@/lib/docs";
 import { Icon } from "@/components/Icons";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ClaudeCharacter } from "@/components/ClaudeCharacter";
@@ -9,8 +9,77 @@ interface Props {
   params: Promise<{ category: string }>;
 }
 
+// 공식 문서 한국어판 섹션 정의
+const officialDocSections: { label: string; tag: string }[] = [
+  { label: "시작하기", tag: "시작하기" },
+  { label: "설정 & 구성", tag: "설정" },
+  { label: "메모리 & 커스터마이징", tag: "커스터마이징" },
+  { label: "플러그인 & 에이전트", tag: "플러그인,에이전트" },
+  { label: "플랫폼 & IDE", tag: "플랫폼" },
+  { label: "CI/CD & 자동화", tag: "CI/CD,자동화" },
+  { label: "엔터프라이즈", tag: "엔터프라이즈" },
+  { label: "보안 & 참조", tag: "보안,참조" },
+];
+
+function groupDocsBySections(docs: DocMeta[]) {
+  const grouped: { label: string; docs: DocMeta[] }[] = [];
+  const used = new Set<string>();
+
+  for (const section of officialDocSections) {
+    const tags = section.tag.split(",");
+    const matched = docs.filter(
+      (doc) => !used.has(doc.slug) && doc.tags.some((t) => tags.includes(t))
+    );
+    matched.forEach((doc) => used.add(doc.slug));
+    if (matched.length > 0) {
+      grouped.push({ label: section.label, docs: matched });
+    }
+  }
+
+  // 어디에도 속하지 않은 문서
+  const remaining = docs.filter((doc) => !used.has(doc.slug));
+  if (remaining.length > 0) {
+    grouped.push({ label: "기타", docs: remaining });
+  }
+
+  return grouped;
+}
+
 export function generateStaticParams() {
   return categories.map((cat) => ({ category: cat.slug }));
+}
+
+function DocRow({ doc, category, index }: { doc: DocMeta; category: string; index: number }) {
+  return (
+    <Link
+      key={doc.slug}
+      href={`/docs/${category}/${doc.slug}`}
+      className="card-hover group flex items-center gap-4 rounded-xl px-5 py-4"
+    >
+      <div className="number-box">{index}</div>
+      <div className="flex-1 min-w-0">
+        <div className="font-medium text-[15px] text-[var(--text-primary)]">
+          {doc.title}
+        </div>
+        <div className="text-sm mt-0.5 text-[var(--text-muted)]">
+          {doc.description}
+        </div>
+        {doc.tags.length > 0 && (
+          <div className="flex gap-1.5 mt-2.5">
+            {doc.tags.map((tag) => (
+              <span key={tag} className="tag-badge text-xs">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+      <Icon
+        name="arrow"
+        className="w-4 h-4 shrink-0 text-[var(--text-muted)] transition-transform duration-150 group-hover:translate-x-0.5"
+      />
+    </Link>
+  );
 }
 
 export default async function CategoryPage({ params }: Props) {
@@ -22,6 +91,8 @@ export default async function CategoryPage({ params }: Props) {
   }
 
   const docs = getDocsByCategory(category);
+  const isOfficialDocs = category === "claude-code-docs";
+  const sections = isOfficialDocs ? groupDocsBySections(docs) : [];
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -61,37 +132,35 @@ export default async function CategoryPage({ params }: Props) {
             </div>
             이 카테고리에 아직 문서가 없습니다
           </div>
+        ) : isOfficialDocs ? (
+          /* 공식 문서: 섹션별 그룹 */
+          <div className="space-y-12">
+            {sections.map((section, sectionIdx) => {
+              let globalIndex = docs.findIndex((d) => d.slug === section.docs[0].slug);
+              return (
+                <div key={section.label}>
+                  <div className={`${sectionIdx > 0 ? "border-t border-[var(--border)] pt-6" : ""} mb-3`}>
+                    <h2 className="section-label !mb-0">{section.label}</h2>
+                  </div>
+                  <div className="space-y-2">
+                    {section.docs.map((doc, i) => (
+                      <DocRow
+                        key={doc.slug}
+                        doc={doc}
+                        category={category}
+                        index={globalIndex + i + 1}
+                      />
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         ) : (
+          /* 일반 카테고리: 기존 플랫 목록 */
           <div className="space-y-2">
             {docs.map((doc, i) => (
-              <Link
-                key={doc.slug}
-                href={`/docs/${category}/${doc.slug}`}
-                className="card-hover group flex items-center gap-4 rounded-xl px-5 py-4"
-              >
-                <div className="number-box">{i + 1}</div>
-                <div className="flex-1 min-w-0">
-                  <div className="font-medium text-[15px] text-[var(--text-primary)]">
-                    {doc.title}
-                  </div>
-                  <div className="text-sm mt-0.5 text-[var(--text-muted)]">
-                    {doc.description}
-                  </div>
-                  {doc.tags.length > 0 && (
-                    <div className="flex gap-1.5 mt-2.5">
-                      {doc.tags.map((tag) => (
-                        <span key={tag} className="tag-badge text-xs">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-                <Icon
-                  name="arrow"
-                  className="w-4 h-4 shrink-0 text-[var(--text-muted)] transition-transform duration-150 group-hover:translate-x-0.5"
-                />
-              </Link>
+              <DocRow key={doc.slug} doc={doc} category={category} index={i + 1} />
             ))}
           </div>
         )}
