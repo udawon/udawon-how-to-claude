@@ -17,7 +17,7 @@ tags: ["팁", "ultrathink", "추론", "사고", "고급"]
 → 빠른 답변은 나오지만 깊이가 부족할 수 있음
 
 (O) "<span class="keyword-highlight">ultrathink</span>를 활용해서 이 인증 시스템 리팩토링 방법을 설계해줘"
-→ Claude가 트레이드오프, 엣지케이스, 대안들을 깊이 분석한 뒤 답변
+→ Claude가 장단점, 예외 상황, 대안들을 깊이 분석한 뒤 답변
 
 비유: 급하게 아무 레스토랑 vs 충분히 고민해서 오늘 기분에 딱 맞는 곳
      시간을 더 쓰는 만큼 결과 품질이 다름
@@ -60,30 +60,27 @@ tags: ["팁", "ultrathink", "추론", "사고", "고급"]
 
 프롬프트에 키워드를 넣는 것 외에, 단축키로 확장 사고 모드를 켜고 끌 수 있습니다.
 
-| 단축키 | 설명 |
-|--------|------|
-| <kbd>Alt</kbd>+<kbd>T</kbd> (Windows/Linux) | 확장 사고 모드 켜기/끄기 |
-| <kbd>Option</kbd>+<kbd>T</kbd> (macOS) | 확장 사고 모드 켜기/끄기 |
+| 플랫폼 | 기본 단축키 | 비고 |
+|--------|------------|------|
+| macOS | <kbd>Cmd</kbd>+<kbd>T</kbd> | |
+| Windows/Linux | <kbd>Meta</kbd>+<kbd>T</kbd> | `Win+T`는 OS가 가로채므로, `/keybindings`에서 <kbd>Alt</kbd>+<kbd>T</kbd> 등으로 변경 필요 |
+
+> 단축키 설정 방법은 [단축키 완전 가이드](/docs/basics/shortcuts)를 참고하세요.
 
 활성화하면 모든 요청에 대해 Claude가 깊이 사고합니다.
-특정 요청에서만 깊은 사고가 필요하면 프롬프트에 키워드를 넣는 방식이 더 효율적입니다.
+특정 요청에서만 깊은 사고가 필요하면 프롬프트에 `ultrathink` 키워드를 넣는 방식이 더 효율적입니다.
 
 ## 사고 깊이 키워드
 
-`ultrathink` 외에도 단계별 키워드가 있습니다:
+프롬프트에 넣어서 사고 깊이를 조절할 수 있는 키워드는 **`ultrathink` 하나뿐**입니다.
 
-| 키워드 | 사고 깊이 |
-|--------|----------|
-| `think` | 기본 확장 사고 |
-| `think hard` | 더 깊은 사고 |
-| `think harder` | 매우 깊은 사고 |
-| `ultrathink` | 최대 수준 사고 |
+> **주의:** "think", "think hard" 같은 표현은 실제로 사고 깊이를 늘려주지 않습니다. 반드시 `ultrathink`를 사용하세요.
 
-## 도구 사용 과정 보기 (<kbd>Ctrl</kbd>+<kbd>O</kbd>)
+## Claude가 무슨 작업을 하는지 보기 (<kbd>Ctrl</kbd>+<kbd>O</kbd>)
 
-<kbd>Ctrl</kbd>+<kbd>O</kbd>는 **상세 출력 토글**입니다. Claude가 어떤 도구를 어떻게 사용하는지 과정을 볼 수 있습니다.
+<kbd>Ctrl</kbd>+<kbd>O</kbd>는 **상세 출력 토글**입니다. Claude가 파일을 읽거나, 검색하거나, 명령어를 실행하는 과정을 자세히 볼 수 있습니다.
 
-> 주의: <kbd>Ctrl</kbd>+<kbd>O</kbd>는 사고 과정이 아닌 **도구 사용 과정**을 보여줍니다. 확장 사고 모드는 <kbd>Alt</kbd>+<kbd>T</kbd>로 토글합니다.
+> 주의: <kbd>Ctrl</kbd>+<kbd>O</kbd>는 Claude의 내부 사고가 아니라 **실제 동작 과정**을 보여줍니다. 확장 사고 모드 켜기/끄기는 위의 단축키 표를 참고하세요.
 
 ## ultrathink vs 일반 요청 비교
 

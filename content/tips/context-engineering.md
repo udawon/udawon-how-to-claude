@@ -57,7 +57,7 @@ tags: ["프롬프트", "컨텍스트", "효율"]
 
 ### "단계별로 생각해줘"가 효과 있는 이유
 
-연구로 검증된 기법 "<span class="keyword-highlight">Chain-of-Thought Prompting</span>"
+연구로 검증된 기법 — "<span class="keyword-highlight">단계별 사고 유도</span>" (Chain-of-Thought Prompting)
 
 (X) "이 알고리즘이 맞아?"
 → Claude가 바로 결론을 냄 (틀릴 확률 높음)
@@ -69,22 +69,16 @@ tags: ["프롬프트", "컨텍스트", "효율"]
 비유: "이 계산 맞아?" vs "이 계산 풀이 과정을 보여줘"
      과정을 보여주면서 실수를 본인이 발견하게 됨
 
-### Claude Code 전용: think / ultrathink
+### Claude Code 전용: ultrathink
 
-Claude Code 대화창에서만 작동하는 실제 기능
-
-`think`        → 기본 수준의 깊은 사고
-`think hard`   → 더 많은 사고 시간 배분
-`think harder` → 더 많이
-`ultrathink`   → 최대치
+Claude Code 대화창에서 `ultrathink`를 넣으면 Claude가 최대 수준으로 깊이 사고합니다.
 
 사용 예:
 "이 버그의 원인을 <span class="keyword-highlight">ultrathink</span>해서 찾아줘"
-"이 아키텍처 설계를 <span class="keyword-highlight">think hard</span>해줘"
+"이 설계 방향을 <span class="keyword-highlight">ultrathink</span>로 분석해줘"
 
-왜 작동하나:
-Claude에는 내부적으로 '생각하는 토큰 예산'이 있음
-이 키워드들이 그 예산을 늘려주는 신호로 작동함
+> **주의:** "think", "think hard" 같은 표현은 실제로 사고 깊이를 늘려주지 않습니다.
+> 반드시 `ultrathink`를 사용하세요.
 
 언제 쓰면 좋나:
 - 원인 불명확한 복잡한 버그 추적
@@ -112,7 +106,7 @@ Claude에는 내부적으로 '생각하는 토큰 예산'이 있음
 | 표현 | 효과 | 이유 |
 |------|------|------|
 | "단계별로 생각해줘" | 있음 | 중간 과정이 생겨 오류 감소 |
-| "ultrathink" | 있음 | 실제 사고 예산 증가 (Claude Code 전용) |
+| "ultrathink" | 있음 | Claude가 최대 수준으로 깊이 사고 (Claude Code 전용) |
 | "먼저 분석, 그다음 구현" | 있음 | 두 단계로 나눠 재작업 감소 |
 | "너는 최고 전문가야" | 없음 | 칭찬은 성능에 영향 없음 |
 | "최선을 다해줘" | 없음 | 원래 최선을 다함 |
