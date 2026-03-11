@@ -4,6 +4,7 @@ import { Icon } from "@/components/Icons";
 import { SearchBar } from "@/components/SearchBar";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ClaudeCharacter } from "@/components/ClaudeCharacter";
+import { VisitorCounter } from "@/components/VisitorCounter";
 
 export default function Home() {
   const categoryData = categories
@@ -35,6 +36,7 @@ export default function Home() {
             </span>
           </Link>
           <div className="flex items-center gap-3">
+            <VisitorCounter />
             <span className="text-xs text-[var(--text-muted)]">
               {totalDocs}개 문서
             </span>

@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>우리동네 카페 — 예약 시스템</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            coffee: {
+              50: '#fdf8f0',
+              100: '#f9edda',
+              200: '#f2d7b0',
+              300: '#e9bc7e',
+              400: '#de9a4b',
+              500: '#d4802e',
+              600: '#b86424',
+              700: '#994c20',
+              800: '#7d3e21',
+              900: '#67341e',
+              950: '#3a1a0e',
+            },
+            cream: {
+              50: '#fffef7',
+              100: '#fef9e7',
+              200: '#fdf0c8',
+              300: '#fbe39f',
+              400: '#f8d06d',
+            },
+            mocha: {
+              50: '#f7f3ef',
+              100: '#ebe3d9',
+              200: '#d8c7b3',
+              300: '#c1a688',
+              400: '#ad8a66',
+              500: '#9e7656',
+              600: '#876049',
+              700: '#6e4d3d',
+              800: '#5c4136',
+              900: '#4e382f',
+            },
+          },
+          fontFamily: {
+            sans: ['"Pretendard"', '"Noto Sans KR"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { font-family: 'Noto Sans KR', system-ui, sans-serif; }
+    html { scroll-behavior: smooth; }
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .modal-backdrop { backdrop-filter: blur(4px); }
+    input:focus, select:focus, textarea:focus { outline: none; box-shadow: 0 0 0 3px rgba(222, 154, 75, 0.35); }
+    .table-btn.selected { background-color: #d4802e; color: white; border-color: #b86424; }
+    .table-btn.selected:hover { background-color: #b86424; }
+    .time-slot.unavailable { opacity: 0.4; cursor: not-allowed; text-decoration: line-through; }
+    @keyframes slideUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+    .modal-content { animation: slideUp 0.35s ease-out; }
+    .hamburger-line { transition: all 0.3s ease; }
+    .hamburger-open .hamburger-line:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger-open .hamburger-line:nth-child(2) { opacity: 0; }
+    .hamburger-open .hamburger-line:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+  </style>
+</head>
+<body class="bg-cream-50 text-mocha-900">
+
+  <!-- 레벨 배너 -->
+  <div class="bg-coffee-950 text-cream-100 text-center py-2 text-sm tracking-wide">
+    🌱 초보 레벨 데모 — Next.js 스타일 카페 예약 시스템
+  </div>
+
+  <!-- 네비게이션 -->
+  <nav id="navbar" class="sticky top-0 z-50 bg-cream-50/95 backdrop-blur border-b border-coffee-200 transition-shadow duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- 로고 -->
+        <a href="#hero" class="flex items-center gap-2 text-coffee-800 font-bold text-lg hover:text-coffee-600 transition-colors">
+          <span class="text-2xl">☕</span>
+          <span>우리동네 카페</span>
+        </a>
+        <!-- 데스크톱 메뉴 -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#hero" class="nav-link text-mocha-600 hover:text-coffee-600 font-medium transition-colors">홈</a>
+          <a href="#menu" class="nav-link text-mocha-600 hover:text-coffee-600 font-medium transition-colors">메뉴</a>
+          <a href="#booking" class="nav-link text-mocha-600 hover:text-coffee-600 font-medium transition-colors">예약</a>
+          <a href="#info" class="nav-link text-mocha-600 hover:text-coffee-600 font-medium transition-colors">매장정보</a>
+          <a href="#booking" class="bg-coffee-500 hover:bg-coffee-600 active:bg-coffee-700 text-white px-5 py-2 rounded-full text-sm font-semibold transition-all hover:shadow-lg">예약하기</a>
+        </div>
+        <!-- 모바일 햄버거 -->
+        <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-coffee-100 transition-colors" aria-label="메뉴 열기">
+          <span class="hamburger-line block w-6 h-0.5 bg-mocha-700 rounded"></span>
+          <span class="hamburger-line block w-6 h-0.5 bg-mocha-700 rounded"></span>
+          <span class="hamburger-line block w-6 h-0.5 bg-mocha-700 rounded"></span>
+        </button>
+      </div>
+    </div>
+    <!-- 모바일 메뉴 -->
+    <div id="mobile-menu" class="md:hidden hidden border-t border-coffee-200 bg-cream-50">
+      <div class="px-4 py-4 space-y-3">
+        <a href="#hero" class="mobile-link block text-mocha-700 hover:text-coffee-600 font-medium py-2">홈</a>
+        <a href="#menu" class="mobile-link block text-mocha-700 hover:text-coffee-600 font-medium py-2">메뉴</a>
+        <a href="#booking" class="mobile-link block text-mocha-700 hover:text-coffee-600 font-medium py-2">예약</a>
+        <a href="#info" class="mobile-link block text-mocha-700 hover:text-coffee-600 font-medium py-2">매장정보</a>
+        <a href="#booking" class="mobile-link block bg-coffee-500 hover:bg-coffee-600 text-white text-center px-5 py-2.5 rounded-full font-semibold transition-colors">예약하기</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== 히어로 섹션 ========== -->
+  <section id="hero" class="relative overflow-hidden">
+    <div class="bg-gradient-to-br from-coffee-800 via-coffee-900 to-coffee-950 min-h-[85vh] flex items-center">
+      <!-- 배경 장식 -->
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-coffee-400 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-cream-400 rounded-full blur-3xl"></div>
+      </div>
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="fade-in">
+            <span class="inline-block bg-coffee-400/20 text-coffee-200 px-4 py-1.5 rounded-full text-sm font-medium mb-6 border border-coffee-400/30">
+              매일 신선한 원두 ✨
+            </span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-cream-50 leading-tight mb-6">
+              우리동네 카페에서<br />
+              <span class="text-coffee-300">특별한 순간</span>을
+            </h1>
+            <p class="text-cream-200 text-lg mb-8 leading-relaxed max-w-lg">
+              바쁜 일상 속 여유로운 한 잔. 따뜻한 공간에서 소중한 시간을 예약하세요.
+              원두 향이 가득한 아늑한 공간이 기다리고 있습니다.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a href="#booking" class="bg-coffee-400 hover:bg-coffee-300 active:bg-coffee-500 text-coffee-950 px-8 py-3.5 rounded-full font-bold text-lg transition-all hover:shadow-xl hover:shadow-coffee-400/25 hover:-translate-y-0.5">
+                테이블 예약하기
+              </a>
+              <a href="#menu" class="border-2 border-cream-300/40 hover:border-cream-300 text-cream-100 hover:text-white px-8 py-3.5 rounded-full font-semibold transition-all hover:-translate-y-0.5">
+                메뉴 보기
+              </a>
+            </div>
+          </div>
+          <!-- 카페 이미지 플레이스홀더 -->
+          <div class="fade-in hidden md:block">
+            <div class="relative">
+              <div class="bg-gradient-to-br from-coffee-700 to-coffee-800 rounded-3xl aspect-[4/3] flex items-center justify-center border border-coffee-600/30 shadow-2xl">
+                <div class="text-center p-8">
+                  <span class="text-7xl mb-4 block">☕</span>
+                  <p class="text-cream-200 font-medium text-lg">카페 대표 이미지</p>
+                  <p class="text-cream-300/60 text-sm mt-1">800 × 600</p>
+                </div>
+              </div>
+              <!-- 플로팅 카드 -->
+              <div class="absolute -bottom-4 -left-4 bg-cream-50 rounded-2xl p-4 shadow-xl border border-coffee-100">
+                <div class="flex items-center gap-3">
+                  <div class="bg-coffee-100 w-12 h-12 rounded-xl flex items-center justify-center text-2xl">⭐</div>
+                  <div>
+                    <p class="font-bold text-mocha-800">4.8 / 5.0</p>
+                    <p class="text-sm text-mocha-500">리뷰 320개</p>
+                  </div>
+                </div>
+              </div>
+              <div class="absolute -top-4 -right-4 bg-cream-50 rounded-2xl p-4 shadow-xl border border-coffee-100">
+                <div class="flex items-center gap-3">
+                  <div class="bg-coffee-100 w-12 h-12 rounded-xl flex items-center justify-center text-2xl">🕐</div>
+                  <div>
+                    <p class="font-bold text-mocha-800">영업중</p>
+                    <p class="text-sm text-mocha-500">22:00 마감</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 메뉴 섹션 ========== -->
+  <section id="menu" class="py-20 bg-cream-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-in">
+        <span class="inline-block bg-coffee-100 text-coffee-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">MENU</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-mocha-900 mb-4">시그니처 메뉴</h2>
+        <p class="text-mocha-500 text-lg max-w-2xl mx-auto">매일 아침 직접 로스팅한 신선한 원두로 만드는 특별한 음료들</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 메뉴 카드들 -->
+        <div class="fade-in bg-white rounded-2xl p-6 border border-coffee-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+          <div class="bg-gradient-to-br from-coffee-100 to-cream-200 rounded-xl h-48 flex items-center justify-center mb-5 group-hover:scale-[1.02] transition-transform">
+            <span class="text-6xl">☕</span>
+          </div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-bold text-lg text-mocha-800">시그니처 라떼</h3>
+            <span class="text-coffee-600 font-bold">₩5,500</span>
+          </div>
+          <p class="text-mocha-500 text-sm leading-relaxed">바닐라빈과 캐러멜의 조화. 부드러운 우유 거품 위에 시나몬 파우더를 올린 시그니처 음료.</p>
+          <div class="flex gap-2 mt-4">
+            <span class="bg-coffee-50 text-coffee-600 text-xs px-2.5 py-1 rounded-full font-medium">HOT</span>
+            <span class="bg-coffee-50 text-coffee-600 text-xs px-2.5 py-1 rounded-full font-medium">ICE</span>
+            <span class="bg-cream-400/30 text-coffee-700 text-xs px-2.5 py-1 rounded-full font-medium">BEST</span>
+          </div>
+        </div>
+
+        <div class="fade-in bg-white rounded-2xl p-6 border border-coffee-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+          <div class="bg-gradient-to-br from-coffee-100 to-cream-200 rounded-xl h-48 flex items-center justify-center mb-5 group-hover:scale-[1.02] transition-transform">
+            <span class="text-6xl">🍵</span>
+          </div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-bold text-lg text-mocha-800">말차 크림 라떼</h3>
+            <span class="text-coffee-600 font-bold">₩6,000</span>
+          </div>
+          <p class="text-mocha-500 text-sm leading-relaxed">교토산 말차와 바닐라 크림의 만남. 쌉싸름한 말차 위에 부드러운 크림이 층을 이룹니다.</p>
+          <div class="flex gap-2 mt-4">
+            <span class="bg-coffee-50 text-coffee-600 text-xs px-2.5 py-1 rounded-full font-medium">HOT</span>
+            <span class="bg-coffee-50 text-coffee-600 text-xs px-2.5 py-1 rounded-full font-medium">ICE</span>
+            <span class="bg-cream-400/30 text-coffee-700 text-xs px-2.5 py-1 rounded-full font-medium">NEW</span>
+          </div>
+        </div>
+
+        <div class="fade-in bg-white rounded-2xl p-6 border border-coffee-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+          <div class="bg-gradient-to-br from-coffee-100 to-cream-200 rounded-xl h-48 flex items-center justify-center mb-5 group-hover:scale-[1.02] transition-transform">
+            <span class="text-6xl">🧁</span>
+          </div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-bold text-lg text-mocha-800">당근 케이크</h3>
+            <span class="text-coffee-600 font-bold">₩6,500</span>
+          </div>
+          <p class="text-mocha-500 text-sm leading-relaxed">촉촉한 당근 시트에 크림치즈 프로스팅을 올린 수제 케이크. 커피와의 궁합이 최고!</p>
+          <div class="flex gap-2 mt-4">
+            <span class="bg-cream-400/30 text-coffee-700 text-xs px-2.5 py-1 rounded-full font-medium">BEST</span>
+          </div>
+        </div>
+
+        <div class="fade-in bg-white rounded-2xl p-6 border border-coffee-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+          <div class="bg-gradient-to-br from-coffee-100 to-cream-200 rounded-xl h-48 flex items-center justify-center mb-5 group-hover:scale-[1.02] transition-transform">
+            <span class="text-6xl">🫖</span>
+          </div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-bold text-lg text-mocha-800">루이보스 허브티</h3>
+            <span class="text-coffee-600 font-bold">₩5,000</span>
+          </div>
+          <p class="text-mocha-500 text-sm leading-relaxed">카페인 프리 루이보스에 캐모마일과 레몬그라스를 블렌딩한 편안한 차.</p>
+          <div class="flex gap-2 mt-4">
+            <span class="bg-coffee-50 text-coffee-600 text-xs px-2.5 py-1 rounded-full font-medium">HOT</span>
+            <span class="bg-coffee-50 text-coffee-600 text-xs px-2.5 py-1 rounded-full font-medium">DECAF</span>
+          </div>
+        </div>
+
+        <div class="fade-in bg-white rounded-2xl p-6 border border-coffee-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+          <div class="bg-gradient-to-br from-coffee-100 to-cream-200 rounded-xl h-48 flex items-center justify-center mb-5 group-hover:scale-[1.02] transition-transform">
+            <span class="text-6xl">🥐</span>
+          </div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-bold text-lg text-mocha-800">버터 크루아상</h3>
+            <span class="text-coffee-600 font-bold">₩4,500</span>
+          </div>
+          <p class="text-mocha-500 text-sm leading-relaxed">프랑스산 버터로 72겹 접어 만든 바삭한 크루아상. 매일 오전 한정 수량 판매.</p>
+          <div class="flex gap-2 mt-4">
+            <span class="bg-cream-400/30 text-coffee-700 text-xs px-2.5 py-1 rounded-full font-medium">한정</span>
+          </div>
+        </div>
+
+        <div class="fade-in bg-white rounded-2xl p-6 border border-coffee-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+          <div class="bg-gradient-to-br from-coffee-100 to-cream-200 rounded-xl h-48 flex items-center justify-center mb-5 group-hover:scale-[1.02] transition-transform">
+            <span class="text-6xl">🍋</span>
+          </div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-bold text-lg text-mocha-800">레몬 에이드</h3>
+            <span class="text-coffee-600 font-bold">₩5,500</span>
+          </div>
+          <p class="text-mocha-500 text-sm leading-relaxed">제주산 청레몬과 자가제 레몬시럽으로 만든 상큼한 에이드. 여름 인기 메뉴 1위.</p>
+          <div class="flex gap-2 mt-4">
+            <span class="bg-coffee-50 text-coffee-600 text-xs px-2.5 py-1 rounded-full font-medium">ICE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 예약 섹션 ========== -->
+  <section id="booking" class="py-20 bg-gradient-to-b from-cream-100 to-cream-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-in">
+        <span class="inline-block bg-coffee-100 text-coffee-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">BOOKING</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-mocha-900 mb-4">테이블 예약</h2>
+        <p class="text-mocha-500 text-lg">원하시는 날짜와 시간을 선택하고, 편안한 자리를 예약하세요</p>
+      </div>
+
+      <div class="fade-in bg-white rounded-3xl shadow-xl border border-coffee-100 overflow-hidden">
+        <div class="bg-gradient-to-r from-coffee-700 to-coffee-800 px-8 py-5">
+          <h3 class="text-cream-50 font-bold text-xl">예약 정보 입력</h3>
+          <p class="text-cream-200/80 text-sm mt-1">* 표시는 필수 입력 항목입니다</p>
+        </div>
+
+        <form id="booking-form" class="p-6 sm:p-8 space-y-6" novalidate>
+          <!-- 날짜 & 시간 -->
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="date" class="block text-sm font-semibold text-mocha-700 mb-2">날짜 <span class="text-red-500">*</span></label>
+              <input type="date" id="date" name="date" required
+                class="w-full border border-coffee-200 rounded-xl px-4 py-3 text-mocha-800 bg-cream-50 hover:border-coffee-300 focus:border-coffee-400 transition-colors" />
+              <p id="date-error" class="text-red-500 text-xs mt-1.5 hidden"></p>
+            </div>
+            <div>
+              <label for="time" class="block text-sm font-semibold text-mocha-700 mb-2">시간대 <span class="text-red-500">*</span></label>
+              <select id="time" name="time" required
+                class="w-full border border-coffee-200 rounded-xl px-4 py-3 text-mocha-800 bg-cream-50 hover:border-coffee-300 focus:border-coffee-400 transition-colors appearance-none"
+                style="background-image: url('data:image/svg+xml;utf8,<svg fill=\'%236e4d3d\' viewBox=\'0 0 20 20\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z\'/></svg>'); background-repeat: no-repeat; background-position: right 12px center; background-size: 20px;">
+                <option value="">시간대를 선택하세요</option>
+                <option value="10:00">10:00 - 11:00</option>
+                <option value="11:00">11:00 - 12:00</option>
+                <option value="12:00">12:00 - 13:00</option>
+                <option value="13:00">13:00 - 14:00</option>
+                <option value="14:00">14:00 - 15:00</option>
+                <option value="15:00">15:00 - 16:00</option>
+                <option value="16:00">16:00 - 17:00</option>
+                <option value="17:00">17:00 - 18:00</option>
+                <option value="18:00">18:00 - 19:00</option>
+                <option value="19:00">19:00 - 20:00</option>
+                <option value="20:00">20:00 - 21:00</option>
+              </select>
+              <p id="time-error" class="text-red-500 text-xs mt-1.5 hidden"></p>
+              <p id="time-availability" class="text-xs mt-1.5 hidden"></p>
+            </div>
+          </div>
+
+          <!-- 테이블 선택 -->
+          <div>
+            <label class="block text-sm font-semibold text-mocha-700 mb-3">테이블 선택 <span class="text-red-500">*</span></label>
+            <div class="grid grid-cols-3 sm:grid-cols-5 gap-3" id="table-grid">
+              <button type="button" data-table="1" class="table-btn border-2 border-coffee-200 rounded-xl p-4 text-center hover:border-coffee-400 hover:bg-coffee-50 focus:border-coffee-400 transition-all">
+                <span class="block text-2xl mb-1">🪑</span>
+                <span class="block text-xs font-semibold text-mocha-700">A석</span>
+                <span class="block text-xs text-mocha-400">2인</span>
+              </button>
+              <button type="button" data-table="2" class="table-btn border-2 border-coffee-200 rounded-xl p-4 text-center hover:border-coffee-400 hover:bg-coffee-50 focus:border-coffee-400 transition-all">
+                <span class="block text-2xl mb-1">🪑</span>
+                <span class="block text-xs font-semibold text-mocha-700">B석</span>
+                <span class="block text-xs text-mocha-400">2인</span>
+              </button>
+              <button type="button" data-table="3" class="table-btn border-2 border-coffee-200 rounded-xl p-4 text-center hover:border-coffee-400 hover:bg-coffee-50 focus:border-coffee-400 transition-all">
+                <span class="block text-2xl mb-1">🛋️</span>
+                <span class="block text-xs font-semibold text-mocha-700">C석</span>
+                <span class="block text-xs text-mocha-400">4인 소파</span>
+              </button>
+              <button type="button" data-table="4" class="table-btn border-2 border-coffee-200 rounded-xl p-4 text-center hover:border-coffee-400 hover:bg-coffee-50 focus:border-coffee-400 transition-all">
+                <span class="block text-2xl mb-1">🛋️</span>
+                <span class="block text-xs font-semibold text-mocha-700">D석</span>
+                <span class="block text-xs text-mocha-400">4인 소파</span>
+              </button>
+              <button type="button" data-table="5" class="table-btn border-2 border-coffee-200 rounded-xl p-4 text-center hover:border-coffee-400 hover:bg-coffee-50 focus:border-coffee-400 transition-all">
+                <span class="block text-2xl mb-1">🪟</span>
+                <span class="block text-xs font-semibold text-mocha-700">E석</span>
+                <span class="block text-xs text-mocha-400">6인 창가</span>
+              </button>
+            </div>
+            <input type="hidden" id="selected-table" name="table" />
+            <p id="table-error" class="text-red-500 text-xs mt-1.5 hidden"></p>
+          </div>
+
+          <!-- 인원 -->
+          <div>
+            <label for="guests" class="block text-sm font-semibold text-mocha-700 mb-2">인원 <span class="text-red-500">*</span></label>
+            <select id="guests" name="guests" required
+              class="w-full sm:w-48 border border-coffee-200 rounded-xl px-4 py-3 text-mocha-800 bg-cream-50 hover:border-coffee-300 focus:border-coffee-400 transition-colors appearance-none"
+              style="background-image: url('data:image/svg+xml;utf8,<svg fill=\'%236e4d3d\' viewBox=\'0 0 20 20\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z\'/></svg>'); background-repeat: no-repeat; background-position: right 12px center; background-size: 20px;">
+              <option value="">인원 선택</option>
+              <option value="1">1명</option>
+              <option value="2">2명</option>
+              <option value="3">3명</option>
+              <option value="4">4명</option>
+              <option value="5">5명</option>
+              <option value="6">6명</option>
+            </select>
+            <p id="guests-error" class="text-red-500 text-xs mt-1.5 hidden"></p>
+          </div>
+
+          <hr class="border-coffee-100" />
+
+          <!-- 이름 & 연락처 -->
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="name" class="block text-sm font-semibold text-mocha-700 mb-2">이름 <span class="text-red-500">*</span></label>
+              <input type="text" id="name" name="name" required placeholder="홍길동"
+                class="w-full border border-coffee-200 rounded-xl px-4 py-3 text-mocha-800 bg-cream-50 hover:border-coffee-300 focus:border-coffee-400 transition-colors placeholder:text-mocha-300" />
+              <p id="name-error" class="text-red-500 text-xs mt-1.5 hidden"></p>
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-semibold text-mocha-700 mb-2">연락처 <span class="text-red-500">*</span></label>
+              <input type="tel" id="phone" name="phone" required placeholder="010-1234-5678"
+                class="w-full border border-coffee-200 rounded-xl px-4 py-3 text-mocha-800 bg-cream-50 hover:border-coffee-300 focus:border-coffee-400 transition-colors placeholder:text-mocha-300" />
+              <p id="phone-error" class="text-red-500 text-xs mt-1.5 hidden"></p>
+            </div>
+          </div>
+
+          <!-- 요청사항 -->
+          <div>
+            <label for="request" class="block text-sm font-semibold text-mocha-700 mb-2">요청사항 <span class="text-mocha-400 text-xs font-normal">(선택)</span></label>
+            <textarea id="request" name="request" rows="3" placeholder="예: 생일 파티 준비 부탁드립니다, 조용한 자리 부탁드립니다..."
+              class="w-full border border-coffee-200 rounded-xl px-4 py-3 text-mocha-800 bg-cream-50 hover:border-coffee-300 focus:border-coffee-400 transition-colors placeholder:text-mocha-300 resize-none"></textarea>
+          </div>
+
+          <!-- 최근 예약 내역 -->
+          <div id="recent-bookings-section" class="hidden">
+            <div class="bg-cream-100 rounded-xl p-4 border border-coffee-100">
+              <h4 class="text-sm font-semibold text-mocha-700 mb-2 flex items-center gap-2">
+                <span>📋</span> 최근 예약 내역
+              </h4>
+              <div id="recent-bookings-list" class="space-y-2 text-sm"></div>
+            </div>
+          </div>
+
+          <!-- 제출 버튼 -->
+          <button type="submit" id="submit-btn"
+            class="w-full bg-coffee-500 hover:bg-coffee-600 active:bg-coffee-700 text-white py-4 rounded-xl font-bold text-lg transition-all hover:shadow-lg hover:shadow-coffee-500/25 focus:ring-4 focus:ring-coffee-400/30">
+            예약 확인하기
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 매장정보 섹션 ========== -->
+  <section id="info" class="py-20 bg-cream-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-in">
+        <span class="inline-block bg-coffee-100 text-coffee-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">INFO</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-mocha-900 mb-4">매장 정보</h2>
+        <p class="text-mocha-500 text-lg">우리동네 카페를 찾아오시는 방법</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- 지도 플레이스홀더 -->
+        <div class="fade-in">
+          <div class="bg-gradient-to-br from-mocha-100 to-coffee-100 rounded-2xl aspect-[4/3] flex items-center justify-center border border-coffee-200 shadow-lg">
+            <div class="text-center p-8">
+              <span class="text-6xl mb-4 block">🗺️</span>
+              <p class="text-mocha-600 font-semibold text-lg">지도 영역</p>
+              <p class="text-mocha-400 text-sm mt-1">카카오맵 / 네이버맵 연동 예정</p>
+              <p class="text-mocha-500 text-sm mt-3 bg-white/60 rounded-lg px-4 py-2">
+                서울시 마포구 연남동 123-45
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 정보 카드들 -->
+        <div class="fade-in space-y-5">
+          <div class="bg-white rounded-2xl p-6 border border-coffee-100 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-start gap-4">
+              <div class="bg-coffee-100 w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0">🕐</div>
+              <div>
+                <h3 class="font-bold text-mocha-800 mb-2">영업시간</h3>
+                <div class="space-y-1 text-sm text-mocha-600">
+                  <div class="flex justify-between">
+                    <span>월 ~ 금</span>
+                    <span class="font-medium">10:00 - 22:00</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>토요일</span>
+                    <span class="font-medium">11:00 - 22:00</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>일요일 · 공휴일</span>
+                    <span class="font-medium">11:00 - 21:00</span>
+                  </div>
+                  <p class="text-coffee-500 text-xs mt-2">* 라스트 오더는 마감 1시간 전</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-coffee-100 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-start gap-4">
+              <div class="bg-coffee-100 w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0">📍</div>
+              <div>
+                <h3 class="font-bold text-mocha-800 mb-2">찾아오시는 길</h3>
+                <p class="text-sm text-mocha-600 leading-relaxed">
+                  서울시 마포구 연남동 123-45, 2층<br />
+                  <span class="text-mocha-500">홍대입구역 3번 출구에서 도보 7분</span>
+                </p>
+                <p class="text-coffee-600 text-xs mt-2 font-medium">🅿️ 건물 뒤편 주차 2대 가능 (선착순)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-coffee-100 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-start gap-4">
+              <div class="bg-coffee-100 w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0">📞</div>
+              <div>
+                <h3 class="font-bold text-mocha-800 mb-2">연락처</h3>
+                <div class="space-y-1.5 text-sm text-mocha-600">
+                  <p>전화: <a href="tel:02-123-4567" class="text-coffee-600 hover:text-coffee-500 font-medium underline underline-offset-2">02-123-4567</a></p>
+                  <p>카카오톡: <span class="text-coffee-600 font-medium">@우리동네카페</span></p>
+                  <p>인스타그램: <span class="text-coffee-600 font-medium">@uri_cafe_official</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 푸터 ========== -->
+  <footer class="bg-coffee-950 text-cream-200/70 py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex items-center gap-2 text-cream-100 font-bold text-lg">
+          <span class="text-2xl">☕</span>
+          <span>우리동네 카페</span>
+        </div>
+        <div class="flex gap-6 text-sm">
+          <a href="#hero" class="hover:text-cream-100 transition-colors">홈</a>
+          <a href="#menu" class="hover:text-cream-100 transition-colors">메뉴</a>
+          <a href="#booking" class="hover:text-cream-100 transition-colors">예약</a>
+          <a href="#info" class="hover:text-cream-100 transition-colors">매장정보</a>
+        </div>
+        <p class="text-xs text-cream-200/40">&copy; 2026 우리동네 카페. 초보 레벨 데모.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== 확인 모달 ========== -->
+  <div id="confirm-modal" class="fixed inset-0 z-[100] hidden">
+    <div class="modal-backdrop absolute inset-0 bg-mocha-900/60" id="modal-backdrop"></div>
+    <div class="relative flex items-center justify-center min-h-screen p-4">
+      <div class="modal-content bg-white rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden">
+        <div class="bg-gradient-to-r from-coffee-600 to-coffee-700 px-8 py-6 text-center">
+          <span class="text-5xl mb-3 block">✅</span>
+          <h3 class="text-cream-50 font-bold text-2xl">예약이 완료되었습니다!</h3>
+          <p class="text-cream-200/80 text-sm mt-1">카카오톡으로 확인 메시지가 발송됩니다</p>
+        </div>
+        <div class="p-8">
+          <div id="booking-summary" class="space-y-3 text-sm mb-6"></div>
+          <div class="bg-cream-100 rounded-xl p-4 text-sm text-mocha-600 mb-6">
+            <p class="font-semibold text-mocha-700 mb-1">📌 안내사항</p>
+            <ul class="list-disc list-inside space-y-1">
+              <li>예약 시간 10분 전까지 방문해주세요</li>
+              <li>15분 이상 지연 시 자동 취소될 수 있습니다</li>
+              <li>변경/취소는 전화로 연락해주세요</li>
+            </ul>
+          </div>
+          <button id="modal-close" class="w-full bg-coffee-500 hover:bg-coffee-600 active:bg-coffee-700 text-white py-3.5 rounded-xl font-bold transition-all hover:shadow-lg focus:ring-4 focus:ring-coffee-400/30">
+            확인
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== JavaScript ========== -->
+  <script>
+  (function() {
+    'use strict';
+
+    // ===== 모바일 메뉴 =====
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let menuOpen = false;
+
+    hamburger.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('hidden');
+      hamburger.classList.toggle('hamburger-open');
+      hamburger.setAttribute('aria-label', menuOpen ? '메뉴 닫기' : '메뉴 열기');
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        hamburger.classList.remove('hamburger-open');
+        menuOpen = false;
+      });
+    });
+
+    // ===== 스크롤 애니메이션 =====
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ===== 네비게이션 그림자 =====
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        navbar.classList.add('shadow-md');
+      } else {
+        navbar.classList.remove('shadow-md');
+      }
+    });
+
+    // ===== 날짜 최솟값 (오늘 이후만) =====
+    const dateInput = document.getElementById('date');
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    dateInput.setAttribute('min', `${yyyy}-${mm}-${dd}`);
+
+    // 최대 30일 뒤까지
+    const maxDate = new Date(today);
+    maxDate.setDate(maxDate.getDate() + 30);
+    const maxYyyy = maxDate.getFullYear();
+    const maxMm = String(maxDate.getMonth() + 1).padStart(2, '0');
+    const maxDd = String(maxDate.getDate()).padStart(2, '0');
+    dateInput.setAttribute('max', `${maxYyyy}-${maxMm}-${maxDd}`);
+
+    // ===== 시간대 가용성 목업 데이터 =====
+    const unavailableSlots = {
+      // 날짜별 예약 불가 시간대 (목업)
+    };
+
+    // 날짜에 따라 랜덤하게 몇 개 시간대를 unavailable로 표시
+    function getUnavailableForDate(dateStr) {
+      if (unavailableSlots[dateStr]) return unavailableSlots[dateStr];
+      // seed from date string for consistency
+      let hash = 0;
+      for (let i = 0; i < dateStr.length; i++) {
+        hash = dateStr.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      const slots = ['10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00'];
+      const blocked = [];
+      slots.forEach((slot, idx) => {
+        if ((hash + idx * 7) % 5 === 0) blocked.push(slot);
+      });
+      unavailableSlots[dateStr] = blocked;
+      return blocked;
+    }
+
+    const timeSelect = document.getElementById('time');
+    const timeAvailability = document.getElementById('time-availability');
+
+    dateInput.addEventListener('change', () => {
+      const val = dateInput.value;
+      if (!val) return;
+      const blocked = getUnavailableForDate(val);
+      // Update time options
+      Array.from(timeSelect.options).forEach(opt => {
+        if (!opt.value) return;
+        if (blocked.includes(opt.value)) {
+          opt.disabled = true;
+          opt.textContent = opt.textContent.replace(' (마감)', '') + ' (마감)';
+        } else {
+          opt.disabled = false;
+          opt.textContent = opt.textContent.replace(' (마감)', '');
+        }
+      });
+      // Reset selection if currently selected is now blocked
+      if (blocked.includes(timeSelect.value)) {
+        timeSelect.value = '';
+      }
+      const available = 11 - blocked.length;
+      timeAvailability.textContent = `잔여 시간대: ${available}개 / 전체 11개`;
+      timeAvailability.className = `text-xs mt-1.5 ${available <= 3 ? 'text-red-500' : 'text-mocha-500'}`;
+      timeAvailability.classList.remove('hidden');
+    });
+
+    // ===== 테이블 선택 =====
+    const tableInput = document.getElementById('selected-table');
+    const tableNames = { 1: 'A석 (2인)', 2: 'B석 (2인)', 3: 'C석 (4인 소파)', 4: 'D석 (4인 소파)', 5: 'E석 (6인 창가)' };
+
+    document.querySelectorAll('.table-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.table-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        tableInput.value = btn.dataset.table;
+        hideError('table');
+      });
+    });
+
+    // ===== 전화번호 자동 포맷팅 =====
+    const phoneInput = document.getElementById('phone');
+    phoneInput.addEventListener('input', (e) => {
+      let val = e.target.value.replace(/[^0-9]/g, '');
+      if (val.length > 11) val = val.slice(0, 11);
+      if (val.length >= 8) {
+        val = val.slice(0, 3) + '-' + val.slice(3, 7) + '-' + val.slice(7);
+      } else if (val.length >= 4) {
+        val = val.slice(0, 3) + '-' + val.slice(3);
+      }
+      e.target.value = val;
+    });
+
+    // ===== 유효성 검증 =====
+    function showError(fieldId, message) {
+      const el = document.getElementById(fieldId + '-error');
+      if (el) { el.textContent = message; el.classList.remove('hidden'); }
+    }
+    function hideError(fieldId) {
+      const el = document.getElementById(fieldId + '-error');
+      if (el) { el.textContent = ''; el.classList.add('hidden'); }
+    }
+
+    function validateForm() {
+      let valid = true;
+      // Hide all errors first
+      ['date','time','table','guests','name','phone'].forEach(hideError);
+
+      // 날짜
+      const dateVal = dateInput.value;
+      if (!dateVal) {
+        showError('date', '날짜를 선택해주세요.');
+        valid = false;
+      } else {
+        const selected = new Date(dateVal + 'T00:00:00');
+        const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+        if (selected < todayStart) {
+          showError('date', '지난 날짜는 선택할 수 없습니다.');
+          valid = false;
+        }
+      }
+
+      // 시간
+      if (!timeSelect.value) {
+        showError('time', '시간대를 선택해주세요.');
+        valid = false;
+      }
+
+      // 테이블
+      if (!tableInput.value) {
+        showError('table', '테이블을 선택해주세요.');
+        valid = false;
+      }
+
+      // 인원
+      const guestsSelect = document.getElementById('guests');
+      if (!guestsSelect.value) {
+        showError('guests', '인원을 선택해주세요.');
+        valid = false;
+      }
+
+      // 이름
+      const nameInput = document.getElementById('name');
+      if (!nameInput.value.trim()) {
+        showError('name', '이름을 입력해주세요.');
+        valid = false;
+      } else if (nameInput.value.trim().length < 2) {
+        showError('name', '이름은 2자 이상 입력해주세요.');
+        valid = false;
+      }
+
+      // 연락처
+      const phoneVal = phoneInput.value.replace(/[^0-9]/g, '');
+      if (!phoneVal) {
+        showError('phone', '연락처를 입력해주세요.');
+        valid = false;
+      } else if (!/^01[016789]\d{7,8}$/.test(phoneVal)) {
+        showError('phone', '올바른 휴대폰 번호를 입력해주세요. (예: 010-1234-5678)');
+        valid = false;
+      }
+
+      return valid;
+    }
+
+    // ===== 폼 제출 =====
+    const form = document.getElementById('booking-form');
+    const modal = document.getElementById('confirm-modal');
+    const modalBackdrop = document.getElementById('modal-backdrop');
+    const modalClose = document.getElementById('modal-close');
+    const summary = document.getElementById('booking-summary');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!validateForm()) {
+        // 첫 번째 에러로 스크롤
+        const firstError = form.querySelector('.text-red-500:not(.hidden)');
+        if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      const booking = {
+        date: dateInput.value,
+        time: timeSelect.value,
+        table: tableInput.value,
+        tableName: tableNames[tableInput.value],
+        guests: document.getElementById('guests').value,
+        name: document.getElementById('name').value.trim(),
+        phone: phoneInput.value,
+        request: document.getElementById('request').value.trim(),
+        createdAt: new Date().toISOString()
+      };
+
+      // LocalStorage에 저장
+      saveBooking(booking);
+
+      // 모달에 요약 표시
+      const timeEnd = parseInt(booking.time.split(':')[0]) + 1;
+      summary.innerHTML = `
+        <div class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2.5">
+          <span class="text-mocha-400 font-medium">날짜</span>
+          <span class="text-mocha-800 font-semibold">${formatDate(booking.date)}</span>
+          <span class="text-mocha-400 font-medium">시간</span>
+          <span class="text-mocha-800 font-semibold">${booking.time} - ${timeEnd}:00</span>
+          <span class="text-mocha-400 font-medium">테이블</span>
+          <span class="text-mocha-800 font-semibold">${booking.tableName}</span>
+          <span class="text-mocha-400 font-medium">인원</span>
+          <span class="text-mocha-800 font-semibold">${booking.guests}명</span>
+          <span class="text-mocha-400 font-medium">예약자</span>
+          <span class="text-mocha-800 font-semibold">${booking.name}</span>
+          <span class="text-mocha-400 font-medium">연락처</span>
+          <span class="text-mocha-800 font-semibold">${booking.phone}</span>
+          ${booking.request ? `<span class="text-mocha-400 font-medium">요청사항</span><span class="text-mocha-800">${escapeHtml(booking.request)}</span>` : ''}
+        </div>
+      `;
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+
+    function closeModal() {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+      form.reset();
+      document.querySelectorAll('.table-btn').forEach(b => b.classList.remove('selected'));
+      tableInput.value = '';
+      timeAvailability.classList.add('hidden');
+      // Re-enable all time slots
+      Array.from(timeSelect.options).forEach(opt => {
+        opt.disabled = false;
+        opt.textContent = opt.textContent.replace(' (마감)', '');
+      });
+      renderRecentBookings();
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', closeModal);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+    });
+
+    // ===== LocalStorage =====
+    function saveBooking(booking) {
+      try {
+        const bookings = JSON.parse(localStorage.getItem('cafe_bookings') || '[]');
+        bookings.unshift(booking);
+        if (bookings.length > 5) bookings.length = 5; // 최근 5개만 보관
+        localStorage.setItem('cafe_bookings', JSON.stringify(bookings));
+      } catch (e) { /* 무시 */ }
+    }
+
+    function getBookings() {
+      try {
+        return JSON.parse(localStorage.getItem('cafe_bookings') || '[]');
+      } catch (e) { return []; }
+    }
+
+    function renderRecentBookings() {
+      const bookings = getBookings();
+      const section = document.getElementById('recent-bookings-section');
+      const list = document.getElementById('recent-bookings-list');
+      if (bookings.length === 0) {
+        section.classList.add('hidden');
+        return;
+      }
+      section.classList.remove('hidden');
+      list.innerHTML = bookings.map(b => `
+        <div class="flex items-center justify-between bg-white rounded-lg px-3 py-2">
+          <div class="text-mocha-700">
+            <span class="font-medium">${formatDate(b.date)}</span>
+            <span class="text-mocha-400 mx-1">|</span>
+            <span>${b.time}</span>
+            <span class="text-mocha-400 mx-1">|</span>
+            <span>${b.tableName || tableNames[b.table]}</span>
+          </div>
+          <span class="text-xs text-mocha-400">${b.name}</span>
+        </div>
+      `).join('');
+    }
+
+    // ===== 유틸리티 =====
+    function formatDate(dateStr) {
+      const [y, m, d] = dateStr.split('-');
+      const days = ['일','월','화','수','목','금','토'];
+      const dt = new Date(dateStr + 'T00:00:00');
+      return `${y}년 ${parseInt(m)}월 ${parseInt(d)}일 (${days[dt.getDay()]})`;
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    // ===== 초기화 =====
+    renderRecentBookings();
+
+  })();
+  </script>
+</body>
+</html>

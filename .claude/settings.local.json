@@ -46,7 +46,20 @@
       "Bash(cmd.exe /c start \"\" \"C:\\\\Users\\\\udawon\\\\how-to-claude\\\\Claude Code Docs\")",
       "Bash(mkdir -p /c/Users/udawon/how-to-claude/content/claude-code-docs && find \"/c/Users/udawon/how-to-claude/Claude Code Docs\" -name \"*.md\" -exec cp {} /c/Users/udawon/how-to-claude/content/claude-code-docs/ \\\\; && ls /c/Users/udawon/how-to-claude/content/claude-code-docs/ | wc -l)",
       "Bash(cd C:/Users/udawon/how-to-claude && bash scripts/check-docs-update.sh)",
-      "Bash(cd C:/Users/udawon/how-to-claude && touch content/claude-code-docs/fake-test-page.md && bash scripts/check-docs-update.sh; rm content/claude-code-docs/fake-test-page.md)"
+      "Bash(cd C:/Users/udawon/how-to-claude && touch content/claude-code-docs/fake-test-page.md && bash scripts/check-docs-update.sh; rm content/claude-code-docs/fake-test-page.md)",
+      "mcp__plugin_playwright_playwright__browser_resize",
+      "mcp__plugin_playwright_playwright__browser_press_key",
+      "Bash(wc -l \"C:/Users/udawon/how-to-claude/content/basics/\"*.md \"C:/Users/udawon/how-to-claude/content/workflow/\"*.md \"C:/Users/udawon/how-to-claude/content/tips/\"*.md \"C:/Users/udawon/how-to-claude/content/config/\"*.md \"C:/Users/udawon/how-to-claude/content/troubleshooting/\"*.md 2>/dev/null)",
+      "Bash(git rm:*)",
+      "mcp__plugin_playwright_playwright__browser_fill_form",
+      "mcp__plugin_playwright_playwright__browser_type",
+      "Bash(ls -la *.png 2>/dev/null | wc -l && echo \"---\" && ls *.png 2>/dev/null)",
+      "Bash(ls -d */ 2>/dev/null)",
+      "mcp__plugin_supabase_supabase__list_projects",
+      "mcp__plugin_supabase_supabase__list_tables",
+      "mcp__plugin_supabase_supabase__get_project_url",
+      "mcp__plugin_supabase_supabase__get_publishable_keys",
+      "mcp__plugin_supabase_supabase__apply_migration"
     ]
   }
 }

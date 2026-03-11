@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>우리동네 카페 - 예약</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            coffee: {
+              50: '#fdf8f0',
+              100: '#f5e6d0',
+              200: '#e8cba0',
+              300: '#d4a574',
+              400: '#c4884e',
+              500: '#a0683c',
+              600: '#7c4f2e',
+              700: '#5c3a22',
+              800: '#3d2615',
+              900: '#2a1a0e',
+            },
+            cream: {
+              50: '#fffdf7',
+              100: '#fef9ed',
+              200: '#fdf0d5',
+              300: '#fae4b8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-cream-50 text-coffee-800">
+
+  <!-- 레벨 배너 -->
+  <div class="bg-coffee-700 text-cream-100 text-center py-2 text-sm">
+    👶 왕초보 레벨 데모 — 단일 HTML 파일로 만든 카페 예약 페이지
+  </div>
+
+  <!-- 헤더 -->
+  <header class="bg-coffee-800 text-cream-50 py-6">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h1 class="text-3xl font-bold tracking-tight">☕ 우리동네 카페</h1>
+      <p class="mt-1 text-coffee-200 text-sm">Our Neighborhood Café</p>
+    </div>
+  </header>
+
+  <!-- 히어로 섹션 -->
+  <section class="bg-coffee-500 text-cream-50 py-12">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-2xl font-bold mb-4">따뜻한 커피 한 잔의 여유</h2>
+      <p class="text-coffee-100 leading-relaxed max-w-xl mx-auto">
+        우리동네 카페는 직접 로스팅한 원두로 내린 커피와
+        매일 아침 구운 빵을 제공합니다.
+        조용한 공간에서 친구, 가족과 함께 편안한 시간을 보내세요.
+      </p>
+      <div class="mt-6 flex justify-center gap-6 text-sm text-coffee-200">
+        <span>🕐 매일 09:00 - 22:00</span>
+        <span>📍 서울시 마포구</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-3xl mx-auto px-4 py-10 space-y-12">
+
+    <!-- 테이블 현황 -->
+    <section>
+      <h2 class="text-xl font-bold text-coffee-700 mb-4 border-b-2 border-coffee-200 pb-2">🪑 좌석 현황</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-coffee-600 text-cream-50">
+              <th class="py-3 px-4 text-left rounded-tl-lg">테이블</th>
+              <th class="py-3 px-4 text-center">좌석 수</th>
+              <th class="py-3 px-4 text-center">위치</th>
+              <th class="py-3 px-4 text-center rounded-tr-lg">상태</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-cream-100 border-b border-coffee-100">
+              <td class="py-3 px-4 font-medium">A석</td>
+              <td class="py-3 px-4 text-center">2인</td>
+              <td class="py-3 px-4 text-center">창가</td>
+              <td class="py-3 px-4 text-center"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded-full text-xs font-medium">예약 가능</span></td>
+            </tr>
+            <tr class="bg-cream-50 border-b border-coffee-100">
+              <td class="py-3 px-4 font-medium">B석</td>
+              <td class="py-3 px-4 text-center">4인</td>
+              <td class="py-3 px-4 text-center">중앙</td>
+              <td class="py-3 px-4 text-center"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded-full text-xs font-medium">예약 가능</span></td>
+            </tr>
+            <tr class="bg-cream-100 border-b border-coffee-100">
+              <td class="py-3 px-4 font-medium">C석</td>
+              <td class="py-3 px-4 text-center">4인</td>
+              <td class="py-3 px-4 text-center">창가</td>
+              <td class="py-3 px-4 text-center"><span class="bg-red-100 text-red-600 px-2 py-0.5 rounded-full text-xs font-medium">예약 완료</span></td>
+            </tr>
+            <tr class="bg-cream-50 border-b border-coffee-100">
+              <td class="py-3 px-4 font-medium">D석</td>
+              <td class="py-3 px-4 text-center">6인</td>
+              <td class="py-3 px-4 text-center">룸</td>
+              <td class="py-3 px-4 text-center"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded-full text-xs font-medium">예약 가능</span></td>
+            </tr>
+            <tr class="bg-cream-100">
+              <td class="py-3 px-4 font-medium rounded-bl-lg">E석</td>
+              <td class="py-3 px-4 text-center">8인</td>
+              <td class="py-3 px-4 text-center">테라스</td>
+              <td class="py-3 px-4 text-center rounded-br-lg"><span class="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full text-xs font-medium">오후만 가능</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 예약 폼 -->
+    <section>
+      <h2 class="text-xl font-bold text-coffee-700 mb-4 border-b-2 border-coffee-200 pb-2">📋 예약하기</h2>
+      <form id="bookingForm" class="bg-white rounded-xl shadow-md p-6 space-y-5">
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <!-- 날짜 -->
+          <div>
+            <label class="block text-sm font-medium text-coffee-600 mb-1">날짜</label>
+            <input type="date" required
+              class="w-full border border-coffee-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-coffee-400 bg-cream-50">
+          </div>
+
+          <!-- 시간 -->
+          <div>
+            <label class="block text-sm font-medium text-coffee-600 mb-1">시간 (2시간 단위)</label>
+            <select required
+              class="w-full border border-coffee-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-coffee-400 bg-cream-50">
+              <option value="">시간을 선택하세요</option>
+              <option value="09:00-11:00">09:00 - 11:00</option>
+              <option value="11:00-13:00">11:00 - 13:00</option>
+              <option value="13:00-15:00">13:00 - 15:00</option>
+              <option value="15:00-17:00">15:00 - 17:00</option>
+              <option value="17:00-19:00">17:00 - 19:00</option>
+              <option value="19:00-21:00">19:00 - 21:00</option>
+            </select>
+          </div>
+
+          <!-- 인원 -->
+          <div>
+            <label class="block text-sm font-medium text-coffee-600 mb-1">인원</label>
+            <select required
+              class="w-full border border-coffee-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-coffee-400 bg-cream-50">
+              <option value="">인원을 선택하세요</option>
+              <option value="1">1명</option>
+              <option value="2">2명</option>
+              <option value="3">3명</option>
+              <option value="4">4명</option>
+              <option value="5">5명</option>
+              <option value="6">6명</option>
+              <option value="7">7명</option>
+              <option value="8">8명</option>
+            </select>
+          </div>
+
+          <!-- 이름 -->
+          <div>
+            <label class="block text-sm font-medium text-coffee-600 mb-1">이름</label>
+            <input type="text" required placeholder="홍길동"
+              class="w-full border border-coffee-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-coffee-400 bg-cream-50">
+          </div>
+        </div>
+
+        <!-- 연락처 -->
+        <div>
+          <label class="block text-sm font-medium text-coffee-600 mb-1">연락처</label>
+          <input type="tel" required placeholder="010-1234-5678"
+            class="w-full border border-coffee-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-coffee-400 bg-cream-50">
+        </div>
+
+        <!-- 제출 버튼 -->
+        <button type="submit"
+          class="w-full bg-coffee-600 hover:bg-coffee-700 text-cream-50 font-medium py-3 rounded-lg transition-colors text-sm">
+          예약 접수하기
+        </button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="bg-coffee-800 text-coffee-200 py-8 mt-10">
+    <div class="max-w-3xl mx-auto px-4 text-center text-sm space-y-2">
+      <p class="font-medium text-cream-100">☕ 우리동네 카페</p>
+      <p>📍 서울시 마포구 연남로 42길 12, 1층</p>
+      <p>📞 02-1234-5678</p>
+      <p class="text-coffee-300 pt-2 text-xs">© 2026 우리동네 카페. 왕초보 데모 페이지입니다.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('예약이 접수되었습니다!');
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>

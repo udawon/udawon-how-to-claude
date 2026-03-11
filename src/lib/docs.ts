@@ -7,6 +7,44 @@ import remarkRehype from "remark-rehype";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
+import { visit } from "unist-util-visit";
+import type { Element, Root } from "hast";
+
+// 문서 내 링크를 사이트 라우팅에 맞게 변환하는 rehype 플러그인
+function rehypeRewriteLinks(categorySlug: string) {
+  return () => (tree: Root) => {
+    visit(tree, "element", (node: Element) => {
+      if (node.tagName !== "a") return;
+      const href = node.properties?.href;
+      if (typeof href !== "string" || href.startsWith("http") || href.startsWith("#")) return;
+
+      let newHref = href;
+
+      // 패턴 1: /en/xxx → /docs/claude-code-docs/xxx (공식문서 내부 링크)
+      const enMatch = newHref.match(/^\/en\/([a-zA-Z0-9-]+)/);
+      if (enMatch) {
+        const slug = enMatch[1];
+        const anchor = newHref.includes("#") ? newHref.slice(newHref.indexOf("#")) : "";
+        newHref = `/docs/claude-code-docs/${slug}${anchor}`;
+      }
+
+      // 패턴 2: ./파일명.md 또는 파일명.md → 같은 카테고리 내 링크
+      const mdMatch = newHref.match(/^(?:\.\/)?([a-zA-Z0-9-]+)\.md(#.*)?$/);
+      if (mdMatch) {
+        const slug = mdMatch[1];
+        const anchor = mdMatch[2] || "";
+        newHref = `/docs/${categorySlug}/${slug}${anchor}`;
+      }
+
+      // 패턴 3: /workflow/xxx 등 /docs 접두사 누락 → /docs/workflow/xxx
+      if (newHref.match(/^\/(basics|workflow|tips|config|troubleshooting|quick-start|claude-code-docs)\//)) {
+        newHref = `/docs${newHref}`;
+      }
+
+      node.properties!.href = newHref;
+    });
+  };
+}
 
 // 문서 디렉토리 경로
 const docsDirectory = path.join(process.cwd(), "content");
@@ -59,7 +97,7 @@ export const categories: Category[] = [
   {
     slug: "quick-start",
     title: "처음부터 끝까지",
-    description: "초보자를 위한 A to Z 가이드 — 이것만 따라하면 됩니다",
+    description: "왕초보부터 고급까지 — 내 레벨에 맞는 프로젝트 가이드",
     icon: "rocket",
     order: 6,
   },
@@ -140,6 +178,7 @@ export async function getDoc(
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(rehypeSlug)
+    .use(rehypeRewriteLinks(categorySlug))
     .use(rehypeStringify)
     .process(content);
   const contentHtml = processedContent.toString();
