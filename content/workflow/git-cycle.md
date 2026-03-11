@@ -164,9 +164,8 @@ Claude에게: "<span class="keyword-highlight">풀 해줘</span>"
    "<span class="keyword-highlight">메인 페이지 헤더를 만들어줘</span>"
    -> Claude가 구현
 
-3. 중간 저장 (<span class="keyword-highlight">커밋</span>) - 두 가지 방법
-   방법A: "<span class="keyword-highlight">지금까지 한 거 커밋해줘</span>" (자연어로)
-   방법B: `/commit` (슬래시 명령어로)
+3. 중간 저장 (<span class="keyword-highlight">커밋</span>)
+   "<span class="keyword-highlight">지금까지 한 거 커밋해줘</span>" (자연어로)
    -> Claude: "메인 페이지 헤더 구현" 이라는 메시지로 커밋
 
 4. 다음 작업

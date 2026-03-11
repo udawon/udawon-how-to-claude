@@ -67,14 +67,14 @@ Claude: (로그인 페이지 전체를 갈아엎기 시작...)
 
 세 가지 모드를 순환합니다.
 
-`[Normal Mode]` → <kbd>Shift+Tab</kbd> → `[Auto-Accept Mode]` → <kbd>Shift+Tab</kbd> → `[Plan Mode]`
+`[Normal]` → <kbd>Shift+Tab</kbd> → `[accept edits on]` → <kbd>Shift+Tab</kbd> → `[plan mode on]`
 
 각 모드:
-1. **Normal Mode** (기본): 파일 수정 시 허락을 구함
-2. **Auto-Accept Mode**: 모든 파일 수정을 자동 승인
+1. **Normal** (기본): 새로운 동작마다 허락을 구함
+2. **Accept Edits**: 파일 편집(읽기·쓰기·수정)을 자동 허용
    - 화면 하단에 "⏵⏵ accept edits on" 표시
+   - 터미널 명령어 실행 등은 여전히 물어봄
    - 빠르게 많은 파일을 수정할 때 유용
-   - 주의: 무엇을 바꾸는지 잘 확인해야 함
 3. **Plan Mode**: 파일을 읽기만 하고 수정하지 않음
    - 화면 하단에 "⏸ plan mode on" 표시
    - 코드를 분석하고 계획을 세울 때 안전
@@ -84,8 +84,8 @@ Claude: (로그인 페이지 전체를 갈아엎기 시작...)
 <div class="example-case">
 
 상황 1: 100개 파일에 걸친 <span class="keyword-highlight">변수명 일괄 변경</span>
-→ Auto-Accept Mode로 전환 후 실행
-→ 일일이 "예" 누르는 시간 절약
+→ Accept Edits 모드로 전환 후 실행
+→ 파일 수정마다 일일이 "예" 누르는 시간 절약
 
 상황 2: 새 기능 추가 전 기존 구조 파악
 → Plan Mode로 전환
@@ -93,8 +93,8 @@ Claude: (로그인 페이지 전체를 갈아엎기 시작...)
 → 실수로 파일이 수정될 걱정 없이 탐색
 
 비유:
-Auto-Accept = 도장을 미리 찍어두고 문서 처리
-Plan Mode = 계약서 서명 전 꼼꼼히 읽어보기만 하는 시간
+Accept Edits = "서류 수정은 알아서 해" (단, 돈 쓰는 건 물어봐)
+Plan Mode = "일단 보고서만 읽어보고, 아무것도 건드리지 마"
 </div>
 
 ---
@@ -206,10 +206,11 @@ Claude: (작업 시작, 수분이 걸릴 예정)
 1. <kbd>Esc</kbd>를 두 번 빠르게 누름
 2. Rewind 메뉴가 열림
 3. 선택:
+   - <span class="keyword-highlight">코드 + 대화 모두 되돌리기</span>
    - <span class="keyword-highlight">대화만 되돌리기</span>
    - <span class="keyword-highlight">코드만 되돌리기</span>
-   - <span class="keyword-highlight">둘 다 되돌리기</span>
    - 해당 시점부터 요약
+   - 취소 (아무것도 안 함)
 
 **예시 케이스:**
 
