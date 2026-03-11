@@ -1,0 +1,68 @@
+name: 공식문서 변경 감지
+
+on:
+  schedule:
+    # 매일 KST 09:00 (UTC 00:00) 실행
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 수동 실행 가능
+
+permissions:
+  issues: write
+
+jobs:
+  check-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 레포 체크아웃
+        uses: actions/checkout@v4
+
+      - name: 문서 변경 확인
+        id: check
+        run: bash scripts/check-docs-update.sh
+
+      - name: docs-sync 라벨 확인/생성
+        if: steps.check.outputs.HAS_CHANGES == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh label create "docs-sync" --color "1d76db" --description "공식문서 변경 감지" 2>/dev/null || true
+
+      - name: Issue 생성
+        if: steps.check.outputs.HAS_CHANGES == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ADDED: ${{ steps.check.outputs.ADDED }}
+          REMOVED: ${{ steps.check.outputs.REMOVED }}
+          ADDED_COUNT: ${{ steps.check.outputs.ADDED_COUNT }}
+          REMOVED_COUNT: ${{ steps.check.outputs.REMOVED_COUNT }}
+        run: |
+          TITLE="📄 공식문서 변경 감지 ($(date +%Y-%m-%d))"
+
+          BODY="## 공식문서 변경이 감지되었습니다\n\n"
+          BODY+="[llms.txt](https://code.claude.com/docs/llms.txt)와 \`content/claude-code-docs/\`를 비교한 결과:\n\n"
+
+          if [ -n "$ADDED" ] && [ "$ADDED_COUNT" -gt 0 ]; then
+            BODY+="### 🆕 새로 추가된 문서 (${ADDED_COUNT}개)\n"
+            while IFS= read -r file; do
+              [ -z "$file" ] && continue
+              NAME="${file%.md}"
+              BODY+="- [ ] \`${file}\` → [원본](https://code.claude.com/docs/en/${file})\n"
+            done <<< "$ADDED"
+            BODY+="\n"
+          fi
+
+          if [ -n "$REMOVED" ] && [ "$REMOVED_COUNT" -gt 0 ]; then
+            BODY+="### 🗑️ 삭제된 문서 (${REMOVED_COUNT}개)\n"
+            while IFS= read -r file; do
+              [ -z "$file" ] && continue
+              BODY+="- [ ] \`${file}\` — 로컬에서 제거 필요\n"
+            done <<< "$REMOVED"
+            BODY+="\n"
+          fi
+
+          BODY+="---\n"
+          BODY+="*이 Issue는 GitHub Actions에 의해 자동 생성되었습니다.*"
+
+          echo -e "$BODY" | gh issue create \
+            --title "$TITLE" \
+            --body-file - \
+            --label "docs-sync"
