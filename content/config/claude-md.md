@@ -197,9 +197,34 @@ CLAUDE.md는 30줄 이내로 유지
 | 경로 | 역할 |
 |------|------|
 | `~/.claude/CLAUDE.md` | 모든 프로젝트에 적용 (글로벌) |
-| `./CLAUDE.md` | 현재 프로젝트 (git에 포함, 팀 공유) |
+| `./CLAUDE.md` 또는 `./.claude/CLAUDE.md` | 현재 프로젝트 (git에 포함, 팀 공유) |
 | `./.claude/CLAUDE.local.md` | 개인 설정 (.gitignore에 추가) |
-| `./src/CLAUDE.md` | src 폴더 작업 시에만 자동 로드 |
+
+### .claude/rules/ 디렉토리
+
+대규모 프로젝트에서는 규칙을 여러 파일로 나눌 수 있습니다.
+
+```
+프로젝트/
+├── .claude/
+│   ├── CLAUDE.md           # 주요 프로젝트 지침
+│   └── rules/
+│       ├── code-style.md   # 코드 스타일 가이드
+│       ├── testing.md      # 테스트 규칙
+│       └── security.md     # 보안 요구사항
+```
+
+`paths:` 프론트매터를 사용하면 특정 파일 타입에만 적용되는 규칙을 만들 수 있습니다:
+
+```markdown
+---
+paths:
+  - "src/api/**/*.ts"
+---
+
+# API 개발 규칙
+- 모든 API 엔드포인트에 입력 검증을 포함해야 합니다
+```
 
 **실전 예시:**
 

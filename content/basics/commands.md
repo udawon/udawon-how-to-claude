@@ -30,19 +30,74 @@ Claude Code를 먼저 실행해야 명령어를 쓸 수 있음
 | 명령어 | 설명 | 비유 |
 |--------|------|------|
 | `/help` | 도움말 | 사용 설명서 열기 |
-| `/model` | 모델 전환 (Opus/Sonnet) | 전문가 교체 (시니어/주니어) |
+| `/model` | 모델 전환 (Opus/Sonnet/Haiku) | 전문가 교체 |
 | `/fast` | 빠른 모드 토글 | 같은 사람이 빠르게 일하기 |
 | `/compact` | 대화 내용 압축 | 긴 회의록을 요약본으로 줄이기 |
-| `/clear` | 대화 초기화 (새 대화 시작) | 새 종이에 처음부터 다시 쓰기 |
-| `/init` | 프로젝트 설정 파일(CLAUDE.md) 생성 | 새 직원에게 업무 매뉴얼 만들어주기 |
+| `/clear` | 대화 초기화 (별칭: `/reset`, `/new`) | 새 종이에 처음부터 다시 쓰기 |
+| `/init` | CLAUDE.md 생성 | 새 직원에게 업무 매뉴얼 만들어주기 |
 | `/memory` | CLAUDE.md 편집 및 자동 메모리 관리 | 업무 매뉴얼 수정하기 |
 | `/context` | 컨텍스트 사용량 시각화 | 메모리 잔량 확인 |
 | `/doctor` | 설치 상태 진단 | 건강 검진 |
 
+## 전체 명령어 목록
+
+위 핵심 명령어 외에도 다양한 명령어가 있습니다. `/`를 입력하면 사용 가능한 모든 명령어가 표시됩니다.
+
+### 세션 관리
+
+| 명령어 | 설명 |
+|--------|------|
+| `/resume` | 이전 대화 재개 (별칭: `/continue`) |
+| `/rename` | 현재 세션 이름 변경 |
+| `/fork` | 현재 대화를 이 시점에서 분기 |
+| `/rewind` | 이전 체크포인트로 되돌리기 (별칭: `/checkpoint`) |
+| `/export` | 현재 대화를 텍스트로 내보내기 |
+| `/cost` | 토큰 사용 통계 보기 |
+| `/exit` | CLI 종료 (별칭: `/quit`) |
+
+### Git & 코드 작업
+
+| 명령어 | 설명 |
+|--------|------|
+| `/diff` | 아직 저장(커밋)하지 않은 변경 내역 보기 |
+| `/pr-comments` | GitHub에 올린 코드 리뷰 댓글 가져오기 |
+| `/security-review` | 현재 코드의 보안 취약점 분석 |
+
+### 설정 및 구성
+
+| 명령어 | 설명 |
+|--------|------|
+| `/config` | 설정 인터페이스 열기 (별칭: `/settings`) |
+| `/permissions` | 권한 보기/수정 (별칭: `/allowed-tools`) |
+| `/hooks` | 훅(Hook) 설정 관리 |
+| `/theme` | 색상 테마 변경 |
+| `/vim` | Vim 편집 모드 켜기/끄기 |
+
+### 도구 및 확장
+
+| 명령어 | 설명 |
+|--------|------|
+| `/mcp` | MCP 서버 연결 관리 |
+| `/skills` | 사용 가능한 스킬 목록 |
+| `/agents` | 에이전트 설정 관리 |
+| `/plugin` | 플러그인 관리 |
+
+### 유틸리티
+
+| 명령어 | 설명 |
+|--------|------|
+| `/btw` | 대화 기록에 남기지 않는 빠른 질문 |
+| `/plan` | 계획 모드로 직접 진입 |
+| `/copy` | 마지막 응답을 클립보드에 복사 |
+| `/insights` | 세션 분석 리포트 생성 |
+| `/login` / `/logout` | 계정 로그인/로그아웃 |
+| `/loop` | 주기적 반복 작업 설정 ([상세 가이드](/workflow/loop)) |
+
 ### /model - 모델 전환
 
-Opus(시니어)와 Sonnet(주니어) 사이를 전환합니다.
+Opus, Sonnet, Haiku 등 여러 모델 사이를 전환합니다.
 작업 난이도에 따라 적절한 모델을 선택하면 비용과 속도를 최적화할 수 있습니다.
+모델 상세 정보는 [모델 선택 가이드](/basics/model-guide)를 참고하세요.
 
 **예시 케이스:**
 
@@ -177,31 +232,72 @@ B 프로젝트에서 `/model` → Opus를 선택하면
 
 ### /memory - CLAUDE.md 편집
 
-`CLAUDE.md`를 직접 열어서 편집할 수 있습니다.
-Claude에게 주는 지침을 추가, 수정, 삭제할 때 사용합니다.
+`/memory`를 입력하면 **어떤 CLAUDE.md를 편집할지 선택 화면**이 나타납니다.
+
+```
+? Select a memory file to edit
+> Project CLAUDE.md       (.claude/CLAUDE.md)
+  User CLAUDE.md          (~/.claude/CLAUDE.md)
+  Project local CLAUDE.md (.claude/CLAUDE.local.md)
+  Toggle auto memory      (currently: on)
+```
+
+**각 파일의 역할과 적용 범위:**
+
+| 선택지 | 파일 위치 | 적용 범위 | git 포함 |
+|--------|-----------|-----------|----------|
+| **Project CLAUDE.md** | `프로젝트/.claude/CLAUDE.md` | 이 프로젝트에서만 | O (팀 공유) |
+| **User CLAUDE.md** | `~/.claude/CLAUDE.md` | 내 모든 프로젝트 | X |
+| **Project local** | `프로젝트/.claude/CLAUDE.local.md` | 이 프로젝트에서만 | X (개인용) |
+
+Claude는 대화 시작 시 위 파일을 **모두 읽습니다**. 여러 곳에 규칙이 있으면 합쳐서 적용됩니다.
 
 **예시 케이스:**
 
 <div class="example-case">
 
-상황: Claude가 매번 영어로 주석을 달아서 한국어로 바꾸고 싶음
-→ `/memory` 입력
-→ 에디터에서 CLAUDE.md가 열림
-→ "<span class="keyword-highlight">코드 주석은 반드시 한국어로 작성</span>" 규칙 추가
-→ 저장하면 이후 모든 대화에 적용
+**User CLAUDE.md** (모든 프로젝트에 적용하고 싶은 규칙)
+→ `/memory` → User CLAUDE.md 선택
+→ "<span class="keyword-highlight">기본 응답 언어: 한국어</span>" 추가
+→ 어떤 프로젝트를 열든 항상 한국어로 답변
 
-비유: 업무 매뉴얼에 새 규칙을 추가하는 것
-"앞으로 보고서는 한글로 쓸 것"
+비유: 회사 전체 규정 — "모든 부서는 보고서를 한국어로 작성할 것"
 </div>
 
 <div class="example-case">
 
-상황: 프로젝트 기술 스택이 바뀌어서 설정을 업데이트하고 싶음
-→ `/memory` 입력
-→ 기존 "CSS: styled-components" → "<span class="keyword-highlight">CSS: Tailwind CSS</span>"로 수정
-→ 저장 후 Claude가 새 규칙에 맞게 작업
+**Project CLAUDE.md** (이 프로젝트에서만 적용, 팀원과 공유)
+→ `/memory` → Project CLAUDE.md 선택
+→ "<span class="keyword-highlight">Tailwind CSS 사용, any 타입 금지</span>" 추가
+→ 이 프로젝트에서만 적용. 다른 프로젝트엔 영향 없음
+→ git에 포함되므로 팀원도 같은 규칙 적용받음
 
-비유: 회사 내규가 바뀌어서 매뉴얼을 수정하는 것
+비유: 마케팅팀 전용 규칙 — "이 프로젝트는 이 디자인 시스템을 쓸 것"
+</div>
+
+<div class="example-case">
+
+**Project local CLAUDE.md** (나만의 개인 설정, git 제외)
+→ `/memory` → Project local CLAUDE.md 선택
+→ "<span class="keyword-highlight">커밋 메시지는 한국어로, 모델 전환 시 안내해줘</span>" 추가
+→ 나에게만 적용. 팀원에게는 보이지 않음
+
+비유: 내 책상 위 포스트잇 — 팀 규칙은 아니지만 나만의 작업 습관
+</div>
+
+<div class="example-case">
+
+**실전 조합 예시:**
+
+User CLAUDE.md: "한국어 응답, 모델 자동 전환 안내"
+Project CLAUDE.md: "Tailwind CSS, shadcn/ui, any 금지"
+Project local: "커밋 메시지 한국어, 테스트 전 확인받기"
+
+→ Claude는 세 파일을 모두 읽고 합쳐서 적용
+→ 글로벌 규칙 + 프로젝트 규칙 + 개인 규칙이 동시에 작동
+
+비유: 회사 규정 + 팀 규칙 + 내 메모가 모두 합쳐져서
+내가 일하는 방식이 결정되는 것
 </div>
 
 ### /context - 컨텍스트 사용량 확인

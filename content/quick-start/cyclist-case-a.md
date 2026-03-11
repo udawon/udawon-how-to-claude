@@ -109,7 +109,7 @@ React Flow가 뭔지 몰랐습니다. Claude가 마인드맵 시각화에 가장
 
 코드를 짜기 전에 어떤 화면이 필요한지, 어떤 순서로 만들지 먼저 합의했습니다.
 
-<kbd>Shift</kbd>+<kbd>Tab</kbd> → Plan Mode 진입
+<kbd>Shift</kbd>+<kbd>Tab</kbd>을 눌러 권한 모드를 전환 (기본 → 자동수락 → Plan Mode 순환)
 
 "이 프로젝트의 전체 구조를 설계해줘.
  어떤 페이지가 필요하고, 파일 구조는 어떻게 잡으면 좋을지."

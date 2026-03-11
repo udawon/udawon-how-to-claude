@@ -12,10 +12,30 @@ tags: ["기본", "단축키", "키보드", "효율"]
 | <kbd>Esc</kbd> | Claude 중단 (컨텍스트 유지) | 잘못된 방향으로 가고 있을 때 |
 | <kbd>Esc</kbd> + <kbd>Esc</kbd> | Rewind 메뉴 열기 | 이전 상태로 돌아가고 싶을 때 |
 | <kbd>Shift+Tab</kbd> | 모드 전환 순환 | 빠르게 모드를 바꿀 때 |
-| <kbd>Ctrl+G</kbd> | 플랜을 에디터로 열기 | Plan Mode에서 플랜 직접 수정 |
-| <kbd>Ctrl+O</kbd> | 상세 모드 토글 | Claude의 사고 과정 보기 |
+| <kbd>Ctrl+G</kbd> | 외부 편집기에서 입력 열기 | 긴 프롬프트나 플랜을 에디터에서 편집 |
+| <kbd>Ctrl+O</kbd> | 상세 대화 기록 토글 | 도구 호출, 전체 출력 등 상세 로그 보기 |
 | <kbd>Ctrl+B</kbd> | 현재 작업 백그라운드로 | 기다리지 않고 다른 작업 하고 싶을 때 |
-| <kbd>Alt+T</kbd> | Thinking 모드 토글 | 추론 모드 켜기/끄기 |
+
+### Mac / Windows 단축키가 다른 경우
+
+| 기능 | Mac | Windows / Linux |
+|------|-----|-----------------|
+| Thinking 모드 토글 | <kbd>Cmd+T</kbd> | 기본 <kbd>Meta+T</kbd> → 아래 주의사항 참고 |
+| 모델 선택기 열기 | <kbd>Cmd+P</kbd> | 기본 <kbd>Meta+P</kbd> → 아래 주의사항 참고 |
+| 이미지 붙여넣기 | <kbd>Ctrl+V</kbd> | <kbd>Alt+V</kbd> |
+
+> **Windows 사용자 주의:** `Meta` 키는 Windows에서 `Win` 키에 해당하지만, `Win+T`(작업 표시줄 전환)와 `Win+P`(디스플레이 설정)는 OS가 먼저 가로채기 때문에 **Claude Code에 전달되지 않습니다.** `/keybindings` 명령어로 직접 리바인딩해야 합니다.
+>
+> 추천 설정 예시:
+> ```json
+> {
+>   "context": "Chat",
+>   "bindings": {
+>     "alt+t": "chat:thinkingToggle",
+>     "alt+p": "chat:modelPicker"
+>   }
+> }
+> ```
 
 ---
 
@@ -79,26 +99,24 @@ Plan Mode = 계약서 서명 전 꼼꼼히 읽어보기만 하는 시간
 
 ---
 
-## Ctrl + G - 플랜을 에디터에서 직접 편집
+## Ctrl + G - 외부 편집기에서 입력 편집
 
-Plan Mode에서 Claude가 작성한 플랜을 텍스트 에디터로 열어 직접 수정합니다.
+현재 입력 중인 프롬프트를 VS Code 등 외부 텍스트 에디터로 열어 편집합니다. 긴 프롬프트 작성, Plan Mode에서의 플랜 수정 등 다양한 상황에서 활용 가능합니다.
 
 **사용 흐름:**
 
 <div class="example-case">
 
-1. <kbd>Shift+Tab</kbd>으로 Plan Mode 진입
-2. "<span class="keyword-highlight">OAuth 구현 계획 세워줘</span>" 요청
-3. Claude가 플랜 초안 작성 완료
-4. <kbd>Ctrl+G</kbd> 누름 → VS Code 등 에디터에서 플랜이 열림
-5. 마음에 안 드는 부분 직접 수정
-6. 저장하고 Claude로 돌아옴
-7. Claude가 수정된 플랜으로 구현 시작
+1. 채팅 입력창에서 <kbd>Ctrl+G</kbd> 누름 → 에디터가 열림
+2. 에디터에서 내용 작성 또는 수정
+3. 저장하고 에디터를 닫으면 Claude 입력창에 내용 반영
 </div>
 
 **예시 케이스:**
 
 <div class="example-case">
+
+상황 1: Plan Mode에서 플랜 수정
 
 Claude 플랜:
 1. OAuth 라이브러리 설치
@@ -110,18 +128,23 @@ Claude 플랜:
 → 저장
 → Claude가 수정된 플랜대로 구현
 
-비유: 여행 계획서를 여행사가 초안 작성하면
-내가 필요없는 일정은 지우고 OK 사인 보내는 것
+상황 2: 복잡한 프롬프트 작성
+
+→ 채팅창에 한 줄로 쓰기엔 요구사항이 많을 때
+→ <kbd>Ctrl+G</kbd>로 에디터에서 여러 줄에 걸쳐 꼼꼼히 작성
+→ 저장하면 그대로 전송
+
+비유: 메모장에서 초안 작성한 뒤 메신저에 붙여넣기
 </div>
 
 ---
 
-## Ctrl + O - 사고 과정 보기
+## Ctrl + O - 상세 대화 기록 보기
 
-Claude가 어떻게 생각하는지 내부 추론 과정을 표시합니다.
+Claude의 전체 동작 로그(도구 호출, 파일 읽기, 명령어 실행 등)를 상세하게 표시합니다.
 
-활성화 시: Claude의 생각이 회색 이탤릭체로 화면에 표시됨
-비활성화 시: 최종 답변만 표시 (기본 상태)
+활성화 시: 도구 호출 내용, 전체 출력, 중간 과정이 모두 표시됨
+비활성화 시: 요약된 결과만 표시 (기본 상태)
 
 **예시:**
 
@@ -131,18 +154,20 @@ Claude가 어떻게 생각하는지 내부 추론 과정을 표시합니다.
 
 [<kbd>Ctrl+O</kbd> 활성화 상태]
 
-*이 에러 메시지를 보면 null 참조 문제인 것 같다...*
-*user 객체가 undefined일 때 .name을 호출하려 했나...*
-*어디서 user가 undefined가 되는지 추적해야겠다...*
+`Read: src/auth/login.ts` (전체 파일 내용 표시)
+`Grep: "user.name" in src/` (검색 결과 전체 표시)
+`Bash: npm test` (테스트 출력 전체 표시)
 
 **분석 결과:** user.name을 호출하기 전에 user가 존재하는지
 확인하는 코드가 없어서 발생한 문제입니다.
 </div>
 
 **언제 유용한가:**
-- Claude가 왜 그런 결론을 냈는지 이해하고 싶을 때
-- ultrathink와 함께 쓰면 고급 분석 과정을 볼 수 있음
-- 디버깅 시 Claude의 추론이 맞는 방향인지 확인할 때
+- Claude가 어떤 파일을 읽고 어떤 명령어를 실행했는지 확인할 때
+- 도구 호출 결과가 생략 없이 전부 보고 싶을 때
+- 디버깅 시 Claude가 어떤 경로로 문제를 추적하는지 따라갈 때
+
+> **참고:** Thinking 모드(확장 사고)를 켜고 싶다면 <kbd>Cmd+T</kbd>(Mac)를 사용하세요. Windows에서는 `Win+T`가 OS에 의해 가로채이므로, `/keybindings`에서 별도 키(예: <kbd>Alt+T</kbd>)로 설정이 필요합니다. Ctrl+O와는 다른 기능입니다.
 
 ---
 
