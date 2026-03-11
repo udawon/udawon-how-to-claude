@@ -27,15 +27,17 @@ Claude Code를 먼저 실행해야 명령어를 쓸 수 있음
 
 ## 핵심 명령어
 
+<span class="freq-badge">자주 씀</span> 표시가 있는 명령어는 일상 작업에서 특히 많이 사용됩니다.
+
 | 명령어 | 설명 | 비유 |
 |--------|------|------|
 | `/help` | 도움말 | 사용 설명서 열기 |
-| `/model` | 모델 전환 (Opus/Sonnet/Haiku) | 전문가 교체 |
+| `/model` <span class="freq-badge">자주 씀</span> | 모델 전환 (Opus/Sonnet/Haiku) | 전문가 교체 |
 | `/fast` | 빠른 모드 토글 | 같은 사람이 빠르게 일하기 |
-| `/compact` | 대화 내용 압축 | 긴 회의록을 요약본으로 줄이기 |
-| `/clear` | 대화 초기화 (별칭: `/reset`, `/new`) | 새 종이에 처음부터 다시 쓰기 |
-| `/init` | CLAUDE.md 생성 | 새 직원에게 업무 매뉴얼 만들어주기 |
-| `/memory` | CLAUDE.md 편집 및 자동 메모리 관리 | 업무 매뉴얼 수정하기 |
+| `/compact` <span class="freq-badge">자주 씀</span> | 대화 내용 압축 | 긴 회의록을 요약본으로 줄이기 |
+| `/clear` <span class="freq-badge">자주 씀</span> | 대화 초기화 (별칭: `/reset`, `/new`) | 새 종이에 처음부터 다시 쓰기 |
+| `/init` <span class="freq-badge">자주 씀</span> | CLAUDE.md 생성 | 새 직원에게 업무 매뉴얼 만들어주기 |
+| `/memory` <span class="freq-badge">자주 씀</span> | CLAUDE.md 편집 및 자동 메모리 관리 | 업무 매뉴얼 수정하기 |
 | `/context` | 컨텍스트 사용량 시각화 | 메모리 잔량 확인 |
 | `/doctor` | 설치 상태 진단 | 건강 검진 |
 
@@ -47,12 +49,12 @@ Claude Code를 먼저 실행해야 명령어를 쓸 수 있음
 
 | 명령어 | 설명 |
 |--------|------|
-| `/resume` | 이전 대화 재개 (별칭: `/continue`) |
+| `/resume` <span class="freq-badge">자주 씀</span> | 이전 대화 재개 (별칭: `/continue`) |
 | `/rename` | 현재 세션 이름 변경 |
 | `/fork` | 현재 대화를 이 시점에서 분기 |
-| `/rewind` | 이전 체크포인트로 되돌리기 (별칭: `/checkpoint`) |
+| `/rewind` <span class="freq-badge">자주 씀</span> | 이전 체크포인트로 되돌리기 (별칭: `/checkpoint`) |
 | `/export` | 현재 대화를 텍스트로 내보내기 |
-| `/cost` | 토큰 사용 통계 보기 |
+| `/cost` <span class="freq-badge">자주 씀</span> | 토큰 사용 통계 보기 |
 | `/exit` | CLI 종료 (별칭: `/quit`) |
 
 ### Git & 코드 작업
@@ -70,7 +72,7 @@ Claude Code를 먼저 실행해야 명령어를 쓸 수 있음
 | `/config` | 설정 인터페이스 열기 (별칭: `/settings`) |
 | `/permissions` | 권한 보기/수정 (별칭: `/allowed-tools`) |
 | `/hooks` | 훅(Hook) 설정 관리 |
-| `/theme` | 색상 테마 변경 |
+| `/theme` <span class="freq-badge">자주 씀</span> | 색상 테마 변경 |
 | `/vim` | Vim 편집 모드 켜기/끄기 |
 
 ### 도구 및 확장
