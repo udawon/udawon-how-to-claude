@@ -128,20 +128,29 @@ Claude가 알아서 적절한 도구를 골라 사용합니다.
 ## 소통 도구
 
 ### AskUserQuestion - 사용자에게 질문하기
-Claude가 판단하기 어려운 부분을 사용자에게 물어봅니다.
+Claude가 작업 전에 필요한 정보를 사용자에게 물어봅니다.
 
-**한국어로 말하면:** 사용자가 직접 트리거하지 않습니다. 요청이 <span class="keyword-highlight">모호하거나</span> <span class="keyword-highlight">선택지가 필요할 때</span> Claude가 스스로 판단해서 사용합니다.
+**중요:** 이 도구는 **사용자가 "물어봐줘"라고 명시적으로 요청해야** 사용됩니다. 그냥 "만들어줘"라고 하면 Claude가 알아서 물어보지 않고 바로 만들기 시작합니다.
+
+**한국어로 말하면:** <span class="keyword-highlight">인터뷰해줘</span> · <span class="keyword-highlight">먼저 물어봐줘</span> · <span class="keyword-highlight">AskUserQuestion 도구로 질문해줘</span>
 
 **예시 케이스:**
 
 <div class="example-case">
 
-"<span class="keyword-highlight">홈페이지 만들어줘</span>"라고 요청했을 때
+(X) "<span class="keyword-highlight">홈페이지 만들어줘</span>"
+→ Claude가 바로 만들기 시작함 (물어보지 않음)
+
+(O) "홈페이지를 만들 건데, <span class="keyword-highlight">AskUserQuestion 도구를 써서 나를 인터뷰해줘</span>.
+     어떤 홈페이지인지 상세하게 물어봐."
 → Claude: "어떤 종류의 홈페이지인가요? 회사 소개? 쇼핑몰? 블로그?"
+→ Claude: "주요 기능은 뭐가 필요한가요?"
+→ Claude: "디자인 스타일은 어떤 느낌을 원하나요?"
+→ 충분히 파악한 후에 구현 시작
 
-비유: 요리사가 "파스타 만들어주세요"라는 주문에
-
-"크림? 토마토? 오일?"을 되묻는 것
+비유: 인테리어 업체에게
+(X) "거실 꾸며주세요" → 업체가 마음대로 시작
+(O) "거실 꾸밀 건데, <span class="keyword-highlight">먼저 뭐가 필요한지 물어봐주세요</span>" → 취향/예산/스타일을 물어본 후 시작
 </div>
 
 ## 위임 도구
