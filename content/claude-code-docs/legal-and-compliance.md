@@ -2,7 +2,7 @@
 title: "법적 준수 - Claude Code 사용 시 알아야 할 법률과 정책"
 source: "https://code.claude.com/docs/en/legal-and-compliance"
 order: 57
-tags: ["보안", "법적"]
+tags: ["보안", "법적", "기업·개발자"]
 ---
 
 # 법적 준수: Claude Code 사용 시 알아야 할 법률과 정책

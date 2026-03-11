@@ -2,7 +2,7 @@
 title: "기업 배포 옵션 비교 및 서드파티 통합 가이드"
 source: "https://code.claude.com/docs/en/third-party-integrations"
 order: 46
-tags: ["엔터프라이즈"]
+tags: ["엔터프라이즈", "기업·개발자"]
 ---
 
 # 기업 배포 옵션 비교 및 서드파티 통합 가이드

@@ -2,7 +2,7 @@
 title: "플러그인 레퍼런스 — 플러그인 시스템의 모든 기술 명세"
 source: "https://code.claude.com/docs/en/plugins-reference"
 order: 24
-tags: ["플러그인", "레퍼런스"]
+tags: ["플러그인", "레퍼런스", "기업·개발자"]
 ---
 
 # 플러그인 레퍼런스

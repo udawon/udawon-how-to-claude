@@ -2,7 +2,7 @@
 title: "샌드박싱 - Claude Code의 격리된 작업 공간"
 source: "https://code.claude.com/docs/en/sandboxing"
 order: 54
-tags: ["보안", "샌드박스"]
+tags: ["보안", "샌드박스", "기업·개발자"]
 ---
 
 # 샌드박싱: Claude Code의 격리된 작업 공간

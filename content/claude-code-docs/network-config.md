@@ -2,7 +2,7 @@
 title: "기업 네트워크 구성 — 프록시, 인증서, mTLS 설정"
 source: "https://code.claude.com/docs/en/network-config"
 order: 49
-tags: ["엔터프라이즈", "네트워크"]
+tags: ["엔터프라이즈", "네트워크", "기업·개발자"]
 ---
 
 # 기업 네트워크 구성 — 프록시, 인증서, mTLS 설정

@@ -2,7 +2,7 @@
 title: "Microsoft Foundry로 Claude Code 사용하기"
 source: "https://code.claude.com/docs/en/microsoft-foundry"
 order: 45
-tags: ["엔터프라이즈", "Azure"]
+tags: ["엔터프라이즈", "Azure", "기업·개발자"]
 ---
 
 # Microsoft Foundry로 Claude Code 사용하기

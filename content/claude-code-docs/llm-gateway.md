@@ -2,7 +2,7 @@
 title: "LLM 게이트웨이 설정 가이드"
 source: "https://code.claude.com/docs/en/llm-gateway"
 order: 47
-tags: ["엔터프라이즈", "게이트웨이"]
+tags: ["엔터프라이즈", "게이트웨이", "기업·개발자"]
 ---
 
 # LLM 게이트웨이 설정 가이드
