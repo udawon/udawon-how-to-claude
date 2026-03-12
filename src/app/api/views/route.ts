@@ -16,7 +16,7 @@ function getToday() {
 export async function GET() {
   const today = getToday();
 
-  const [todayRes, totalRes] = await Promise.all([
+  const [todayRes, totalRes, baseRes] = await Promise.all([
     fetch(
       `${SUPABASE_URL}/rest/v1/daily_stats?date=eq.${today}&select=views`,
       { headers, cache: "no-store" }
@@ -25,16 +25,24 @@ export async function GET() {
       `${SUPABASE_URL}/rest/v1/daily_stats?select=views`,
       { headers, cache: "no-store" }
     ),
+    fetch(
+      `${SUPABASE_URL}/rest/v1/settings?key=eq.base_views&select=value`,
+      { headers, cache: "no-store" }
+    ),
   ]);
 
   const todayData = await todayRes.json();
   const totalData = await totalRes.json();
+  const baseData = await baseRes.json();
 
   const todayViews = todayData?.[0]?.views ?? 0;
-  const totalViews = totalData.reduce(
-    (sum: number, row: { views: number }) => sum + row.views,
-    0
-  );
+  const baseViews = baseData?.[0]?.value ?? 0;
+  const totalViews =
+    baseViews +
+    totalData.reduce(
+      (sum: number, row: { views: number }) => sum + row.views,
+      0
+    );
 
   return Response.json({ today: todayViews, total: totalViews });
 }
