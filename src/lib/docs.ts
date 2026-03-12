@@ -37,7 +37,7 @@ function rehypeRewriteLinks(categorySlug: string) {
       }
 
       // 패턴 3: /workflow/xxx 등 /docs 접두사 누락 → /docs/workflow/xxx
-      if (newHref.match(/^\/(basics|workflow|tips|config|troubleshooting|quick-start|claude-code-docs)\//)) {
+      if (newHref.match(/^\/(basics|workflow|tips|config|troubleshooting|quick-start|claude-code-docs|youtube-update)\//)) {
         newHref = `/docs${newHref}`;
       }
 
@@ -107,6 +107,13 @@ export const categories: Category[] = [
     description: "Claude Code 공식 문서를 비개발자도 이해할 수 있게 번역한 가이드",
     icon: "doc",
     order: 7,
+  },
+  {
+    slug: "youtube-update",
+    title: "유튜브 업데이트",
+    description: "YouTube 영상에서 발굴한 최신 Claude Code 활용법과 팁",
+    icon: "video",
+    order: 8,
   },
 ];
 

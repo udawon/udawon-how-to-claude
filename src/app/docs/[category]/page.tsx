@@ -21,11 +21,19 @@ const officialDocSections: { label: string; tag: string }[] = [
   { label: "보안 & 참조", tag: "보안,참조" },
 ];
 
-function groupDocsBySections(docs: DocMeta[]) {
+// 유튜브 업데이트 섹션 정의
+const youtubeDocSections: { label: string; tag: string }[] = [
+  { label: "새로운 기능 & 업데이트", tag: "신기능,업데이트" },
+  { label: "활용법 & 워크플로우", tag: "활용법,워크플로우" },
+  { label: "설정 & 연동", tag: "설정,연동" },
+  { label: "비즈니스 & 자동화", tag: "비즈니스,자동화" },
+];
+
+function groupDocsBySections(docs: DocMeta[], sectionDefs: { label: string; tag: string }[]) {
   const grouped: { label: string; docs: DocMeta[] }[] = [];
   const used = new Set<string>();
 
-  for (const section of officialDocSections) {
+  for (const section of sectionDefs) {
     const tags = section.tag.split(",");
     const matched = docs.filter(
       (doc) => !used.has(doc.slug) && doc.tags.some((t) => tags.includes(t))
@@ -92,7 +100,10 @@ export default async function CategoryPage({ params }: Props) {
 
   const docs = getDocsByCategory(category);
   const isOfficialDocs = category === "claude-code-docs";
-  const sections = isOfficialDocs ? groupDocsBySections(docs) : [];
+  const isYoutubeDocs = category === "youtube-update";
+  const hasSections = isOfficialDocs || isYoutubeDocs;
+  const sectionDefs = isOfficialDocs ? officialDocSections : youtubeDocSections;
+  const sections = hasSections ? groupDocsBySections(docs, sectionDefs) : [];
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -132,7 +143,7 @@ export default async function CategoryPage({ params }: Props) {
             </div>
             이 카테고리에 아직 문서가 없습니다
           </div>
-        ) : isOfficialDocs ? (
+        ) : hasSections ? (
           /* 공식 문서: 섹션별 그룹 */
           <div className="space-y-12">
             {sections.map((section, sectionIdx) => {

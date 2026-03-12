@@ -88,12 +88,12 @@ Claude Code를 먼저 실행해야 명령어를 쓸 수 있음
 
 | 명령어 | 설명 |
 |--------|------|
-| `/btw` | 대화 기록에 남기지 않는 빠른 질문 |
+| `/btw` <span class="freq-badge">자주 씀</span> | 작업 중 사이드 질문 ([상세 가이드](/basics/btw)) |
 | `/plan` | 계획 모드로 직접 진입 |
 | `/copy` | 마지막 응답을 클립보드에 복사 |
 | `/insights` | 세션 분석 리포트 생성 |
 | `/login` / `/logout` | 계정 로그인/로그아웃 |
-| `/loop` | 주기적 반복 작업 설정 ([상세 가이드](/workflow/loop)) |
+| `/loop` | 주기적 반복 작업 설정 ([상세 가이드](/basics/loop)) |
 
 ### /model - 모델 전환
 

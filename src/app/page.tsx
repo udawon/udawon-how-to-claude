@@ -8,7 +8,7 @@ import { VisitorCounter } from "@/components/VisitorCounter";
 
 export default function Home() {
   const categoryData = categories
-    .filter((cat) => cat.slug !== "claude-code-docs")
+    .filter((cat) => cat.slug !== "claude-code-docs" && cat.slug !== "youtube-update")
     .map((cat) => ({
       ...cat,
       docs: getDocsByCategory(cat.slug),
@@ -17,6 +17,11 @@ export default function Home() {
   const officialDocs = {
     ...categories.find((cat) => cat.slug === "claude-code-docs")!,
     docs: getDocsByCategory("claude-code-docs"),
+  };
+
+  const youtubeDocs = {
+    ...categories.find((cat) => cat.slug === "youtube-update")!,
+    docs: getDocsByCategory("youtube-update"),
   };
 
   const totalDocs = categoryData.reduce((sum, cat) => sum + cat.docs.length, 0) + officialDocs.docs.length;
@@ -61,7 +66,7 @@ export default function Home() {
           </h1>
           <p className="text-base sm:text-lg mb-10 max-w-lg mx-auto text-[var(--text-secondary)]" style={{ lineHeight: "1.7" }}>
             Q&A를 통해 쌓은 실전 지식을 빠르게 찾아보세요.
-            <br className="hidden sm:block" />
+            <br />
             비개발자도 이해할 수 있는 친절한 매뉴얼입니다.
           </p>
           <div className="flex justify-center">
@@ -111,6 +116,39 @@ export default function Home() {
             </Link>
           ))}
         </div>
+      </section>
+
+      {/* 유튜브 업데이트 */}
+      <section className="max-w-6xl mx-auto px-5 sm:px-8 pb-14 w-full">
+        <div className="flex items-center gap-3 mb-1">
+          <ClaudeCharacter pose="point" size={36} />
+          <h2 className="section-label !mb-0">유튜브 업데이트</h2>
+        </div>
+        <Link
+          href="/docs/youtube-update"
+          className="card-hover group rounded-xl p-5 flex items-center justify-between"
+        >
+          <div className="flex items-center gap-4">
+            <div className="icon-box">
+              <Icon name="video" className="w-[18px] h-[18px]" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-[15px] text-[var(--text-primary)]">
+                {youtubeDocs.title}
+              </h3>
+              <p className="text-sm text-[var(--text-muted)] mt-0.5">
+                {youtubeDocs.description}
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="count-badge">{youtubeDocs.docs.length}</span>
+            <Icon
+              name="arrow"
+              className="w-4 h-4 text-[var(--text-muted)] transition-transform duration-150 group-hover:translate-x-0.5"
+            />
+          </div>
+        </Link>
       </section>
 
       {/* 공식 문서 참고 */}
