@@ -184,6 +184,19 @@ claude                 # Claude Code가 실행됨
 | **Phase 2** | 하나씩 구현하며 중간 확인 | 시공 + 감리 |
 | **Phase 3** | 콘텐츠 채우기 | 가구 배치 |
 
+```mermaid
+flowchart LR
+    P0["Phase 0<br/>뭘 만들지 정리"] --> P1["Phase 1<br/>구조 제안 받기"]
+    P1 --> P2["Phase 2<br/>하나씩 구현"]
+    P2 --> P3["Phase 3<br/>콘텐츠 채우기"]
+    P2 -->|"중간 확인"| P2
+
+    style P0 fill:#c2410c,color:#fff,stroke:#9a3412,stroke-width:2px
+    style P1 fill:#d97706,color:#fff,stroke:#b45309,stroke-width:2px
+    style P2 fill:#2563eb,color:#fff,stroke:#1d4ed8,stroke-width:2px
+    style P3 fill:#16a34a,color:#fff,stroke:#15803d,stroke-width:2px
+```
+
 <div class="example-case">
 
 비유: 집짓기 전체 과정

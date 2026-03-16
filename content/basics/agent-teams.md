@@ -39,18 +39,34 @@ Claude Code 하나가 혼자 하는 대신, 여러 Claude를 동시에 띄워서
 
 ### 서브 에이전트와의 핵심 차이
 
-```
-서브 에이전트 (인턴):
-  인턴 A → 팀장에게 보고
-  인턴 B → 팀장에게 보고    (A와 B는 서로 모름)
-  인턴 C → 팀장에게 보고
+```mermaid
+graph LR
+    subgraph sub["서브 에이전트 (인턴)"]
+        direction TB
+        S_Leader["팀장"]
+        S_A["인턴 A"] --> S_Leader
+        S_B["인턴 B"] --> S_Leader
+        S_C["인턴 C"] --> S_Leader
+    end
+    subgraph team["에이전트 팀 (프로젝트 팀)"]
+        direction TB
+        T_Leader["팀장"]
+        T_A["팀원 A"] <--> T_B["팀원 B"]
+        T_B <--> T_C["팀원 C"]
+        T_A <--> T_C
+        T_Leader -.-> T_A
+        T_Leader -.-> T_B
+        T_Leader -.-> T_C
+    end
 
-에이전트 팀 (프로젝트 팀):
-  팀원 A ←→ 팀원 B    (서로 직접 대화)
-  팀원 B ←→ 팀원 C    (발견한 내용 공유)
-  팀원 A ←→ 팀원 C    (서로 반박도 가능)
-       ↕
-     팀장이 조율
+    style S_Leader fill:#d97706,color:#fff,stroke:#b45309,stroke-width:2px
+    style T_Leader fill:#c2410c,color:#fff,stroke:#9a3412,stroke-width:2px
+    style S_A fill:#2563eb,color:#fff,stroke:#1d4ed8,stroke-width:2px
+    style S_B fill:#2563eb,color:#fff,stroke:#1d4ed8,stroke-width:2px
+    style S_C fill:#2563eb,color:#fff,stroke:#1d4ed8,stroke-width:2px
+    style T_A fill:#16a34a,color:#fff,stroke:#15803d,stroke-width:2px
+    style T_B fill:#16a34a,color:#fff,stroke:#15803d,stroke-width:2px
+    style T_C fill:#16a34a,color:#fff,stroke:#15803d,stroke-width:2px
 ```
 
 ---
@@ -119,21 +135,28 @@ Claude Code 하나가 혼자 하는 대신, 여러 Claude를 동시에 띄워서
 
 에이전트 팀는 4가지 요소로 구성됩니다.
 
-```
-┌─────────────────────────────────────────┐
-│                에이전트 팀               │
-├─────────────────────────────────────────┤
-│                                         │
-│  [팀장] ─── 전체 조율, 작업 배분        │
-│    │                                    │
-│    ├── [팀원 A] ─── 독립 작업 공간      │
-│    ├── [팀원 B] ─── 독립 작업 공간      │
-│    └── [팀원 C] ─── 독립 작업 공간      │
-│                                         │
-│  [할 일 목록] ─── 전체 공유             │
-│  [메일함]     ─── 팀원 간 메시지 전달   │
-│                                         │
-└─────────────────────────────────────────┘
+```mermaid
+graph TB
+    User["👤 나"] --> Leader["팀장<br/>전체 조율, 작업 배분"]
+    Leader --> A["팀원 A<br/>독립 작업 공간"]
+    Leader --> B["팀원 B<br/>독립 작업 공간"]
+    Leader --> C["팀원 C<br/>독립 작업 공간"]
+    A <--> B
+    B <--> C
+    A <--> C
+    Todo["할 일 목록"] -.-> A
+    Todo -.-> B
+    Todo -.-> C
+    Mail["메일함"] -.-> A
+    Mail -.-> B
+    Mail -.-> C
+
+    style Leader fill:#c2410c,color:#fff,stroke:#9a3412,stroke-width:2px
+    style A fill:#2563eb,color:#fff,stroke:#1d4ed8,stroke-width:2px
+    style B fill:#2563eb,color:#fff,stroke:#1d4ed8,stroke-width:2px
+    style C fill:#2563eb,color:#fff,stroke:#1d4ed8,stroke-width:2px
+    style Todo fill:#16a34a,color:#fff,stroke:#15803d,stroke-width:2px
+    style Mail fill:#d97706,color:#fff,stroke:#b45309,stroke-width:2px
 ```
 
 | 구성요소 | 역할 | 비유 |

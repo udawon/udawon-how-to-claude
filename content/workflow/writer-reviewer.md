@@ -33,6 +33,19 @@ Claude: "잘 작성됐네요!" (자기가 짠 거라 관대해짐)
 
 ## 기본 패턴
 
+```mermaid
+graph LR
+    A["세션 A: Writer<br/>코드 구현"] --> Code["구현된 코드"]
+    Code --> B["세션 B: Reviewer<br/>냉정한 리뷰"]
+    B --> Feedback["피드백"]
+    Feedback --> A
+
+    style A fill:#2563eb,color:#fff,stroke:#1d4ed8,stroke-width:2px
+    style B fill:#c2410c,color:#fff,stroke:#9a3412,stroke-width:2px
+    style Code fill:#16a34a,color:#fff,stroke:#15803d,stroke-width:2px
+    style Feedback fill:#d97706,color:#fff,stroke:#b45309,stroke-width:2px
+```
+
 ### 세션 A: Writer (구현)
 
 [새 터미널 또는 새 <span class="keyword-highlight">세션</span>]
