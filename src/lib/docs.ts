@@ -9,6 +9,24 @@ import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 import { visit } from "unist-util-visit";
 import type { Element, Root } from "hast";
+import type { Root as MdastRoot, Code } from "mdast";
+
+// Mermaid 코드 블록을 raw HTML <pre class="mermaid">로 변환하는 remark 플러그인
+function remarkMermaid() {
+  return (tree: MdastRoot) => {
+    visit(tree, "code", (node: Code, index, parent) => {
+      if (node.lang !== "mermaid" || !parent || index === undefined) return;
+
+      // code 노드를 raw HTML 노드로 교체
+      const htmlNode = {
+        type: "html" as const,
+        value: `<pre class="mermaid">${node.value}</pre>`,
+      };
+
+      parent.children.splice(index, 1, htmlNode);
+    });
+  };
+}
 
 // 문서 내 링크를 사이트 라우팅에 맞게 변환하는 rehype 플러그인
 function rehypeRewriteLinks(categorySlug: string) {
@@ -182,6 +200,7 @@ export async function getDoc(
 
   const processedContent = await remark()
     .use(remarkGfm)
+    .use(remarkMermaid as never)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(rehypeSlug)

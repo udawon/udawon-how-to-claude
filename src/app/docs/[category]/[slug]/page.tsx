@@ -4,6 +4,7 @@ import { categories, getDocsByCategory, getDoc } from "@/lib/docs";
 import { Icon } from "@/components/Icons";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ClaudeCharacter } from "@/components/ClaudeCharacter";
+import { MermaidInit } from "@/components/MermaidInit";
 
 interface Props {
   params: Promise<{ category: string; slug: string }>;
@@ -112,6 +113,7 @@ export default async function DocPage({ params }: Props) {
               className="markdown-body"
               dangerouslySetInnerHTML={{ __html: doc.contentHtml }}
             />
+            <MermaidInit />
           </article>
 
           <div

@@ -376,6 +376,25 @@ kbd {
 }
 
 /* ──────────────────────────────────────
+   Mermaid 다이어그램
+   ────────────────────────────────────── */
+
+.markdown-body pre.mermaid {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  text-align: center;
+  overflow-x: auto;
+}
+
+.markdown-body pre.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ──────────────────────────────────────
    컴포넌트 스타일
    ────────────────────────────────────── */
 
