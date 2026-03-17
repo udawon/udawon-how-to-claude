@@ -25,9 +25,13 @@ export default function Home() {
   };
 
   const totalDocs = categoryData.reduce((sum, cat) => sum + cat.docs.length, 0) + officialDocs.docs.length;
-  const allDocs = categoryData.flatMap((cat) =>
-    cat.docs.map((doc) => ({ ...doc, catTitle: cat.title }))
-  );
+  const allDocs = [
+    ...categoryData.flatMap((cat) =>
+      cat.docs.map((doc) => ({ ...doc, catTitle: cat.title }))
+    ),
+    ...officialDocs.docs.map((doc) => ({ ...doc, catTitle: officialDocs.title })),
+    ...youtubeDocs.docs.map((doc) => ({ ...doc, catTitle: youtubeDocs.title })),
+  ];
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -211,9 +215,6 @@ export default function Home() {
                 <div className="flex-1 min-w-0">
                   <div className="text-sm font-medium truncate text-[var(--text-primary)]">
                     {doc.title}
-                  </div>
-                  <div className="text-xs truncate mt-0.5 text-[var(--text-muted)]">
-                    {doc.description}
                   </div>
                 </div>
                 <span className="tag-badge hidden sm:block">{doc.catTitle}</span>
