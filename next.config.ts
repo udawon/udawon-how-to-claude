@@ -6,10 +6,6 @@ const securityHeaders = [
     value: "nosniff",
   },
   {
-    key: "X-Frame-Options",
-    value: "DENY",
-  },
-  {
     key: "X-XSS-Protection",
     value: "1; mode=block",
   },
@@ -34,7 +30,7 @@ const securityHeaders = [
       "font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com",
       "img-src 'self' data: https://placehold.co",
       "connect-src 'self'",
-      "frame-ancestors 'none'",
+      "frame-ancestors 'self' https://sticky-office.vercel.app",
     ].join("; "),
   },
 ];
