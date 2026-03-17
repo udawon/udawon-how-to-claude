@@ -1,4 +1,5 @@
 ---
+date: "2026-03-12"
 title: "Claude Code로 B2B SaaS GTM 전략 자동화하기"
 description: "코딩 경험 없이 Claude Code만으로 B2B Go-to-Market 워크플로우를 구축하는 방법"
 order: 6

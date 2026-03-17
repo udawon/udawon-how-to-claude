@@ -592,6 +592,18 @@ kbd {
   color: var(--text-muted);
 }
 
+/* 날짜 태그 배지 */
+.tag-badge-date {
+  background: rgba(194, 65, 12, 0.1);
+  color: #c2410c;
+  font-weight: 500;
+}
+
+:root[data-theme="dark"] .tag-badge-date {
+  background: rgba(251, 146, 60, 0.15);
+  color: #fb923c;
+}
+
 /* 자주 사용 배지 */
 .freq-badge {
   display: inline-block;

@@ -143,6 +143,7 @@ export interface DocMeta {
   description: string;
   order: number;
   tags: string[];
+  date?: string;
 }
 
 // 문서 전체 데이터
@@ -173,6 +174,7 @@ export function getDocsByCategory(categorySlug: string): DocMeta[] {
       description: (data.description as string) || "",
       order: (data.order as number) || 99,
       tags: (data.tags as string[]) || [],
+      date: (data.date as string) || undefined,
     };
   });
 
@@ -216,6 +218,7 @@ export async function getDoc(
     description: (data.description as string) || "",
     order: (data.order as number) || 99,
     tags: (data.tags as string[]) || [],
+    date: (data.date as string) || undefined,
     contentHtml,
   };
 }

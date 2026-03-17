@@ -72,8 +72,13 @@ function DocRow({ doc, category, index }: { doc: DocMeta; category: string; inde
         <div className="text-sm mt-0.5 text-[var(--text-muted)]">
           {doc.description}
         </div>
-        {doc.tags.length > 0 && (
-          <div className="flex gap-1.5 mt-2.5">
+        {(doc.date || doc.tags.length > 0) && (
+          <div className="flex gap-1.5 mt-2.5 flex-wrap">
+            {doc.date && (
+              <span className="tag-badge text-xs tag-badge-date">
+                {doc.date}
+              </span>
+            )}
             {doc.tags.map((tag) => (
               <span key={tag} className="tag-badge text-xs">
                 {tag}

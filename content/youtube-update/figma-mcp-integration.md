@@ -1,4 +1,5 @@
 ---
+date: "2026-03-12"
 title: "Figma MCP — 코드를 디자인으로, 디자인을 코드로"
 description: "Claude Code와 Figma를 MCP로 연결해서 코드↔디자인 양방향 워크플로우 구축하기"
 order: 13

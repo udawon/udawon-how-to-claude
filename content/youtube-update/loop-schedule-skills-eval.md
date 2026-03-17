@@ -1,4 +1,5 @@
 ---
+date: "2026-03-13"
 title: "Claude Code 4대 신기능: Loop, 스케줄 작업, Google CLI, Skills 2.0"
 description: "/loop으로 반복 자동화, 스케줄 작업으로 매일 실행, Google CLI로 문서 생성, Skills 2.0으로 스킬 품질 테스트"
 order: 16

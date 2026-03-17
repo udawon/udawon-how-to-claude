@@ -1,4 +1,5 @@
 ---
+date: "2026-03-18"
 title: "어판 무스타파의 Claude Code 완전 가이드 — 입문부터 고수까지 10단계"
 description: "앤스로픽 해커톤 우승자가 10개월 실전 경험으로 정리한 레벨별 Claude Code 마스터 가이드"
 order: 23

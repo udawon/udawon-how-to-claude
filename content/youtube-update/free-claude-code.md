@@ -1,4 +1,5 @@
 ---
+date: "2026-03-12"
 title: "Claude Code 무료로 사용하기 (Ollama & OpenRouter)"
 description: "Anthropic API 비용 없이 Claude Code를 무료로 사용하는 두 가지 방법"
 order: 2

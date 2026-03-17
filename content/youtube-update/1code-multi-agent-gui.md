@@ -1,4 +1,5 @@
 ---
+date: "2026-03-12"
 title: "1Code — Claude Code 에이전트 5개를 동시에 돌리는 오픈소스 GUI"
 description: "터미널 여러 개 대신 하나의 앱에서 멀티 에이전트를 관리하는 1Code 사용법"
 order: 7

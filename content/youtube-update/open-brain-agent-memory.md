@@ -1,4 +1,5 @@
 ---
+date: "2026-03-16"
 title: "Open Brain: AI 에이전트가 읽을 수 있는 나만의 메모리 시스템"
 description: "Postgres + 벡터 임베딩 + MCP로 구축하는 플랫폼 독립 AI 메모리 아키텍처"
 order: 21

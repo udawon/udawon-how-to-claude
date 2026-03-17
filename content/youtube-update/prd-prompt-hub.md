@@ -1,4 +1,5 @@
 ---
+date: "2026-03-16"
 title: "PRD Prompt Hub: AI로 기획서 10분 만에 작성하기"
 description: "Claude Code 슬래시 커맨드부터 Claude 프로젝트까지, PRD(제품 기획서)를 빠르게 작성하는 4가지 워크플로우"
 order: 18

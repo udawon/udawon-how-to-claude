@@ -1,4 +1,5 @@
 ---
+date: "2026-03-12"
 title: "Claude Code + Google Workspace 연동하기"
 description: "Gmail, Drive, Calendar, Docs를 Claude Code에서 직접 제어하는 방법"
 order: 3

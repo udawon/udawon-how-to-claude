@@ -1,4 +1,5 @@
 ---
+date: "2026-03-12"
 title: "NAH — Claude Code가 시스템을 망치지 않게 막아주는 권한 가드"
 description: "AI 에이전트의 위험한 명령을 자동으로 차단하는 NAH 권한 가드 사용법"
 order: 10

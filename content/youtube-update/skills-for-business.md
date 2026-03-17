@@ -1,4 +1,5 @@
 ---
+date: "2026-03-12"
 title: "비개발자를 위한 Claude Code Skills — 비즈니스 자동화 7가지"
 description: "코딩 없이 Skills를 만들어서 반복 업무를 자동화하는 실전 가이드"
 order: 5

@@ -1,4 +1,5 @@
 ---
+date: "2026-03-12"
 title: "Claude Code 플러그인 TOP 10 — 생산성 10배 워크플로우"
 description: "터미널 하나로 모든 작업을 처리하는 필수 플러그인 10선"
 order: 4

@@ -1,4 +1,5 @@
 ---
+date: "2026-03-17"
 title: "에이전트 그만 만들어라 — Anthropic이 말하는 '스킬'이 답인 이유"
 description: "AI 에이전트 대신 스킬을 만들라는 Anthropic의 철학과 GEO 감사 도구 실전 시연"
 order: 22

@@ -1,4 +1,5 @@
 ---
+date: "2026-03-12"
 title: "50가지 Claude Code 팁 — 6개월 실전 경험 총정리"
 description: "매일 Claude Code를 쓰는 엔지니어가 정리한 기초부터 고급 워크플로우까지 50가지 팁"
 order: 15

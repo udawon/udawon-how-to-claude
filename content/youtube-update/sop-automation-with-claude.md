@@ -1,4 +1,5 @@
 ---
+date: "2026-03-12"
 title: "Claude Code로 스펙 문서 관리 자동화하기"
 description: "기획서/SOP 문서를 Claude Code에 주입해서 구현까지 자동화하는 워크플로우"
 order: 14

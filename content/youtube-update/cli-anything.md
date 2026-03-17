@@ -1,4 +1,5 @@
 ---
+date: "2026-03-12"
 title: "CLI-Anything: 아무 프로그램이든 Claude Code로 조종하기"
 description: "오픈소스 소프트웨어를 자동으로 CLI 도구로 만들어서 Claude Code가 직접 제어할 수 있게 하는 방법"
 order: 1

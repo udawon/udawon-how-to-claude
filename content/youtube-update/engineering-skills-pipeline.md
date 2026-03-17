@@ -1,4 +1,5 @@
 ---
+date: "2026-03-18"
 title: "매일 쓰는 Claude Code 스킬 5개 — 아이디어에서 구현까지 엔지니어링 파이프라인"
 description: "Grill Me → PRD 작성 → 이슈 분해 → TDD → 아키텍처 개선, 10년차 엔지니어의 실전 스킬 체이닝 워크플로우"
 order: 24
