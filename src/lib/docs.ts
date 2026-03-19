@@ -178,7 +178,13 @@ export function getDocsByCategory(categorySlug: string): DocMeta[] {
     };
   });
 
-  return docs.sort((a, b) => a.order - b.order);
+  return docs.sort((a, b) => {
+    // 날짜 내림차순 (최신이 위), 같은 날짜면 order 내림차순
+    const dateA = a.date || "0000-00-00";
+    const dateB = b.date || "0000-00-00";
+    if (dateA !== dateB) return dateB.localeCompare(dateA);
+    return b.order - a.order;
+  });
 }
 
 // 모든 문서 목록 가져오기
