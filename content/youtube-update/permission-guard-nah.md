@@ -4,6 +4,7 @@ title: "NAH — Claude Code가 시스템을 망치지 않게 막아주는 권한
 description: "AI 에이전트의 위험한 명령을 자동으로 차단하는 NAH 권한 가드 사용법"
 order: 10
 tags: ["설정", "연동", "youtube"]
+source_url: "https://www.youtube.com/watch?v=jieedeI7Ruc"
 ---
 
 ## 이게 뭔가요?

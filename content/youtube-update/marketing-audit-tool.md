@@ -4,6 +4,7 @@ title: "Claude Code로 마케팅 감사 도구 만들기 — 에이전시 수준
 description: "15개 스킬로 웹사이트 콘텐츠, SEO, 경쟁사, 전환율을 자동 분석하고 PDF 보고서까지 생성하는 방법"
 order: 20
 tags: ["비즈니스", "자동화", "활용법", "youtube"]
+source_url: "https://www.youtube.com/watch?v=eorc3jLBqIA"
 ---
 
 ## 이게 뭔가요?

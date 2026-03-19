@@ -4,6 +4,7 @@ title: "1Code — Claude Code 에이전트 5개를 동시에 돌리는 오픈소
 description: "터미널 여러 개 대신 하나의 앱에서 멀티 에이전트를 관리하는 1Code 사용법"
 order: 7
 tags: ["활용법", "워크플로우", "youtube"]
+source_url: "https://www.youtube.com/watch?v=fdhSq57nVv8"
 ---
 
 ## 이게 뭔가요?

@@ -4,6 +4,7 @@ title: "에이전트 그만 만들어라 — Anthropic이 말하는 '스킬'이 
 description: "AI 에이전트 대신 스킬을 만들라는 Anthropic의 철학과 GEO 감사 도구 실전 시연"
 order: 22
 tags: ["활용법", "워크플로우", "비즈니스", "youtube"]
+source_url: "https://www.youtube.com/watch?v=wqH1hTkA6qg"
 ---
 
 ## 이게 뭔가요?

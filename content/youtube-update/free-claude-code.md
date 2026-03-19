@@ -4,6 +4,7 @@ title: "Claude Code 무료로 사용하기 (Ollama & OpenRouter)"
 description: "Anthropic API 비용 없이 Claude Code를 무료로 사용하는 두 가지 방법"
 order: 2
 tags: ["설정", "연동", "youtube"]
+source_url: "https://www.youtube.com/watch?v=5nbF_p6F6Lk"
 ---
 
 ## 이게 뭔가요?

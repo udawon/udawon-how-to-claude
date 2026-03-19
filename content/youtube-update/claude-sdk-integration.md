@@ -4,6 +4,7 @@ title: "Claude Code VS Code 세팅 완전 가이드 — 플러그인, 스킬, CL
 description: "실제 프로젝트에서 쓰는 VS Code Claude 확장 설정법과 /init 활용 타이밍"
 order: 9
 tags: ["활용법", "워크플로우", "youtube"]
+source_url: "https://www.youtube.com/watch?v=tAQZm07R2mM"
 ---
 
 ## 이게 뭔가요?

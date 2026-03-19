@@ -4,6 +4,7 @@ title: "Claude Code + Google Workspace 연동하기"
 description: "Gmail, Drive, Calendar, Docs를 Claude Code에서 직접 제어하는 방법"
 order: 3
 tags: ["설정", "연동", "youtube"]
+source_url: "https://www.youtube.com/watch?v=WP3VRGdhxHw"
 ---
 
 ## 이게 뭔가요?

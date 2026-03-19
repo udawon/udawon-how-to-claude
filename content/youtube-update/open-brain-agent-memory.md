@@ -4,6 +4,7 @@ title: "Open Brain: AI 에이전트가 읽을 수 있는 나만의 메모리 시
 description: "Postgres + 벡터 임베딩 + MCP로 구축하는 플랫폼 독립 AI 메모리 아키텍처"
 order: 21
 tags: ["활용법", "워크플로우", "설정", "연동", "youtube"]
+source_url: "https://www.youtube.com/watch?v=2JiMmye2ezg"
 ---
 
 ## 이게 뭔가요?

@@ -4,6 +4,7 @@ title: "Claude Show Me — 프롬프트 끝에 한마디면 시각화 완성"
 description: "프롬프트 끝에 'Show Me'만 붙이면 차트, 카드, 애니메이션 등 인터랙티브 시각화가 바로 생성되는 기능"
 order: 17
 tags: ["신기능", "업데이트", "활용법", "youtube"]
+source_url: "https://www.youtube.com/watch?v=RtX3dYj3JoM"
 ---
 
 ## 이게 뭔가요?

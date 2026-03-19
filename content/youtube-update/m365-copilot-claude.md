@@ -4,6 +4,7 @@ title: "Microsoft 365 Copilot에 Claude가 들어왔다 — Wave 3 업데이트"
 description: "M365 Copilot에서 Claude 모델을 선택해서 Excel, PowerPoint, Word 작업을 하는 방법"
 order: 12
 tags: ["설정", "연동", "youtube"]
+source_url: "https://www.youtube.com/watch?v=QqeDrJkBgsc"
 ---
 
 ## 이게 뭔가요?

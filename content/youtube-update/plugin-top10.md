@@ -4,6 +4,7 @@ title: "Claude Code 플러그인 TOP 10 — 생산성 10배 워크플로우"
 description: "터미널 하나로 모든 작업을 처리하는 필수 플러그인 10선"
 order: 4
 tags: ["활용법", "워크플로우", "youtube"]
+source_url: "https://www.youtube.com/watch?v=VIDEO_ID"
 ---
 
 ## 이게 뭔가요?

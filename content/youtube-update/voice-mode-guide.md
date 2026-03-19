@@ -4,6 +4,7 @@ title: "Claude Code Voice Mode — 이제 말로 시키세요"
 description: "키보드 대신 음성으로 Claude Code를 제어하는 Voice Mode 설정부터 사용까지"
 order: 11
 tags: ["신기능", "업데이트", "youtube"]
+source_url: "https://www.youtube.com/watch?v=KIZQ6W_X8Ks"
 ---
 
 ## 이게 뭔가요?
