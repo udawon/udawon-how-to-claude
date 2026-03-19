@@ -129,7 +129,7 @@ Claude Code 데스크톱 앱 또는 Claude Code Work에서:
 
 ---
 
-### 기능 3: Google Workspace CLI (오픈소스)
+### 기능 3: Google Workspace CLI(키보드로 명령어를 입력하는 화면) (오픈소스)
 
 Google이 공식 오픈소스로 발표한 **Workspace CLI**는 하나의 도구로 Google 생태계 전체에 접근할 수 있습니다.
 
@@ -140,8 +140,8 @@ Google이 공식 오픈소스로 발표한 **Workspace CLI**는 하나의 도구
 | 항목 | 이전 (MCP 서버) | 새 CLI |
 |------|-----------------|--------|
 | 접근 범위 | Gmail, Calendar만 | Drive, Docs, Sheets, Slides 전부 |
-| 문서 포맷 | Raw Markdown (서식 깨짐) | **정상 포맷** (헤더, 이미지, 링크 완벽) |
-| 설정 복잡도 | API 직접 연동 필요 | 터미널 설치 한 줄 |
+| 문서 포맷 | Raw Markdown(간단한 문서 작성 형식) (서식 깨짐) | **정상 포맷** (헤더, 이미지, 링크 완벽) |
+| 설정 복잡도 | API(프로그램끼리 대화하는 통로) 직접 연동 필요 | 터미널 설치 한 줄 |
 | 레시피 | 없음 | **100개+ 내장 레시피** |
 
 <div class="example-case">

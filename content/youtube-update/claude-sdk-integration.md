@@ -9,7 +9,7 @@ source_url: "https://www.youtube.com/watch?v=tAQZm07R2mM"
 
 ## 이게 뭔가요?
 
-Claude Code를 VS Code 확장으로 쓸 때, **제대로 세팅하면 생산성이 크게 달라집니다.** 플러그인 설치, 스킬 활용, CLAUDE.md 설정까지 — 실제 프로젝트를 15화 넘게 진행한 개발자의 세팅법을 정리했습니다.
+Claude Code를 VS Code 확장으로 쓸 때, **제대로 세팅하면 생산성이 크게 달라집니다.** 플러그인(추가 기능을 붙이는 확장 도구) 설치, 스킬 활용, CLAUDE.md 설정까지 — 실제 프로젝트를 15화 넘게 진행한 개발자의 세팅법을 정리했습니다.
 
 > 비유: 새 노트북을 사면 바로 쓸 수도 있지만, **자주 쓰는 앱 설치하고 바탕화면 정리하면** 업무 속도가 완전히 달라지잖아요. Claude Code도 마찬가지예요.
 
@@ -27,7 +27,7 @@ VS Code Claude 확장에서 플러그인을 설치하려면:
 
 1. `/plugin` 입력
 2. **Marketplace** 탭으로 이동 (처음에는 비어있음)
-3. GitHub URL을 붙여넣기 (예: `anthropics/claude-code`)
+3. GitHub(코드 저장소 서비스) URL을 붙여넣기 (예: `anthropics/claude-code`)
 4. 마켓플레이스가 추가되면 설치 가능한 플러그인 목록이 나타남
 5. 원하는 플러그인 선택 → 설치
 
@@ -37,7 +37,7 @@ VS Code Claude 확장에서 플러그인을 설치하려면:
 ```
 /plugin → Marketplace → GitHub URL 추가 후:
 
-- commit-commands: Git 커밋/푸시 자동화
+- commit-commands: Git(코드 버전 관리 도구) 커밋/푸시 자동화
 - feature-dev: 기능 개발 전문 에이전트
 - front-end-design: 프론트엔드 디자인 전문
 - github: GitHub 연동

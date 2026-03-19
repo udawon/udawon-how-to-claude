@@ -9,7 +9,7 @@ source_url: "https://www.youtube.com/watch?v=QhZJyg47JW0"
 
 ## 이게 뭔가요?
 
-앤스로픽 해커톤에서 우승한 개발자 **어판 무스타파(Afan Mustafa)**가 10개월간 매일 Claude Code를 쓰면서 정리한 **오픈소스 완전 가이드**입니다. GitHub 스타 7만 개를 넘길 정도로 화제가 됐어요.
+앤스로픽 해커톤에서 우승한 개발자 **어판 무스타파(Afan Mustafa)**가 10개월간 매일 Claude Code를 쓰면서 정리한 **오픈소스 완전 가이드**입니다. GitHub(코드 저장소 서비스) 스타 7만 개를 넘길 정도로 화제가 됐어요.
 
 > 비유: 게임으로 치면 "뉴비 → 중수 → 고수" 레벨업 로드맵이에요. 같은 캐릭터(Claude Code)를 쓰더라도 스킬 트리를 어떻게 찍느냐에 따라 전투력이 열 배 차이 나는 것처럼요.
 
@@ -18,7 +18,7 @@ source_url: "https://www.youtube.com/watch?v=QhZJyg47JW0"
 ## 왜 알아야 하나요?
 
 - **같은 도구, 다른 결과**: 똑같이 Claude Code를 쓰는데 어떤 사람은 10배 빠르게 일합니다. 차이는 "설정"과 "사용법"에 있어요
-- **토큰 낭비 방지**: MCP를 무턱대고 켜두면 사용 가능한 기억 공간이 20만 → 7만 토큰으로 줄어들 수 있어요
+- **토큰(AI가 처리하는 텍스트 단위) 낭비 방지**: MCP(외부 도구 연결 기능)를 무턱대고 켜두면 사용 가능한 기억 공간이 20만 → 7만 토큰으로 줄어들 수 있어요
 - **체계적 레벨업**: 무작정 따라하기보다 단계별로 익히면 실수 없이 올라갈 수 있어요
 
 ## 어떻게 하나요?
@@ -55,7 +55,7 @@ CLAUDE.md는 Claude에게 "우리 프로젝트가 뭔지" 알려주는 설명서
 
 #### Tip 2: 시스템 프롬프트 다이어트 — 안 쓰는 MCP는 꺼라
 
-Claude Code에 MCP(외부 도구 연결 기능)나 플러그인을 많이 설치하면, 대화 시작 시 Claude가 읽어야 하는 설명서가 **약 2만 토큰**까지 차지할 수 있어요.
+Claude Code에 MCP나 플러그인(추가 기능을 붙이는 확장 도구)을 많이 설치하면, 대화 시작 시 Claude가 읽어야 하는 설명서가 **약 2만 토큰**까지 차지할 수 있어요.
 
 안 쓰는 것들을 꺼두면 **9,000 토큰**으로 반 이상 줄일 수 있습니다.
 
@@ -191,17 +191,17 @@ graph TB
     A --> D["💻 코딩 에이전트"]
     A --> E["🔍 코드 리뷰 에이전트"]
     A --> F["🧪 테스트 에이전트"]
-    style A fill:#c2410c,color:#fff,stroke:#9a3412,stroke-width:2px
-    style B fill:#d97706,color:#fff,stroke:#b45309,stroke-width:2px
-    style C fill:#d97706,color:#fff,stroke:#b45309,stroke-width:2px
-    style D fill:#2563eb,color:#fff,stroke:#1d4ed8,stroke-width:2px
-    style E fill:#2563eb,color:#fff,stroke:#1d4ed8,stroke-width:2px
-    style F fill:#16a34a,color:#fff,stroke:#15803d,stroke-width:2px
+    style A fill:#c2410c,color:#fff,stroke:#c2410c,stroke-width:2px
+    style B fill:#b45309,color:#fff,stroke:#b45309,stroke-width:2px
+    style C fill:#b45309,color:#fff,stroke:#b45309,stroke-width:2px
+    style D fill:#1d4ed8,color:#fff,stroke:#1d4ed8,stroke-width:2px
+    style E fill:#1d4ed8,color:#fff,stroke:#1d4ed8,stroke-width:2px
+    style F fill:#15803d,color:#fff,stroke:#15803d,stroke-width:2px
 ```
 
 각 에이전트에게 **할 일을 하나씩만** 주고, 그 결과물을 다음 에이전트에게 넘기는 방식이에요.
 
-#### Tip 9: Git 워크트리 — 책상 5개에서 동시에 일하기
+#### Tip 9: Git(코드 버전 관리 도구) 워크트리 — 책상 5개에서 동시에 일하기
 
 보통은 하나의 작업이 끝나야 다음 걸 시작하잖아요. **워크트리(Worktree)**를 쓰면 같은 프로젝트에서 **여러 작업 폴더를 동시에** 만들 수 있어요.
 
@@ -246,10 +246,10 @@ graph LR
     B --> C["📦 Pre-Compact<br/>중요 내용 저장"]
     C --> D["🔴 Stop<br/>학습 내용 기록"]
     D -->|"다음 세션"| A
-    style A fill:#16a34a,color:#fff,stroke:#15803d,stroke-width:2px
-    style B fill:#2563eb,color:#fff,stroke:#1d4ed8,stroke-width:2px
-    style C fill:#d97706,color:#fff,stroke:#b45309,stroke-width:2px
-    style D fill:#c2410c,color:#fff,stroke:#9a3412,stroke-width:2px
+    style A fill:#15803d,color:#fff,stroke:#15803d,stroke-width:2px
+    style B fill:#1d4ed8,color:#fff,stroke:#1d4ed8,stroke-width:2px
+    style C fill:#b45309,color:#fff,stroke:#b45309,stroke-width:2px
+    style D fill:#c2410c,color:#fff,stroke:#c2410c,stroke-width:2px
 ```
 
 이 세 개를 조합하면 **대화가 끝나도 배운 걸 기억하는 시스템**이 완성돼요.

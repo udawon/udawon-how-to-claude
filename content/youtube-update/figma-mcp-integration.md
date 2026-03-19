@@ -9,7 +9,7 @@ source_url: "https://www.youtube.com/watch?v=C0fNUdjQxeY"
 
 ## 이게 뭔가요?
 
-**Figma MCP**는 Claude Code와 Figma를 연결해서, **코드를 Figma 디자인으로** 보내거나, **Figma 디자인을 코드로** 변환하는 양방향 다리입니다.
+**Figma MCP(외부 도구 연결 기능)**는 Claude Code와 Figma를 연결해서, **코드를 Figma 디자인으로** 보내거나, **Figma 디자인을 코드로** 변환하는 양방향 다리입니다.
 
 > 비유: 번역기가 한국어↔영어 양방향 번역을 하듯이, Figma MCP는 **코드↔디자인을 양방향으로 변환**해줘요. 개발자와 디자이너가 같은 언어로 소통할 수 있게 되는 거예요.
 
@@ -24,7 +24,7 @@ source_url: "https://www.youtube.com/watch?v=C0fNUdjQxeY"
 
 ## 어떻게 하나요?
 
-### 방법 1: 플러그인으로 설치
+### 방법 1: 플러그인(추가 기능을 붙이는 확장 도구)으로 설치
 
 ```
 /plugin → Figma 검색 → 설치
@@ -32,7 +32,7 @@ source_url: "https://www.youtube.com/watch?v=C0fNUdjQxeY"
 
 Claude Code에서 `/plugin`을 입력하고 Figma를 검색하면 MCP 플러그인을 설치할 수 있습니다.
 
-### 방법 2: CLI로 직접 추가
+### 방법 2: CLI(키보드로 명령어를 입력하는 화면)로 직접 추가
 
 ```bash
 claude mcp add figma --transport streamable-http

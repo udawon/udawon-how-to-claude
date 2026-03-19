@@ -44,23 +44,20 @@ Open Brain이 있으면:
 
 ```mermaid
 graph TB
-    Input["생각/메모 입력<br/>(Slack, 메신저 등)"] --> Process["처리 엔진<br/>(Supabase Edge Function)"]
-    Process --> Vector["벡터 임베딩 생성<br/>(의미를 수학으로 변환)"]
-    Process --> Meta["메타데이터 추출<br/>(사람, 주제, 액션)"]
-    Vector --> DB["Postgres DB<br/>(pgvector)"]
-    Meta --> DB
+    Input["메모 입력<br/>(Slack 등)"] --> Process["처리 엔진<br/>(임베딩+메타데이터)"]
+    Process --> DB["Postgres DB<br/>(pgvector)"]
     DB --> MCP["MCP 서버"]
     MCP --> Claude["Claude"]
     MCP --> ChatGPT["ChatGPT"]
     MCP --> Cursor["Cursor"]
     MCP --> Agent["AI 에이전트"]
 
-    style DB fill:#c2410c,color:#fff,stroke:#9a3412,stroke-width:2px
-    style MCP fill:#d97706,color:#fff,stroke:#b45309,stroke-width:2px
-    style Claude fill:#2563eb,color:#fff,stroke:#1d4ed8,stroke-width:2px
-    style ChatGPT fill:#16a34a,color:#fff,stroke:#15803d,stroke-width:2px
-    style Cursor fill:#16a34a,color:#fff,stroke:#15803d,stroke-width:2px
-    style Agent fill:#16a34a,color:#fff,stroke:#15803d,stroke-width:2px
+    style DB fill:#c2410c,color:#fff,stroke:#c2410c,stroke-width:2px
+    style MCP fill:#b45309,color:#fff,stroke:#b45309,stroke-width:2px
+    style Claude fill:#1d4ed8,color:#fff,stroke:#1d4ed8,stroke-width:2px
+    style ChatGPT fill:#15803d,color:#fff,stroke:#15803d,stroke-width:2px
+    style Cursor fill:#15803d,color:#fff,stroke:#15803d,stroke-width:2px
+    style Agent fill:#15803d,color:#fff,stroke:#15803d,stroke-width:2px
 ```
 
 ### 핵심 구성요소 3가지
@@ -182,7 +179,7 @@ ChatGPT: (같은 MCP로 같은 Open Brain 검색)
 
 ## 기존 세컨드 브레인과의 차이
 
-| | 기존 세컨드 브레인 (Notion, Obsidian 등) | Open Brain |
+| 구분 | 기존 세컨드 브레인 (Notion, Obsidian 등) | Open Brain |
 |---|---|---|
 | **설계 대상** | 사람이 읽기 위해 | AI와 사람 모두를 위해 |
 | **검색 방식** | 키워드, 폴더 구조 | 의미 기반 벡터 검색 |

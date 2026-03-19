@@ -20,12 +20,12 @@ graph LR
     C --> D["🎫 이슈 분해<br/>여정 계획"]
     D --> E["🧪 TDD<br/>테스트 우선 구현"]
     E --> F["🏗️ 아키텍처 개선<br/>코드베이스 정리"]
-    style A fill:#d97706,color:#fff,stroke:#b45309,stroke-width:2px
-    style B fill:#c2410c,color:#fff,stroke:#9a3412,stroke-width:2px
-    style C fill:#2563eb,color:#fff,stroke:#1d4ed8,stroke-width:2px
-    style D fill:#2563eb,color:#fff,stroke:#1d4ed8,stroke-width:2px
-    style E fill:#16a34a,color:#fff,stroke:#15803d,stroke-width:2px
-    style F fill:#16a34a,color:#fff,stroke:#15803d,stroke-width:2px
+    style A fill:#b45309,color:#fff,stroke:#b45309,stroke-width:2px
+    style B fill:#c2410c,color:#fff,stroke:#c2410c,stroke-width:2px
+    style C fill:#1d4ed8,color:#fff,stroke:#1d4ed8,stroke-width:2px
+    style D fill:#1d4ed8,color:#fff,stroke:#1d4ed8,stroke-width:2px
+    style E fill:#15803d,color:#fff,stroke:#15803d,stroke-width:2px
+    style F fill:#15803d,color:#fff,stroke:#15803d,stroke-width:2px
 ```
 
 ## 왜 알아야 하나요?
@@ -76,7 +76,7 @@ explore the codebase instead.
 
 Matt이 자신의 코스 영상 편집기에 문서 편집 기능을 추가할 때:
 
-1. 마크다운 파일에 리서치 결과를 정리
+1. Markdown(간단한 문서 작성 형식) 파일에 리서치 결과를 정리
 2. `/grill-me` 실행: "이 기능을 오른쪽 패널에 추가하고 싶어"
 3. Claude가 코드베이스를 먼저 탐색
 4. 질문 16개를 연달아 던짐:
@@ -106,7 +106,7 @@ Grill Me로 공유 이해에 도달하면, 그 이해를 **문서로 고정**합
 3. 사용자를 집요하게 인터뷰 (Grill Me 재사용)
 4. 구현에 필요한 주요 모듈 스케치
 5. 완전한 이해에 도달하면 → 템플릿으로 PRD 작성
-6. GitHub 이슈로 제출
+6. GitHub(코드 저장소 서비스) 이슈로 제출
 ```
 
 <div class="example-case">
@@ -142,11 +142,11 @@ graph TB
     subgraph good["✅ 수직 슬라이스 (좋은 방법)"]
         V1["기능 A<br/>UI+API+DB"] ~~~ V2["기능 B<br/>UI+API+DB"] ~~~ V3["기능 C<br/>UI+API+DB"]
     end
-    style bad fill:#fee2e2,stroke:#dc2626,stroke-width:2px
-    style good fill:#dcfce7,stroke:#16a34a,stroke-width:2px
+    style bad fill:#fee2e2,stroke:#c2410c,stroke-width:2px
+    style good fill:#dcfce7,stroke:#15803d,stroke-width:2px
 ```
 
-- **수평 슬라이스**: "먼저 DB 전체 만들고, 그 다음 API 전체..." → 통합할 때 터짐
+- **수평 슬라이스**: "먼저 DB 전체 만들고, 그 다음 API(프로그램끼리 대화하는 통로) 전체..." → 통합할 때 터짐
 - **수직 슬라이스**: "기능 A를 UI부터 DB까지 얇게 관통" → 통합 문제 빨리 발견
 
 <div class="example-case">

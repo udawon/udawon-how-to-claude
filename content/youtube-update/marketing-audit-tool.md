@@ -42,7 +42,7 @@ source_url: "https://www.youtube.com/watch?v=eorc3jLBqIA"
 
 ### 1단계: 도구 설치 (1분)
 
-GitHub에 공개된 저장소에서 설치 명령어 하나로 끝납니다.
+GitHub(코드 저장소 서비스)에 공개된 저장소에서 설치 명령어 하나로 끝납니다.
 
 <div class="example-case">
 <strong>💬 예시: 설치 과정</strong>
@@ -82,13 +82,13 @@ graph LR
     A4 --> Report
     A5 --> Report
 
-    style Audit fill:#c2410c,color:#fff,stroke:#9a3412,stroke-width:2px
-    style Report fill:#16a34a,color:#fff,stroke:#15803d,stroke-width:2px
-    style A1 fill:#2563eb,color:#fff,stroke:#1d4ed8,stroke-width:2px
-    style A2 fill:#2563eb,color:#fff,stroke:#1d4ed8,stroke-width:2px
-    style A3 fill:#2563eb,color:#fff,stroke:#1d4ed8,stroke-width:2px
-    style A4 fill:#2563eb,color:#fff,stroke:#1d4ed8,stroke-width:2px
-    style A5 fill:#2563eb,color:#fff,stroke:#1d4ed8,stroke-width:2px
+    style Audit fill:#c2410c,color:#fff,stroke:#c2410c,stroke-width:2px
+    style Report fill:#15803d,color:#fff,stroke:#15803d,stroke-width:2px
+    style A1 fill:#1d4ed8,color:#fff,stroke:#1d4ed8,stroke-width:2px
+    style A2 fill:#1d4ed8,color:#fff,stroke:#1d4ed8,stroke-width:2px
+    style A3 fill:#1d4ed8,color:#fff,stroke:#1d4ed8,stroke-width:2px
+    style A4 fill:#1d4ed8,color:#fff,stroke:#1d4ed8,stroke-width:2px
+    style A5 fill:#1d4ed8,color:#fff,stroke:#1d4ed8,stroke-width:2px
 ```
 
 분석이 완료되면 100점 만점 점수와 함께 상세 결과가 나옵니다.
@@ -178,7 +178,7 @@ PDF에 포함되는 내용:
 ## 주의할 점
 
 - **권한 허용 필요**: 분석 중에 웹사이트 접속 권한을 여러 번 물어봄. "Allow" 클릭 필요
-- **토큰 소비가 큼**: 5개 에이전트가 동시에 돌아가므로 한 번 실행에 토큰이 많이 소모됨
+- **토큰(AI가 처리하는 텍스트 단위) 소비가 큼**: 5개 에이전트가 동시에 돌아가므로 한 번 실행에 토큰이 많이 소모됨
 - **결과 검증 필수**: AI가 생성한 보고서를 클라이언트에게 보내기 전에 반드시 직접 읽고 확인하세요. 가끔 오류가 있을 수 있음
 - **비공개 사이트는 분석 제한**: 로그인이 필요하거나 차단된 페이지는 분석이 제한될 수 있음
 

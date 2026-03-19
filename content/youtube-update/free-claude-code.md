@@ -9,7 +9,7 @@ source_url: "https://www.youtube.com/watch?v=5nbF_p6F6Lk"
 
 ## 이게 뭔가요?
 
-Claude Code는 원래 Anthropic API를 써서 돈이 듭니다. 어떤 사람은 주말에 200달러(약 26만원)를 날린 적도 있어요.
+Claude Code는 원래 Anthropic API(프로그램끼리 대화하는 통로)를 써서 돈이 듭니다. 어떤 사람은 주말에 200달러(약 26만원)를 날린 적도 있어요.
 
 하지만 **무료로 쓰는 방법이 두 가지** 있습니다:
 
@@ -164,7 +164,7 @@ claude --model deepcoder
 3. `claude --model "openrouter/free"` 로 실행
 4. 하루 50회까지 무료로 연습!
 
-**결과**: 비용 0원으로 Claude Code의 핵심 기능(파일 편집, 프로젝트 분석, Git 작업)을 모두 연습할 수 있음.
+**결과**: 비용 0원으로 Claude Code의 핵심 기능(파일 편집, 프로젝트 분석, Git(코드 버전 관리 도구) 작업)을 모두 연습할 수 있음.
 
 </div>
 

@@ -9,7 +9,7 @@ source_url: "https://www.youtube.com/watch?v=Iup1WlUyj9M"
 
 ## 이게 뭔가요?
 
-Claude Code 안에는 **디자이너를 위한 숨겨진 플러그인**들이 있습니다. 이걸 "Skills"라고 부르는데요, 평소에 Claude에게 "랜딩 페이지 만들어줘"라고 하면 나오는 그 뻔한 결과물 — 보라색 그라데이션, 둥근 카드, Inter 폰트 — 기억나시죠?
+Claude Code 안에는 **디자이너를 위한 숨겨진 플러그인(추가 기능을 붙이는 확장 도구)**들이 있습니다. 이걸 "Skills"라고 부르는데요, 평소에 Claude에게 "랜딩 페이지 만들어줘"라고 하면 나오는 그 뻔한 결과물 — 보라색 그라데이션, 둥근 카드, Inter 폰트 — 기억나시죠?
 
 **Skills를 켜면 Claude가 "디자이너처럼 생각"한 다음에 코드를 씁니다.** 그 차이가 엄청납니다.
 
@@ -70,7 +70,7 @@ Figma에서 디자인한 화면을 Claude에게 주면 **1:1에 가까운 코드
 **작동 방식:**
 
 1. Figma URL을 Claude에 붙여넣기
-2. 스킬이 Figma MCP 서버를 통해 **실제 디자인 데이터**를 읽어옴
+2. 스킬이 Figma MCP(외부 도구 연결 기능) 서버를 통해 **실제 디자인 데이터**를 읽어옴
    - Auto Layout 설정, 타이포그래피, 컬러값, 스페이싱 토큰 등
 3. 디자인 스크린샷을 시각적 참고자료로 활용
 4. 아이콘/이미지 등 에셋 다운로드
@@ -87,7 +87,7 @@ Figma에서 디자인한 화면을 Claude에게 주면 **1:1에 가까운 코드
 https://www.figma.com/file/abc123/MyDesign?node-id=1:234
 ```
 
-Claude가 URL에서 파일 키와 노드 ID를 파싱 → Figma API로 디자인 데이터를 가져와서 → 프로젝트의 기존 버튼, 인풋 등 컴포넌트를 재활용해서 코드를 생성합니다.
+Claude가 URL에서 파일 키와 노드 ID를 파싱 → Figma API(프로그램끼리 대화하는 통로)로 디자인 데이터를 가져와서 → 프로젝트의 기존 버튼, 인풋 등 컴포넌트를 재활용해서 코드를 생성합니다.
 
 **스크린샷을 Claude에 붙여넣는 것과 다른 점**: 스크린샷은 "비슷하게" 만들지만, 이 스킬은 **실제 디자인 속성값**을 읽어서 정확하게 변환합니다.
 
@@ -163,8 +163,8 @@ graph TB
     E -->|아니오| C
     E -->|예| F["완성! .skill 파일로<br/>공유 가능"]
 
-    style A fill:#c2410c,color:#fff,stroke:#9a3412,stroke-width:2px
-    style F fill:#16a34a,color:#fff,stroke:#15803d,stroke-width:2px
+    style A fill:#c2410c,color:#fff,stroke:#c2410c,stroke-width:2px
+    style F fill:#15803d,color:#fff,stroke:#15803d,stroke-width:2px
 ```
 
 **스킬의 구조는 간단합니다:**

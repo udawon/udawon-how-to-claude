@@ -38,7 +38,7 @@ Anthropic이 든 예시가 딱 와닿아요:
 
 ### 방법 1: 스킬의 기본 구조 이해하기
 
-스킬의 핵심은 **마크다운(.md) 파일 하나**입니다. 신입 직원에게 건네는 업무 매뉴얼이라고 생각하세요.
+스킬의 핵심은 **Markdown(간단한 문서 작성 형식) 파일 하나**입니다. 신입 직원에게 건네는 업무 매뉴얼이라고 생각하세요.
 
 ```
 .claude/skills/
@@ -100,16 +100,16 @@ graph TB
     C -->|예| D["해당 스킬 전체 로드<br/>(책 꺼내서 읽기)"]
     C -->|아니오| E["일반 대화로 응답"]
     D --> F["스킬 지시대로 실행"]
-    style A fill:#c2410c,color:#fff,stroke:#9a3412,stroke-width:2px
-    style D fill:#2563eb,color:#fff,stroke:#1d4ed8,stroke-width:2px
-    style F fill:#16a34a,color:#fff,stroke:#15803d,stroke-width:2px
+    style A fill:#c2410c,color:#fff,stroke:#c2410c,stroke-width:2px
+    style D fill:#1d4ed8,color:#fff,stroke:#1d4ed8,stroke-width:2px
+    style F fill:#15803d,color:#fff,stroke:#15803d,stroke-width:2px
 ```
 
 수백 개의 스킬을 등록해도 Claude가 느려지지 않는 이유가 바로 이것입니다. 필요한 것만 꺼내 씁니다.
 
-### 방법 3: MCP와 스킬의 관계
+### 방법 3: MCP(외부 도구 연결 기능)와 스킬의 관계
 
-| | MCP (Model Context Protocol) | 스킬 (Skills) |
+| 구분 | MCP (Model Context Protocol) | 스킬 (Skills) |
 |---|---|---|
 | **역할** | 외부 도구/데이터에 연결 | 그 도구로 **뭘 해야 하는지** 알려줌 |
 | **비유** | 손 (도구를 잡을 수 있음) | 경험 (도구를 **어떻게** 쓰는지 앎) |
@@ -145,8 +145,8 @@ graph TB
     D --> G
     E --> G
     F --> G
-    style A fill:#c2410c,color:#fff,stroke:#9a3412,stroke-width:2px
-    style G fill:#16a34a,color:#fff,stroke:#15803d,stroke-width:2px
+    style A fill:#c2410c,color:#fff,stroke:#c2410c,stroke-width:2px
+    style G fill:#15803d,color:#fff,stroke:#15803d,stroke-width:2px
 ```
 
 이건 마치 **건축 현장의 원청-하청 구조**와 같습니다. 총괄 시공사(메인 에이전트)가 전기 기사, 배관공, 기초 공사팀(서브에이전트)을 동시에 보내는 거죠.
