@@ -2,7 +2,7 @@
 title: "서버 관리 설정 — 조직 전체 Claude Code 정책 중앙 관리"
 source: "https://code.claude.com/docs/en/server-managed-settings"
 order: 48
-tags: ["엔터프라이즈", "관리", "기업·개발자"]
+tags: ["엔터프라이즈", "관리", "기업·개발자", "Server-managed settings"]
 ---
 
 # 서버 관리 설정 — 조직 전체 Claude Code 정책 중앙 관리

@@ -2,7 +2,7 @@
 title: "보안 - Claude Code를 안전하게 사용하는 방법"
 source: "https://code.claude.com/docs/en/security"
 order: 53
-tags: ["보안"]
+tags: ["보안", "Security"]
 ---
 
 # 보안: Claude Code를 안전하게 사용하는 방법

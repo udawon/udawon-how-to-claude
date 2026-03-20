@@ -2,7 +2,7 @@
 title: "자동 코드 리뷰: PR을 자동으로 검토하기"
 source: "https://code.claude.com/docs/en/code-review"
 order: 40
-tags: ["CI/CD", "코드리뷰", "기업·개발자"]
+tags: ["CI/CD", "코드리뷰", "기업·개발자", "Code review"]
 ---
 
 # 자동 코드 리뷰: PR을 자동으로 검토하기

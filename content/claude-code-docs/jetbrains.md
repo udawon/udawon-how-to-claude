@@ -2,7 +2,7 @@
 title: "JetBrains IDE에서 Claude Code 사용하기"
 source: "https://code.claude.com/docs/en/jetbrains"
 order: 31
-tags: ["플랫폼", "IDE"]
+tags: ["플랫폼", "IDE", "JetBrains"]
 ---
 
 # JetBrains IDE에서 Claude Code 사용하기

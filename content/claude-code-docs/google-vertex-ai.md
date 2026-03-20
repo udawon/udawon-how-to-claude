@@ -2,7 +2,7 @@
 title: "Google Vertex AI로 Claude Code 사용하기"
 source: "https://code.claude.com/docs/en/google-vertex-ai"
 order: 44
-tags: ["엔터프라이즈", "GCP", "기업·개발자"]
+tags: ["엔터프라이즈", "GCP", "기업·개발자", "Google Vertex AI"]
 ---
 
 # Google Vertex AI로 Claude Code 사용하기

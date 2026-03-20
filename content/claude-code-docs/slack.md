@@ -2,7 +2,7 @@
 title: "Slack에서 Claude Code 사용하기"
 source: "https://code.claude.com/docs/en/slack"
 order: 36
-tags: ["플랫폼", "메신저"]
+tags: ["플랫폼", "메신저", "Slack"]
 ---
 
 # Slack에서 Claude Code 사용하기

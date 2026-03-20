@@ -2,7 +2,7 @@
 title: "개발 컨테이너(Devcontainer) — 안전하고 일관된 개발 환경"
 source: "https://code.claude.com/docs/en/devcontainer"
 order: 50
-tags: ["엔터프라이즈", "컨테이너", "기업·개발자"]
+tags: ["엔터프라이즈", "컨테이너", "기업·개발자", "Development containers"]
 ---
 
 # 개발 컨테이너(Devcontainer) — 안전하고 일관된 개발 환경

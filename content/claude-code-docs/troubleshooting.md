@@ -2,7 +2,7 @@
 title: "문제 해결 - Claude Code 오류와 해결책 완전 가이드"
 source: "https://code.claude.com/docs/en/troubleshooting"
 order: 60
-tags: ["참조", "문제해결"]
+tags: ["참조", "문제해결", "Troubleshooting"]
 ---
 
 # 문제 해결: Claude Code 오류와 해결책 완전 가이드

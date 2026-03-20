@@ -2,7 +2,7 @@
 title: "모델 구성 가이드: 어떤 AI 모델을 쓸지 선택하기"
 source: "https://code.claude.com/docs/en/model-config"
 order: 10
-tags: ["설정", "모델"]
+tags: ["설정", "모델", "Model configuration"]
 ---
 
 # 모델 구성 가이드: 어떤 AI 모델을 쓸지 선택하기

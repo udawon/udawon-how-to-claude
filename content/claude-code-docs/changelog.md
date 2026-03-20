@@ -2,7 +2,7 @@
 title: "변경 이력 - Claude Code 버전별 주요 업데이트"
 source: "https://code.claude.com/docs/en/changelog"
 order: 61
-tags: ["참조", "변경이력"]
+tags: ["참조", "변경이력", "Changelog"]
 ---
 
 # 변경 이력: Claude Code 버전별 주요 업데이트

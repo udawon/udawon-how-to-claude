@@ -2,7 +2,7 @@
 title: "Claude가 프로젝트를 기억하는 방법 (CLAUDE.md)"
 source: "https://code.claude.com/docs/en/memory"
 order: 17
-tags: ["커스터마이징", "CLAUDE.md"]
+tags: ["커스터마이징", "CLAUDE.md", "Memory"]
 ---
 
 # Claude가 프로젝트를 기억하는 방법

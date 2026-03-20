@@ -2,7 +2,7 @@
 title: "대화형 모드 — 단축키, 명령어, 입력 방식 완전 가이드"
 source: "https://code.claude.com/docs/en/interactive-mode"
 order: 4
-tags: ["시작하기", "단축키"]
+tags: ["시작하기", "단축키", "Interactive mode"]
 ---
 
 # 대화형 모드

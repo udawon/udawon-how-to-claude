@@ -2,7 +2,7 @@
 title: "원격 제어로 어디서든 Claude Code 사용하기"
 source: "https://code.claude.com/docs/en/remote-control"
 order: 37
-tags: ["플랫폼", "원격", "기업·개발자"]
+tags: ["플랫폼", "원격", "기업·개발자", "Remote Control"]
 ---
 
 # 원격 제어로 어디서든 Claude Code 사용하기

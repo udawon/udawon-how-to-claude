@@ -2,7 +2,7 @@
 title: "제로 데이터 보존 (ZDR) - 대화 내용을 서버에 남기지 않는 방법"
 source: "https://code.claude.com/docs/en/zero-data-retention"
 order: 56
-tags: ["보안", "데이터", "기업·개발자"]
+tags: ["보안", "데이터", "기업·개발자", "Zero data retention"]
 ---
 
 # 제로 데이터 보존(ZDR): 대화 내용을 서버에 남기지 않는 방법

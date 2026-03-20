@@ -2,7 +2,7 @@
 title: "OpenTelemetry 모니터링 — Claude Code 사용량 추적 및 관측"
 source: "https://code.claude.com/docs/en/monitoring-usage"
 order: 52
-tags: ["엔터프라이즈", "모니터링", "기업·개발자"]
+tags: ["엔터프라이즈", "모니터링", "기업·개발자", "Monitoring"]
 ---
 
 # OpenTelemetry 모니터링 — Claude Code 사용량 추적 및 관측

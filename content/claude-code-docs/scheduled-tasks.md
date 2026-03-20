@@ -2,7 +2,7 @@
 title: "예약 작업: 정해진 시간에 자동으로 실행하기"
 source: "https://code.claude.com/docs/en/scheduled-tasks"
 order: 41
-tags: ["자동화", "스케줄"]
+tags: ["자동화", "스케줄", "Scheduled tasks"]
 ---
 
 # 예약 작업: 정해진 시간에 자동으로 실행하기

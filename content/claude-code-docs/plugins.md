@@ -2,7 +2,7 @@
 title: "플러그인 만들기 — Claude Code를 나만의 도구로 확장하는 법"
 source: "https://code.claude.com/docs/en/plugins"
 order: 23
-tags: ["플러그인", "기업·개발자"]
+tags: ["플러그인", "기업·개발자", "Plugins"]
 ---
 
 # 플러그인 만들기

@@ -2,7 +2,7 @@
 title: "팀 사용량 분석 — Claude Code 활용 현황 파악하기"
 source: "https://code.claude.com/docs/en/analytics"
 order: 51
-tags: ["엔터프라이즈", "분석", "기업·개발자"]
+tags: ["엔터프라이즈", "분석", "기업·개발자", "Analytics"]
 ---
 
 # 팀 사용량 분석 — Claude Code 활용 현황 파악하기

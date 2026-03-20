@@ -2,7 +2,7 @@
 title: "서브 에이전트 — 특수 임무를 맡기는 전문 AI 조수"
 source: "https://code.claude.com/docs/en/sub-agents"
 order: 27
-tags: ["에이전트"]
+tags: ["에이전트", "Sub-agents"]
 ---
 
 # 서브 에이전트 (Sub-agents)

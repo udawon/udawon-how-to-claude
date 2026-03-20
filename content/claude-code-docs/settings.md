@@ -2,7 +2,7 @@
 title: "설정 가이드: Claude Code 내 마음대로 설정하기"
 source: "https://code.claude.com/docs/en/settings"
 order: 8
-tags: ["설정"]
+tags: ["설정", "Settings"]
 ---
 
 # 설정 가이드: Claude Code 내 마음대로 설정하기

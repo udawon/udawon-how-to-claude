@@ -2,7 +2,7 @@
 title: "Claude Code 데스크탑 앱 완전 가이드"
 source: "https://code.claude.com/docs/en/desktop"
 order: 32
-tags: ["플랫폼", "데스크탑"]
+tags: ["플랫폼", "데스크탑", "Desktop"]
 ---
 
 # Claude Code 데스크탑 앱 완전 가이드

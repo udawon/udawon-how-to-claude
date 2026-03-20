@@ -2,7 +2,7 @@
 title: "플러그인 마켓플레이스 탐색 및 설치 — 앱스토어처럼 Claude를 확장하기"
 source: "https://code.claude.com/docs/en/discover-plugins"
 order: 25
-tags: ["플러그인", "마켓플레이스"]
+tags: ["플러그인", "마켓플레이스", "Discover plugins"]
 ---
 
 # 플러그인 마켓플레이스 탐색 및 설치

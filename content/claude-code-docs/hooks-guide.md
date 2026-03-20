@@ -2,7 +2,7 @@
 title: "훅 가이드 - 워크플로우 자동화하기"
 source: "https://code.claude.com/docs/en/hooks-guide"
 order: 19
-tags: ["커스터마이징", "훅"]
+tags: ["커스터마이징", "훅", "Hooks guide"]
 ---
 
 # 훅 가이드: 워크플로우 자동화하기

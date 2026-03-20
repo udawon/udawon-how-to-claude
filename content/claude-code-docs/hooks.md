@@ -2,7 +2,7 @@
 title: "훅 레퍼런스 - 이벤트·설정·입출력 형식 완전 가이드"
 source: "https://code.claude.com/docs/en/hooks"
 order: 20
-tags: ["커스터마이징", "훅"]
+tags: ["커스터마이징", "훅", "Hooks reference"]
 ---
 
 # 훅 레퍼런스

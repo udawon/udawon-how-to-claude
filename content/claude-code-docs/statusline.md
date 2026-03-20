@@ -2,7 +2,7 @@
 title: "상태 표시줄 가이드: 화면 하단에 나만의 정보 패널 만들기"
 source: "https://code.claude.com/docs/en/statusline"
 order: 15
-tags: ["설정", "UI"]
+tags: ["설정", "UI", "Statusline"]
 ---
 
 # 상태 표시줄 가이드: 화면 하단에 나만의 정보 패널 만들기

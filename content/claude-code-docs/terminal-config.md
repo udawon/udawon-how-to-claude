@@ -2,7 +2,7 @@
 title: "터미널 구성 가이드: Claude Code가 더 편리해지는 터미널 설정"
 source: "https://code.claude.com/docs/en/terminal-config"
 order: 13
-tags: ["설정", "터미널"]
+tags: ["설정", "터미널", "Terminal config"]
 ---
 
 # 터미널 구성 가이드: Claude Code가 더 편리해지는 터미널 설정

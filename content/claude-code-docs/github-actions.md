@@ -2,7 +2,7 @@
 title: "GitHub Actions로 Claude 자동화하기"
 source: "https://code.claude.com/docs/en/github-actions"
 order: 38
-tags: ["CI/CD", "GitHub", "기업·개발자"]
+tags: ["CI/CD", "GitHub", "기업·개발자", "GitHub Actions"]
 ---
 
 # GitHub Actions로 Claude 자동화하기

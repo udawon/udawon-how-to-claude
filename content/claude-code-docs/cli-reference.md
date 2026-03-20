@@ -2,7 +2,7 @@
 title: "CLI 참조 - Claude Code 명령줄 완전 가이드"
 source: "https://code.claude.com/docs/en/cli-reference"
 order: 59
-tags: ["참조", "CLI"]
+tags: ["참조", "CLI", "CLI reference"]
 ---
 
 # CLI 참조: Claude Code 명령줄 완전 가이드

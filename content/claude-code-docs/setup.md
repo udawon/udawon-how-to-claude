@@ -2,7 +2,7 @@
 title: "고급 설치 가이드: Claude Code 설치 완전 정복"
 source: "https://code.claude.com/docs/en/setup"
 order: 7
-tags: ["설정", "설치"]
+tags: ["설정", "설치", "Setup"]
 ---
 
 # 고급 설치 가이드: Claude Code 설치 완전 정복

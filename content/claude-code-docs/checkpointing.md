@@ -2,7 +2,7 @@
 title: "체크포인트: 실수해도 되감기가 가능합니다"
 source: "https://code.claude.com/docs/en/checkpointing"
 order: 42
-tags: ["자동화", "체크포인트"]
+tags: ["자동화", "체크포인트", "Checkpointing"]
 ---
 
 # 체크포인트: 실수해도 되감기가 가능합니다

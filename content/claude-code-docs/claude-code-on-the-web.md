@@ -2,7 +2,7 @@
 title: "웹에서 Claude Code 사용하기"
 source: "https://code.claude.com/docs/en/claude-code-on-the-web"
 order: 34
-tags: ["플랫폼", "웹"]
+tags: ["플랫폼", "웹", "Claude Code on the web"]
 ---
 
 # 웹에서 Claude Code 사용하기

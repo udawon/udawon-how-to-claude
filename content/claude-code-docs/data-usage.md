@@ -2,7 +2,7 @@
 title: "데이터 사용 정책 - 내 코드와 대화는 어떻게 사용되나요?"
 source: "https://code.claude.com/docs/en/data-usage"
 order: 55
-tags: ["보안", "데이터"]
+tags: ["보안", "데이터", "Data usage"]
 ---
 
 # 데이터 사용 정책: 내 코드와 대화는 어떻게 사용되나요?

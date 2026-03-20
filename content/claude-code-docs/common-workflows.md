@@ -2,7 +2,7 @@
 title: "일반적인 워크플로우 — 실제로 자주 쓰는 작업 패턴"
 source: "https://code.claude.com/docs/en/common-workflows"
 order: 5
-tags: ["시작하기", "워크플로우"]
+tags: ["시작하기", "워크플로우", "Common workflows"]
 ---
 
 # 일반적인 워크플로우

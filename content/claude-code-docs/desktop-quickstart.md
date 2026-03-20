@@ -2,7 +2,7 @@
 title: "데스크탑 앱 빠른 시작 가이드"
 source: "https://code.claude.com/docs/en/desktop-quickstart"
 order: 33
-tags: ["플랫폼", "데스크탑"]
+tags: ["플랫폼", "데스크탑", "Desktop quickstart"]
 ---
 
 # 데스크탑 앱 빠른 시작 가이드

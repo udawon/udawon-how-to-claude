@@ -2,7 +2,7 @@
 title: "키보드 단축키 가이드: 나만의 단축키로 Claude Code 더 빠르게"
 source: "https://code.claude.com/docs/en/keybindings"
 order: 14
-tags: ["설정", "단축키"]
+tags: ["설정", "단축키", "Keybindings"]
 ---
 
 # 키보드 단축키 가이드: 나만의 단축키로 Claude Code 더 빠르게

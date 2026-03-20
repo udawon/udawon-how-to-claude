@@ -147,21 +147,52 @@ grep -h "^order:" content/claude-docs/*.md 2>/dev/null | sort -t: -k2 -n | tail 
 | 정보 부족 | 확인된 내용만으로 문서 작성, 부족한 부분 명시 |
 | content/claude-docs/ 디렉토리 없음 | `mkdir -p content/claude-docs` 자동 생성 후 진행 |
 
-## 파일 저장 위치
+## 파일 저장 위치 (소스에 따라 자동 분기)
 
+문서의 **정보 소스**에 따라 저장 폴더가 결정된다. 이 규칙은 반드시 따른다:
+
+| 소스 URL/출처 | 저장 위치 | 사이트 카테고리 |
+|--------------|----------|---------------|
+| `https://code.claude.com/docs/...` | `content/claude-code-docs/` | 공식 문서 한국어판 |
+| `https://docs.anthropic.com/...` | `content/claude-code-docs/` | 공식 문서 한국어판 |
+| 그 외 웹 검색, 블로그, 일반 주제 | `content/claude-docs/` | claude-docs |
+
+**핵심 규칙**: `code.claude.com/docs/` 또는 `docs.anthropic.com/`에서 파생된 문서는 **반드시 `content/claude-code-docs/`에 저장**한다. 이 폴더가 사이트의 "공식 문서 한국어판" 카테고리에 매핑되어 있기 때문이다.
+
+### order 값 결정
+
+저장 폴더에 따라 해당 폴더의 최대 order 값을 확인한다:
+
+```bash
+# 공식 문서 소스인 경우
+grep -h "^order:" content/claude-code-docs/*.md 2>/dev/null | sort -t: -k2 -n | tail -1
+
+# 그 외 소스인 경우
+grep -h "^order:" content/claude-docs/*.md 2>/dev/null | sort -t: -k2 -n | tail -1
 ```
-content/claude-docs/{kebab-case-파일명}.md
+
+기존 문서가 없으면 order: 1부터 시작. 있으면 최대값 + 1.
+
+### 중복 검사 범위
+
+저장 폴더에 따라 중복 검사 대상도 달라진다:
+
+```bash
+# 공식 문서 소스인 경우 — claude-code-docs + youtube-update 모두 검사
+grep -rl "{핵심키워드}" content/claude-code-docs/ content/youtube-update/ 2>/dev/null
+
+# 그 외 소스인 경우 — claude-docs + youtube-update 모두 검사
+grep -rl "{핵심키워드}" content/claude-docs/ content/youtube-update/ 2>/dev/null
 ```
 
 ## 기존 /updateyoutube와의 관계
 
-| 항목 | /updateyoutube | /updatedocs |
-|------|---------------|-------------|
-| 소스 | YouTube 영상 | 웹 검색 + 공식 문서 |
-| 트리거 | 자동 검색 또는 URL | 사용자 주제 지정 |
-| 저장 위치 | `content/youtube-update/` | `content/claude-docs/` |
-| 필수 태그 | `youtube` | `claude-docs` |
-| 문서 형식 | 동일 (8섹션 구조) | 동일 (8섹션 구조) |
-| 대상 독자 | 동일 (비개발자) | 동일 (비개발자) |
+| 항목 | /updateyoutube | /updatedocs (공식 문서) | /updatedocs (그 외) |
+|------|---------------|----------------------|-------------------|
+| 소스 | YouTube 영상 | code.claude.com, docs.anthropic.com | 웹 검색, 블로그 등 |
+| 저장 위치 | `content/youtube-update/` | `content/claude-code-docs/` | `content/claude-docs/` |
+| 사이트 카테고리 | 유튜브 업데이트 | 공식 문서 한국어판 | claude-docs |
+| 필수 태그 | `youtube` | 기존 문서 태그 스타일 따름 | `claude-docs` |
+| 문서 형식 | 동일 (8섹션 구조) | 동일 (8섹션 구조) | 동일 (8섹션 구조) |
 
-두 스킬은 소스가 다를 뿐 같은 품질 기준과 문서 형식을 공유한다. 중복 검사 시 양쪽 폴더를 모두 확인하여 같은 주제가 이중으로 문서화되지 않도록 한다.
+세 경로 모두 같은 품질 기준과 문서 형식을 공유한다. 중복 검사 시 관련 폴더를 모두 확인하여 같은 주제가 이중으로 문서화되지 않도록 한다.

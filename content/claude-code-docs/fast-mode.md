@@ -2,7 +2,7 @@
 title: "빠른 모드 가이드: Opus를 2.5배 빠르게 사용하기"
 source: "https://code.claude.com/docs/en/fast-mode"
 order: 11
-tags: ["설정", "빠른모드"]
+tags: ["설정", "빠른모드", "Fast mode"]
 ---
 
 # 빠른 모드 가이드: Opus를 2.5배 빠르게 사용하기

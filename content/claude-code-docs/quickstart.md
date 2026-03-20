@@ -2,7 +2,7 @@
 title: "빠른 시작 — 처음 Claude Code 사용해보기"
 source: "https://code.claude.com/docs/en/quickstart"
 order: 2
-tags: ["시작하기", "설치"]
+tags: ["시작하기", "설치", "Quickstart"]
 ---
 
 # 빠른 시작

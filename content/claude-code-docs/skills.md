@@ -2,7 +2,7 @@
 title: "스킬 (커스텀 명령어) - Claude의 능력 확장하기"
 source: "https://code.claude.com/docs/en/skills"
 order: 18
-tags: ["커스터마이징", "스킬"]
+tags: ["커스터마이징", "스킬", "Skills"]
 ---
 
 # 스킬: Claude의 능력 확장하기

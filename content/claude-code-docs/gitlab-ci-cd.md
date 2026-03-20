@@ -2,7 +2,7 @@
 title: "GitLab CI/CD로 Claude 자동화하기"
 source: "https://code.claude.com/docs/en/gitlab-ci-cd"
 order: 39
-tags: ["CI/CD", "GitLab", "기업·개발자"]
+tags: ["CI/CD", "GitLab", "기업·개발자", "GitLab CI/CD"]
 ---
 
 # GitLab CI/CD로 Claude 자동화하기

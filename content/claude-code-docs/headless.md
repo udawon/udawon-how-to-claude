@@ -2,7 +2,7 @@
 title: "프로그래밍 방식 실행 (Headless 모드) — 스크립트와 자동화에서 Claude 활용하기"
 source: "https://code.claude.com/docs/en/headless"
 order: 29
-tags: ["에이전트", "자동화", "기업·개발자"]
+tags: ["에이전트", "자동화", "기업·개발자", "Headless mode"]
 ---
 
 # 프로그래밍 방식 실행 (Headless 모드)

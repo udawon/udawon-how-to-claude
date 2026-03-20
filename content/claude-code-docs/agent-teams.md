@@ -2,7 +2,7 @@
 title: "에이전트 팀 — 여러 Claude 인스턴스가 함께 일하는 협업 모드"
 source: "https://code.claude.com/docs/en/agent-teams"
 order: 28
-tags: ["에이전트", "팀"]
+tags: ["에이전트", "팀", "Agent teams"]
 ---
 
 # 에이전트 팀 (Agent Teams)

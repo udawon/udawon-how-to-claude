@@ -2,7 +2,7 @@
 title: "인증 가이드: Claude Code에 로그인하고 팀 설정하기"
 source: "https://code.claude.com/docs/en/authentication"
 order: 12
-tags: ["설정", "인증"]
+tags: ["설정", "인증", "Authentication"]
 ---
 
 # 인증 가이드: Claude Code에 로그인하고 팀 설정하기

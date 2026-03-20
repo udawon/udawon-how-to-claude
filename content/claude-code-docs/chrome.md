@@ -2,7 +2,7 @@
 title: "Chrome 브라우저와 Claude Code 연동하기"
 source: "https://code.claude.com/docs/en/chrome"
 order: 35
-tags: ["플랫폼", "브라우저"]
+tags: ["플랫폼", "브라우저", "Chrome"]
 ---
 
 # Chrome 브라우저와 Claude Code 연동하기

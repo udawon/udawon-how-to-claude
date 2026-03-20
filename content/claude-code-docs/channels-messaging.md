@@ -1,10 +1,8 @@
 ---
-date: "2026-03-20"
 title: "Channels — 텔레그램·디스코드로 Claude Code에 메시지 보내기"
-description: "자리를 비운 사이에도 텔레그램이나 디스코드로 Claude Code 세션에 지시를 보내고 답변을 받는 방법"
-order: 2
-tags: ["연동", "자동화", "활용법", "claude-docs"]
-source_url: "https://code.claude.com/docs/en/channels"
+source: "https://code.claude.com/docs/en/channels"
+order: 62
+tags: ["연동", "자동화", "Channels"]
 ---
 
 ## 이게 뭔가요?

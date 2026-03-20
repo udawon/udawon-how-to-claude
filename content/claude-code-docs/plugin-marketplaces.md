@@ -2,7 +2,7 @@
 title: "플러그인 마켓플레이스 만들기 — 팀과 커뮤니티에 플러그인 배포하기"
 source: "https://code.claude.com/docs/en/plugin-marketplaces"
 order: 26
-tags: ["플러그인", "마켓플레이스", "기업·개발자"]
+tags: ["플러그인", "마켓플레이스", "기업·개발자", "Plugin marketplaces"]
 ---
 
 # 플러그인 마켓플레이스 만들기

@@ -2,7 +2,7 @@
 title: "권한 설정 가이드: Claude가 무엇을 할 수 있는지 정하기"
 source: "https://code.claude.com/docs/en/permissions"
 order: 9
-tags: ["설정", "권한"]
+tags: ["설정", "권한", "Permissions"]
 ---
 
 # 권한 설정 가이드: Claude가 무엇을 할 수 있는지 정하기

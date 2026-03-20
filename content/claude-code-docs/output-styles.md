@@ -2,7 +2,7 @@
 title: "출력 스타일 가이드: Claude의 대답 방식 바꾸기"
 source: "https://code.claude.com/docs/en/output-styles"
 order: 16
-tags: ["설정", "출력"]
+tags: ["설정", "출력", "Output styles"]
 ---
 
 # 출력 스타일 가이드: Claude의 대답 방식 바꾸기

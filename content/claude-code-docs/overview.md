@@ -2,7 +2,7 @@
 title: "Claude Code 개요 — AI 코딩 도우미 입문"
 source: "https://code.claude.com/docs/en/overview"
 order: 1
-tags: ["시작하기", "개요"]
+tags: ["시작하기", "개요", "Overview"]
 ---
 
 # Claude Code 개요

@@ -2,7 +2,7 @@
 title: "비용 관리 - Claude Code 사용 비용을 줄이는 방법"
 source: "https://code.claude.com/docs/en/costs"
 order: 58
-tags: ["참조", "비용"]
+tags: ["참조", "비용", "Costs"]
 ---
 
 # 비용 관리: Claude Code 사용 비용을 줄이는 방법

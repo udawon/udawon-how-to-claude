@@ -2,7 +2,7 @@
 title: "모범 사례 — Claude Code를 제대로 활용하는 법"
 source: "https://code.claude.com/docs/en/best-practices"
 order: 6
-tags: ["시작하기", "모범사례"]
+tags: ["시작하기", "모범사례", "Best practices"]
 ---
 
 # 모범 사례

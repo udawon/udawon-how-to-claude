@@ -2,7 +2,7 @@
 title: "Amazon Bedrock로 Claude Code 사용하기"
 source: "https://code.claude.com/docs/en/amazon-bedrock"
 order: 43
-tags: ["엔터프라이즈", "AWS", "기업·개발자"]
+tags: ["엔터프라이즈", "AWS", "기업·개발자", "Amazon Bedrock"]
 ---
 
 # Amazon Bedrock로 Claude Code 사용하기

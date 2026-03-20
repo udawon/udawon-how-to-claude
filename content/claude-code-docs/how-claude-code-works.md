@@ -2,7 +2,7 @@
 title: "Claude Code 작동 원리 — AI가 실제로 어떻게 코딩하는가"
 source: "https://code.claude.com/docs/en/how-claude-code-works"
 order: 3
-tags: ["시작하기", "작동원리"]
+tags: ["시작하기", "작동원리", "How Claude Code works"]
 ---
 
 # Claude Code 작동 원리

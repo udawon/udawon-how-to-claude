@@ -2,7 +2,7 @@
 title: "VS Code에서 Claude Code 사용하기"
 source: "https://code.claude.com/docs/en/vs-code"
 order: 30
-tags: ["플랫폼", "IDE"]
+tags: ["플랫폼", "IDE", "VS Code"]
 ---
 
 # VS Code에서 Claude Code 사용하기

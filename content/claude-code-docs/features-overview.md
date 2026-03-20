@@ -2,7 +2,7 @@
 title: "확장 기능 완전 비교 - CLAUDE.md, 스킬, MCP, 훅, 서브에이전트"
 source: "https://code.claude.com/docs/en/features-overview"
 order: 22
-tags: ["커스터마이징", "비교"]
+tags: ["커스터마이징", "비교", "Extend Claude Code"]
 ---
 
 # 확장 기능 완전 비교 가이드
