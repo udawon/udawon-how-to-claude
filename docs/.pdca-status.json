@@ -1,9 +1,10 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-03-15T23:53:51.752Z",
+  "lastUpdated": "2026-03-19T06:19:54.805Z",
   "activeFeatures": [
     "how-to-claude",
-    "[slug]"
+    "[slug]",
+    "[category]"
   ],
   "primaryFeature": "how-to-claude",
   "features": {
@@ -16,9 +17,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-15T23:37:37.577Z",
-        "lastUpdated": "2026-03-15T23:53:51.752Z"
+        "lastUpdated": "2026-03-19T06:19:54.805Z"
       },
-      "lastFile": "C:/Users/udawon/project/how-to-claude/src/components/MermaidInit.tsx"
+      "lastFile": "C:/Users/udawon/project/how-to-claude/src/lib/docs.ts"
     },
     "[slug]": {
       "phase": "do",
@@ -32,6 +33,19 @@
         "lastUpdated": "2026-03-15T23:38:18.652Z"
       },
       "lastFile": "C:/Users/udawon/project/how-to-claude/src/app/docs/[category]/[slug]/page.tsx"
+    },
+    "[category]": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-17T23:49:54.765Z",
+        "lastUpdated": "2026-03-17T23:49:54.765Z"
+      },
+      "lastFile": "C:\\Users\\udawon\\project\\how-to-claude\\src\\app\\docs\\[category]\\page.tsx"
     }
   },
   "pipeline": {
@@ -42,7 +56,7 @@
   "session": {
     "startedAt": "2026-03-12T11:45:23.479Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-03-15T23:53:51.752Z"
+    "lastActivity": "2026-03-19T06:19:54.805Z"
   },
   "history": [
     {
@@ -107,6 +121,36 @@
     },
     {
       "timestamp": "2026-03-15T23:53:51.752Z",
+      "feature": "how-to-claude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-17T23:49:39.659Z",
+      "feature": "how-to-claude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-17T23:49:45.748Z",
+      "feature": "how-to-claude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-17T23:49:54.765Z",
+      "feature": "[category]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-17T23:52:55.516Z",
+      "feature": "how-to-claude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-19T06:19:54.805Z",
       "feature": "how-to-claude",
       "phase": "do",
       "action": "updated"
