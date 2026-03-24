@@ -39,13 +39,19 @@ function formatUpdatedAt(iso: string): string {
   }
 }
 
+const PAGE_SIZE = 20;
+
 export function RankingTabs({ tabs, updatedAt }: RankingTabsProps) {
   const [activeTab, setActiveTab] = useState(tabs[0]?.key ?? "");
   const [sort, setSort] = useState<SortKey>("popular");
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [openRepo, setOpenRepo] = useState<string | null>(null);
 
   const current = tabs.find((t) => t.key === activeTab);
-  const items = current ? sortItems(current.items, sort) : [];
-  const isEmpty = items.length === 0;
+  const allItems = current ? sortItems(current.items, sort) : [];
+  const items = allItems.slice(0, visibleCount);
+  const isEmpty = allItems.length === 0;
+  const hasMore = visibleCount < allItems.length;
 
   return (
     <div>
@@ -55,7 +61,7 @@ export function RankingTabs({ tabs, updatedAt }: RankingTabsProps) {
           {tabs.map((tab) => (
             <button
               key={tab.key}
-              onClick={() => setActiveTab(tab.key)}
+              onClick={() => { setActiveTab(tab.key); setVisibleCount(PAGE_SIZE); setOpenRepo(null); }}
               className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all duration-150 ${
                 activeTab === tab.key
                   ? "bg-[var(--bg-surface)] text-[var(--text-primary)] shadow-sm border border-[var(--border)]"
@@ -77,7 +83,7 @@ export function RankingTabs({ tabs, updatedAt }: RankingTabsProps) {
           {(["popular", "recent"] as SortKey[]).map((s) => (
             <button
               key={s}
-              onClick={() => setSort(s)}
+              onClick={() => { setSort(s); setVisibleCount(PAGE_SIZE); setOpenRepo(null); }}
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-150 ${
                 sort === s
                   ? "bg-[var(--bg-surface)] text-[var(--text-primary)] shadow-sm border border-[var(--border)]"
@@ -116,9 +122,24 @@ export function RankingTabs({ tabs, updatedAt }: RankingTabsProps) {
       ) : (
         <div className="flex flex-col gap-2">
           {items.map((item) => (
-            <RankingCard key={item.repo} item={item} />
+            <RankingCard
+              key={item.repo}
+              item={item}
+              isOpen={openRepo === item.repo}
+              onToggle={() => setOpenRepo(openRepo === item.repo ? null : item.repo)}
+            />
           ))}
         </div>
+      )}
+
+      {/* 더 보기 */}
+      {hasMore && (
+        <button
+          onClick={() => setVisibleCount((n) => n + PAGE_SIZE)}
+          className="mt-4 w-full py-2.5 rounded-xl border border-[var(--border)] text-sm text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:border-[var(--accent)] hover:bg-[var(--bg-hover)] transition-all duration-150"
+        >
+          더 보기 ({allItems.length - visibleCount}개 남음)
+        </button>
       )}
 
       {/* 업데이트 시각 */}

@@ -2,10 +2,11 @@ export interface RankingItem {
   rank: number;
   name: string;
   repo: string;
-  stars: number;       // MCP: useCount(실사용량) / Skills: 0
+  stars: number;       // Skills: GitHub externalStars / MCP: useCount(실사용량)
   description: string;
   koreanDesc: string;
-  url: string;
+  url: string;         // Smithery URL
+  githubUrl?: string | null; // Skills 전용: GitHub 레포 URL
   isOfficial: boolean;
   updatedAt: string;
   installCommand?: string;

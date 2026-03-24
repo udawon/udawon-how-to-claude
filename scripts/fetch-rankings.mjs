@@ -96,6 +96,12 @@ async function fetchMcp() {
     .slice(0, LIMIT);
 }
 
+// ── GitHub URL (gitUrl 그대로 사용) ───────────────────────────────
+function toGithubRepoUrl(gitUrl) {
+  if (!gitUrl || !gitUrl.includes("github.com")) return null;
+  return gitUrl;
+}
+
 // ── 매핑 함수 ─────────────────────────────────────────────────────
 function mapSkills(items, cache) {
   return items.map((it, i) => {
@@ -104,10 +110,11 @@ function mapSkills(items, cache) {
       rank: i + 1,
       name: it.displayName || it.slug,
       repo,
-      stars: 0,
+      stars: it.externalStars || 0,
       description: it.description || "",
       koreanDesc: cache.get(repo) || "",
       url: `https://smithery.ai/skills/${it.namespace}/${it.slug}`,
+      githubUrl: toGithubRepoUrl(it.gitUrl),
       isOfficial: it.namespace === "anthropics" || it.verified === true,
       updatedAt: it.createdAt?.split("T")[0] || "",
       installCommand: "",
