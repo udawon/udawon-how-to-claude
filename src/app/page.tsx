@@ -122,6 +122,39 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 도구 탐색기 */}
+      <section className="max-w-6xl mx-auto px-5 sm:px-8 pb-14 w-full">
+        <div className="flex items-center gap-3 mb-1">
+          <ClaudeCharacter pose="search" size={36} />
+          <h2 className="section-label !mb-0">도구 탐색기</h2>
+        </div>
+        <Link
+          href="/discover"
+          className="card-hover group rounded-xl p-5 flex items-center justify-between"
+        >
+          <div className="flex items-center gap-4">
+            <div className="icon-box">
+              <Icon name="search" className="w-[18px] h-[18px]" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-[15px] text-[var(--text-primary)]">
+                Claude Code 스킬 & MCP 랭킹
+              </h3>
+              <p className="text-sm text-[var(--text-muted)] mt-0.5">
+                Smithery 기반 매일 자동 업데이트 · 스킬 100개 · MCP 100개
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="count-badge">200</span>
+            <Icon
+              name="arrow"
+              className="w-4 h-4 text-[var(--text-muted)] transition-transform duration-150 group-hover:translate-x-0.5"
+            />
+          </div>
+        </Link>
+      </section>
+
       {/* 유튜브 업데이트 */}
       <section className="max-w-6xl mx-auto px-5 sm:px-8 pb-14 w-full">
         <div className="flex items-center gap-3 mb-1">
