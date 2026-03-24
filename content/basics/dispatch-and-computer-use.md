@@ -2,8 +2,8 @@
 date: "2026-03-24"
 title: "Dispatch & Computer Use — Claude가 내 컴퓨터를 대신 조작하고, 폰에서 지시하는 기능"
 description: "Claude Cowork과 Claude Code에서 Claude가 마우스·키보드를 직접 조작하고, Dispatch로 스마트폰에서 원격 지시하는 신기능 안내"
-order: 2
-tags: ["신기능", "업데이트", "자동화", "활용법", "claude-docs"]
+order: 10
+tags: ["신기능", "업데이트", "자동화", "활용법"]
 source_url: "https://claude.com/blog/dispatch-and-computer-use"
 ---
 
