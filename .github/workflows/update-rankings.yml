@@ -1,0 +1,32 @@
+name: Update Rankings
+
+on:
+  schedule:
+    - cron: '0 15 * * *'  # 매일 00:00 KST (UTC+9)
+  workflow_dispatch:        # 수동 실행
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: GitHub API에서 랭킹 수집
+        run: node scripts/fetch-rankings.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 변경사항 커밋 및 푸시
+        run: |
+          git config user.email "bot@github.com"
+          git config user.name "Rankings Bot"
+          git add data/rankings.json
+          git diff --staged --quiet || git commit -m "data: 랭킹 업데이트 $(date +%Y-%m-%d)"
+          git push
