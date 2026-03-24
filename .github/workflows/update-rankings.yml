@@ -18,10 +18,8 @@ jobs:
         with:
           node-version: '20'
 
-      - name: GitHub API에서 랭킹 수집
+      - name: 랭킹 데이터 수집
         run: node scripts/fetch-rankings.mjs
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 변경사항 커밋 및 푸시
         run: |

@@ -6,8 +6,6 @@ const EMPTY_DATA: RankingsData = {
   updatedAt: "",
   skills: [],
   mcp: [],
-  plugins: [],
-  marketplaces: [],
 };
 
 export function getRankings(): RankingsData {

@@ -18,19 +18,18 @@ const VALID_DATA = {
   skills: [
     {
       rank: 1,
-      name: "frontend-design",
-      repo: "owner/frontend-design",
-      stars: 1000,
-      description: "test",
+      name: "pdf",
+      repo: "anthropics/pdf",
+      stars: 0,
+      description: "PDF manipulation",
       koreanDesc: "",
-      url: "https://github.com/owner/frontend-design",
-      isOfficial: false,
+      url: "https://smithery.ai/skills/anthropics/pdf",
+      isOfficial: true,
       updatedAt: "2026-03-24",
+      qualityScore: 0.978,
     },
   ],
   mcp: [],
-  plugins: [],
-  marketplaces: [],
 };
 
 describe("getRankings", () => {
@@ -52,8 +51,6 @@ describe("getRankings", () => {
 
     expect(result.skills).toEqual([]);
     expect(result.mcp).toEqual([]);
-    expect(result.plugins).toEqual([]);
-    expect(result.marketplaces).toEqual([]);
     expect(result.updatedAt).toBe("");
   });
 
@@ -65,8 +62,9 @@ describe("getRankings", () => {
 
     expect(result.updatedAt).toBe("2026-03-25T00:00:00Z");
     expect(result.skills).toHaveLength(1);
-    expect(result.skills[0].name).toBe("frontend-design");
-    expect(result.skills[0].stars).toBe(1000);
+    expect(result.skills[0].name).toBe("pdf");
+    expect(result.skills[0].qualityScore).toBeCloseTo(0.978);
+    expect(result.skills[0].isOfficial).toBe(true);
   });
 
   it("JSON 파싱 실패 시 빈 데이터 반환 (크래시 없음)", async () => {
@@ -79,8 +77,8 @@ describe("getRankings", () => {
     expect(result.updatedAt).toBe("");
   });
 
-  it("빈 카테고리가 있어도 정상 반환", async () => {
-    const data = { ...VALID_DATA, mcp: [], plugins: [], marketplaces: [] };
+  it("mcp가 비어도 정상 반환", async () => {
+    const data = { ...VALID_DATA, mcp: [] };
     mockReadFileSync.mockReturnValue(JSON.stringify(data));
 
     const getRankings = await loadRankings();
@@ -90,7 +88,7 @@ describe("getRankings", () => {
     expect(result.skills).toHaveLength(1);
   });
 
-  it("반환값에 모든 카테고리 키가 존재", async () => {
+  it("반환값에 skills, mcp, updatedAt 키가 존재", async () => {
     mockReadFileSync.mockImplementation(() => {
       throw new Error("ENOENT");
     });
@@ -100,8 +98,6 @@ describe("getRankings", () => {
 
     expect(result).toHaveProperty("skills");
     expect(result).toHaveProperty("mcp");
-    expect(result).toHaveProperty("plugins");
-    expect(result).toHaveProperty("marketplaces");
     expect(result).toHaveProperty("updatedAt");
   });
 });

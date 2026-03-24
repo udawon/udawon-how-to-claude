@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Claude Code 도구 탐색기 | How to Claude",
-  description: "GitHub 기반으로 매일 자동 업데이트되는 Claude Code 스킬, MCP, 플러그인, 마켓플레이스 랭킹",
+  description: "Smithery 기반으로 매일 자동 업데이트되는 Claude Code 스킬 & MCP 서버 랭킹",
 };
 
 export const revalidate = 3600; // ISR: 1시간마다 재생성
@@ -18,8 +18,6 @@ export default function DiscoverPage() {
   const tabs = [
     { key: "skills", label: "스킬", items: data.skills },
     { key: "mcp", label: "MCP", items: data.mcp },
-    { key: "plugins", label: "플러그인", items: data.plugins },
-    { key: "marketplaces", label: "마켓플레이스", items: data.marketplaces },
   ];
 
   return (
@@ -45,7 +43,7 @@ export default function DiscoverPage() {
             Claude Code 도구 탐색기
           </h1>
           <p className="text-sm text-[var(--text-secondary)]">
-            GitHub 토픽 기반으로 매일 자동 수집되는 인기 도구 랭킹
+            Smithery 기반으로 매일 자동 수집 · 스킬 품질점수 · MCP 실사용량 순위
           </p>
         </div>
 
