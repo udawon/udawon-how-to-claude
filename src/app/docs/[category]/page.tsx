@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { categories, getDocsByCategory, DocMeta } from "@/lib/docs";
+import { categories, getDocsByCategory, getHiddenDocSlugs, DocMeta } from "@/lib/docs";
 import { Icon } from "@/components/Icons";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ClaudeCharacter } from "@/components/ClaudeCharacter";
+
+export const dynamic = "force-dynamic";
 
 interface Props {
   params: Promise<{ category: string }>;
@@ -103,7 +105,11 @@ export default async function CategoryPage({ params }: Props) {
     notFound();
   }
 
-  const docs = getDocsByCategory(category);
+  const [allDocs, hiddenSlugs] = await Promise.all([
+    Promise.resolve(getDocsByCategory(category)),
+    getHiddenDocSlugs(),
+  ]);
+  const docs = allDocs.filter((doc) => !hiddenSlugs.has(`${category}/${doc.slug}`));
   const isOfficialDocs = category === "claude-code-docs";
   const isYoutubeDocs = category === "youtube-update";
   const hasSections = isOfficialDocs || isYoutubeDocs;

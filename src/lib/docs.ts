@@ -229,6 +229,34 @@ export async function getDoc(
   };
 }
 
+// 숨긴 문서 슬러그 목록 가져오기 (Supabase)
+export async function getHiddenDocSlugs(): Promise<Set<string>> {
+  const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const SUPABASE_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!SUPABASE_URL || !SUPABASE_KEY) return new Set();
+
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/hidden_docs?select=category,slug`,
+      {
+        headers: {
+          apikey: SUPABASE_KEY,
+          Authorization: `Bearer ${SUPABASE_KEY}`,
+        },
+        cache: "no-store",
+      }
+    );
+    const data = await res.json();
+    if (!Array.isArray(data)) return new Set();
+    return new Set(
+      data.map((d: { category: string; slug: string }) => `${d.category}/${d.slug}`)
+    );
+  } catch {
+    return new Set();
+  }
+}
+
 // 검색 기능
 export function searchDocs(query: string): DocMeta[] {
   const allDocs = getAllDocs();

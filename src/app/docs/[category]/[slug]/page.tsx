@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { categories, getDocsByCategory, getDoc } from "@/lib/docs";
+import { categories, getDocsByCategory, getDoc, getHiddenDocSlugs } from "@/lib/docs";
 import { Icon } from "@/components/Icons";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ClaudeCharacter } from "@/components/ClaudeCharacter";
 import { MermaidInit } from "@/components/MermaidInit";
+import { DeleteDocButton } from "@/components/DeleteDocButton";
+
+export const dynamic = "force-dynamic";
 
 interface Props {
   params: Promise<{ category: string; slug: string }>;
@@ -26,6 +29,9 @@ export default async function DocPage({ params }: Props) {
 
   const doc = await getDoc(category, slug);
   if (!doc) notFound();
+
+  const hiddenSlugs = await getHiddenDocSlugs();
+  if (hiddenSlugs.has(`${category}/${slug}`)) notFound();
 
   const siblingDocs = getDocsByCategory(category);
 
@@ -124,9 +130,10 @@ export default async function DocPage({ params }: Props) {
               <Icon name="back" className="w-3.5 h-3.5" />
               {cat.title} 목록으로
             </Link>
-            <div className="flex items-center gap-2 text-xs text-[var(--text-muted)]">
+            <div className="flex items-center gap-3 text-xs text-[var(--text-muted)]">
               <ClaudeCharacter pose="love" size={28} />
               도움이 되셨나요?
+              <DeleteDocButton category={category} slug={slug} />
             </div>
           </div>
         </main>
