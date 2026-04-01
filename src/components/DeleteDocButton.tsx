@@ -56,14 +56,15 @@ export function DeleteDocButton({ category, slug }: Props) {
       {open && (
         <div
           className="fixed inset-0 flex items-center justify-center z-50"
-          style={{ background: "rgba(0,0,0,0.5)" }}
+          style={{ background: "rgba(0,0,0,0.75)" }}
           onClick={(e) => e.target === e.currentTarget && handleClose()}
         >
           <div
-            className="rounded-2xl p-6 w-full max-w-sm mx-4 shadow-xl"
+            className="rounded-2xl p-6 w-full max-w-sm mx-4 shadow-2xl"
             style={{
-              background: "var(--bg-secondary)",
+              background: "var(--bg-primary)",
               border: "1px solid var(--border)",
+              isolation: "isolate",
             }}
           >
             <h3 className="font-semibold text-[var(--text-primary)] mb-1">
