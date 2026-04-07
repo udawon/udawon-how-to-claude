@@ -46,7 +46,7 @@ def load_api_key():
     key = os.environ.get("YOUTUBE_API_KEY")
     if key:
         return key
-    env_path = Path(__file__).parent.parent / ".env.local"
+    env_path = Path(__file__).parent / ".env.local"
     if env_path.exists():
         for line in env_path.read_text(encoding="utf-8").splitlines():
             line = line.strip()
