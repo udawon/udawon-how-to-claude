@@ -55,7 +55,7 @@ function rehypeRewriteLinks(categorySlug: string) {
       }
 
       // 패턴 3: /workflow/xxx 등 /docs 접두사 누락 → /docs/workflow/xxx
-      if (newHref.match(/^\/(basics|workflow|tips|config|troubleshooting|quick-start|claude-code-docs|youtube-update)\//)) {
+      if (newHref.match(/^\/(basics|workflow|tips|config|troubleshooting|quick-start|claude-code-docs|youtube-update|github-update)\//)) {
         newHref = `/docs${newHref}`;
       }
 
@@ -132,6 +132,13 @@ export const categories: Category[] = [
     description: "YouTube 영상에서 발굴한 최신 Claude Code 활용법과 팁",
     icon: "video",
     order: 8,
+  },
+  {
+    slug: "github-update",
+    title: "GitHub 트렌딩",
+    description: "이번 주 GitHub에서 가장 주목받은 오픈소스 프로젝트 분석",
+    icon: "github",
+    order: 9,
   },
 ];
 
