@@ -1,0 +1,35 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e5]: 약문약답
+    - generic [ref=e6]: 06 · 06
+  - generic [ref=e7]:
+    - generic [ref=e8]: 📋 오늘의 핵심 요약
+    - generic [ref=e9]:
+      - text: 감기약 복용 전
+      - text: 5가지 체크리스트
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - generic [ref=e12]: ✅
+        - generic [ref=e13]:
+          - generic [ref=e14]: 중복 성분 확인
+          - generic [ref=e15]: 아세트아미노펜 이중 복용 주의
+      - generic [ref=e16]:
+        - generic [ref=e17]: ✅
+        - generic [ref=e18]:
+          - generic [ref=e19]: 복용 간격 4시간 이상
+          - generic [ref=e20]: 계열별 최소 간격 준수
+      - generic [ref=e21]:
+        - generic [ref=e22]: ✅
+        - generic [ref=e23]:
+          - generic [ref=e24]: 이부프로펜은 식후 복용
+          - generic [ref=e25]: 위장 보호를 위해
+      - generic [ref=e26]:
+        - generic [ref=e27]: ✅
+        - generic [ref=e28]:
+          - generic [ref=e29]: 음주 중 복용 금지
+          - generic [ref=e30]: 24시간 이상 간격 필수
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - text: 약이 궁금할 때
+        - text: 약문약답 약사에게 물어보세요
+      - generic [ref=e33]: 바로가기 →

@@ -1,0 +1,31 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e7]: 약문약답
+    - generic [ref=e8]: 05 · 06
+  - generic [ref=e9]:
+    - generic [ref=e10]:
+      - generic [ref=e11]: "4"
+      - text: 꼭 지켜야 할 주의사항
+    - generic [ref=e12]:
+      - text: 음주 중 감기약,
+      - text: 절대 안 됩니다
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e15]: 🚨
+        - generic [ref=e16]: 술 + 감기약 = 위험 조합
+      - generic [ref=e17]:
+        - text: 알코올이 약물 대사를 방해해
+        - text: 독성이 크게 높아집니다.
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - generic [ref=e20]: 🍺
+          - generic [ref=e21]: 아세트아미노펜 + 음주 → 간 손상 위험
+        - generic [ref=e22]:
+          - generic [ref=e23]: 😴
+          - generic [ref=e24]: 항히스타민제 + 음주 → 과도한 졸음
+        - generic [ref=e25]:
+          - generic [ref=e26]: ⏱️
+          - generic [ref=e27]: 음주 후 최소 24시간 후 복용
+  - generic [ref=e28]:
+    - generic [ref=e29]: 약문약답
+    - generic [ref=e30]: 똑똑한 약사의 파트너

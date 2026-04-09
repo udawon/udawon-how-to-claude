@@ -1,0 +1,16 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e5]:
+    - generic [ref=e8]: 약문약답
+    - generic [ref=e9]: 01 · 06
+  - generic [ref=e10]:
+    - generic [ref=e12]: 💊 약물 안전 정보
+    - generic [ref=e13]:
+      - text: 감기약 복용 전
+      - text: 꼭 확인해야 할
+      - text: 5가지
+    - generic [ref=e15]:
+      - text: 약사가 직접 알려드리는
+      - text: 안전한 감기약 복용 가이드
+  - generic [ref=e16]:
+    - generic [ref=e17]: 약문약답
+    - generic [ref=e18]: 똑똑한 약사의 파트너

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  width: 1080px;
+  height: 1080px;
+  background: #EBF6FD;
+  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 배경 장식 원 */
+.deco-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(27, 163, 232, 0.08);
+}
+
+/* 상단 바 */
+.top-bar {
+  position: relative;
+  z-index: 10;
+  padding: 44px 56px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #1BA3E8;
+}
+
+.logo-text {
+  font-size: 30px;
+  font-weight: 900;
+  color: #1BA3E8;
+  letter-spacing: -0.5px;
+}
+
+.card-num {
+  background: white;
+  border: 2px solid #D6EDFA;
+  color: #0D7AC0;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 10px 22px;
+  border-radius: 40px;
+  letter-spacing: 1px;
+}
+
+/* 메인 콘텐츠 */
+.main {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 860px;
+  padding: 0 80px;
+  text-align: center;
+}
+
+.tag-wrap {
+  margin-bottom: 36px;
+}
+
+.tag {
+  display: inline-block;
+  background: #1BA3E8;
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: 40px;
+  letter-spacing: 0.3px;
+}
+
+.title {
+  font-size: 80px;
+  font-weight: 900;
+  color: #1A2B3C;
+  line-height: 1.18;
+  margin-bottom: 40px;
+  letter-spacing: -2px;
+}
+
+.title .hl {
+  color: #1BA3E8;
+}
+
+.divider {
+  width: 60px;
+  height: 5px;
+  background: #1BA3E8;
+  border-radius: 4px;
+  margin: 0 auto 36px;
+}
+
+.subtitle {
+  font-size: 30px;
+  font-weight: 700;
+  color: #4A7A9B;
+  line-height: 1.5;
+}
+
+/* 하단 브랜드 바 */
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: #1BA3E8;
+  padding: 28px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  color: white;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.slogan {
+  color: rgba(255,255,255,0.85);
+  font-size: 20px;
+  font-weight: 400;
+}
+</style>
+</head>
+<body>
+
+<!-- 배경 장식 -->
+<div class="deco-circle" style="width:480px;height:480px;top:-140px;right:-100px;"></div>
+<div class="deco-circle" style="width:300px;height:300px;bottom:100px;left:-80px;"></div>
+<div class="deco-circle" style="width:160px;height:160px;top:300px;left:60px;"></div>
+
+<!-- 상단 로고 -->
+<div class="top-bar">
+  <div class="logo">
+    <div class="logo-dot"></div>
+    <span class="logo-text">약문약답</span>
+  </div>
+  <div class="card-num">01 · 06</div>
+</div>
+
+<!-- 메인 -->
+<div class="main">
+  <div class="tag-wrap">
+    <span class="tag">💊 약물 안전 정보</span>
+  </div>
+
+  <div class="title">
+    감기약 복용 전<br>
+    <span class="hl">꼭 확인해야 할</span><br>
+    5가지
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="subtitle">
+    약사가 직접 알려드리는<br>안전한 감기약 복용 가이드
+  </div>
+</div>
+
+<!-- 하단 브랜드 -->
+<div class="bottom-bar">
+  <span class="brand">약문약답</span>
+  <span class="slogan">똑똑한 약사의 파트너</span>
+</div>
+
+</body>
+</html>

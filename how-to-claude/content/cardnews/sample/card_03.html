@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 1080px; height: 1080px;
+  background: #EBF6FD;
+  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+  overflow: hidden; position: relative;
+}
+.deco-circle { position: absolute; border-radius: 50%; background: rgba(27,163,232,0.07); }
+.top-bar { position: relative; z-index: 10; padding: 44px 56px 0; display: flex; justify-content: space-between; align-items: center; }
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-dot { width: 14px; height: 14px; border-radius: 50%; background: #1BA3E8; }
+.logo-text { font-size: 28px; font-weight: 900; color: #1BA3E8; letter-spacing: -0.5px; }
+.card-num { background: white; border: 2px solid #D6EDFA; color: #0D7AC0; font-size: 20px; font-weight: 700; padding: 10px 22px; border-radius: 40px; letter-spacing: 1px; }
+.main { position: relative; z-index: 10; padding: 36px 60px 0; }
+.point-badge { display: inline-flex; align-items: center; gap: 12px; background: #1BA3E8; color: white; font-size: 22px; font-weight: 700; padding: 12px 26px; border-radius: 40px; margin-bottom: 28px; }
+.badge-num { background: white; color: #1BA3E8; font-size: 20px; font-weight: 900; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.card-title { font-size: 58px; font-weight: 900; color: #1A2B3C; line-height: 1.2; letter-spacing: -1.5px; margin-bottom: 32px; }
+.card-title .hl { color: #1BA3E8; }
+.content-box { background: white; border-radius: 24px; padding: 40px 48px; box-shadow: 0 4px 24px rgba(13,122,192,0.08); }
+.content-text { font-size: 30px; font-weight: 700; color: #2C4A5A; line-height: 1.65; margin-bottom: 28px; }
+.row-list { display: flex; flex-direction: column; gap: 14px; }
+.row-item { display: flex; align-items: center; gap: 16px; background: #EBF6FD; border-radius: 12px; padding: 16px 20px; }
+.row-icon { font-size: 28px; flex-shrink: 0; }
+.row-text { font-size: 24px; font-weight: 700; color: #1A2B3C; line-height: 1.4; }
+.row-text .sub { font-size: 19px; font-weight: 400; color: #4A7A9B; }
+.bottom-bar { position: absolute; bottom: 0; left: 0; right: 0; z-index: 10; background: #1BA3E8; padding: 26px 56px; display: flex; justify-content: space-between; align-items: center; }
+.brand { color: white; font-size: 26px; font-weight: 900; }
+.slogan { color: rgba(255,255,255,0.8); font-size: 19px; font-weight: 400; }
+</style>
+</head>
+<body>
+<div class="deco-circle" style="width:360px;height:360px;top:-80px;right:-60px;"></div>
+<div class="deco-circle" style="width:200px;height:200px;bottom:100px;left:-40px;"></div>
+<div class="top-bar">
+  <div class="logo"><div class="logo-dot"></div><span class="logo-text">약문약답</span></div>
+  <div class="card-num">03 · 06</div>
+</div>
+<div class="main">
+  <div class="point-badge"><div class="badge-num">2</div>두 번째 확인사항</div>
+  <div class="card-title"><span class="hl">복용 간격</span>을<br>4시간 이상 지키세요</div>
+  <div class="content-box">
+    <div class="content-text">감기약은 정해진 시간 간격을 지켜야<br>효과도 높고 부작용도 줄어듭니다.</div>
+    <div class="row-list">
+      <div class="row-item">
+        <div class="row-icon">⏰</div>
+        <div class="row-text">아세트아미노펜 계열<br><span class="sub">최소 4~6시간 간격 유지</span></div>
+      </div>
+      <div class="row-item">
+        <div class="row-icon">⚠️</div>
+        <div class="row-text">이부프로펜 계열<br><span class="sub">최소 6~8시간 간격 유지</span></div>
+      </div>
+      <div class="row-item">
+        <div class="row-icon">📋</div>
+        <div class="row-text">하루 최대 복용 횟수<br><span class="sub">반드시 포장지 확인</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bottom-bar">
+  <span class="brand">약문약답</span>
+  <span class="slogan">똑똑한 약사의 파트너</span>
+</div>
+</body>
+</html>

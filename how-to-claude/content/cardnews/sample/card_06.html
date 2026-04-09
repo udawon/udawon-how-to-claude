@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 1080px; height: 1080px;
+  background: #1BA3E8;
+  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+  overflow: hidden; position: relative;
+}
+.deco-circle { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.08); }
+
+.top-bar { position: relative; z-index: 10; padding: 44px 56px 0; display: flex; justify-content: space-between; align-items: center; }
+.logo-text { font-size: 28px; font-weight: 900; color: white; letter-spacing: -0.5px; }
+.card-num { background: rgba(255,255,255,0.2); color: white; font-size: 20px; font-weight: 700; padding: 10px 22px; border-radius: 40px; letter-spacing: 1px; }
+
+.main { position: relative; z-index: 10; padding: 48px 60px 0; }
+
+.summary-label { font-size: 22px; font-weight: 700; color: rgba(255,255,255,0.8); margin-bottom: 20px; letter-spacing: 1px; }
+
+.summary-title { font-size: 60px; font-weight: 900; color: white; line-height: 1.2; letter-spacing: -1.5px; margin-bottom: 40px; }
+
+.check-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+.check-item { display: flex; align-items: center; gap: 18px; background: rgba(255,255,255,0.15); border-radius: 16px; padding: 20px 28px; backdrop-filter: blur(4px); }
+.check-icon { font-size: 26px; flex-shrink: 0; }
+.check-text { font-size: 26px; font-weight: 700; color: white; }
+.check-sub { font-size: 18px; font-weight: 400; color: rgba(255,255,255,0.75); margin-top: 2px; }
+
+.cta-box { background: white; border-radius: 20px; padding: 24px 36px; display: flex; align-items: center; justify-content: space-between; }
+.cta-text { font-size: 24px; font-weight: 700; color: #1A2B3C; line-height: 1.4; }
+.cta-text span { color: #1BA3E8; }
+.cta-btn { background: #1BA3E8; color: white; font-size: 20px; font-weight: 900; padding: 14px 28px; border-radius: 40px; white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="deco-circle" style="width:500px;height:500px;top:-160px;right:-130px;"></div>
+<div class="deco-circle" style="width:280px;height:280px;bottom:-60px;left:-60px;"></div>
+
+<div class="top-bar">
+  <span class="logo-text">약문약답</span>
+  <div class="card-num">06 · 06</div>
+</div>
+
+<div class="main">
+  <div class="summary-label">📋 오늘의 핵심 요약</div>
+  <div class="summary-title">감기약 복용 전<br>5가지 체크리스트</div>
+
+  <div class="check-list">
+    <div class="check-item">
+      <div class="check-icon">✅</div>
+      <div>
+        <div class="check-text">중복 성분 확인</div>
+        <div class="check-sub">아세트아미노펜 이중 복용 주의</div>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">✅</div>
+      <div>
+        <div class="check-text">복용 간격 4시간 이상</div>
+        <div class="check-sub">계열별 최소 간격 준수</div>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">✅</div>
+      <div>
+        <div class="check-text">이부프로펜은 식후 복용</div>
+        <div class="check-sub">위장 보호를 위해</div>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">✅</div>
+      <div>
+        <div class="check-text">음주 중 복용 금지</div>
+        <div class="check-sub">24시간 이상 간격 필수</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <div class="cta-text">약이 궁금할 때<br><span>약문약답</span> 약사에게 물어보세요</div>
+    <div class="cta-btn">바로가기 →</div>
+  </div>
+</div>
+
+</body>
+</html>

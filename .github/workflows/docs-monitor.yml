@@ -18,6 +18,7 @@ jobs:
 
       - name: 문서 변경 확인
         id: check
+        working-directory: how-to-claude
         run: bash scripts/check-docs-update.sh
 
       - name: docs-sync 라벨 확인/생성

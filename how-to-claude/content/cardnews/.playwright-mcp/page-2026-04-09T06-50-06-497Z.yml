@@ -1,0 +1,26 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e7]: 약문약답
+    - generic [ref=e8]: 02 · 06
+  - generic [ref=e9]:
+    - generic [ref=e10]:
+      - generic [ref=e11]: "1"
+      - text: 첫 번째 확인사항
+    - generic [ref=e12]:
+      - text: 중복 성분을
+      - text: 반드시 확인하세요
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - text: 감기약에는 해열제(아세트아미노펜)가
+        - text: 이미 포함된 경우가 많습니다.
+        - text: 타이레놀을 함께 복용하면
+        - strong [ref=e15]: 과다 복용 위험
+        - text: 이 생깁니다.
+      - generic [ref=e16]:
+        - generic [ref=e17]: 💡 약사 TIP
+        - generic [ref=e18]:
+          - text: 복용 전 성분표에서 "아세트아미노펜"
+          - text: 또는 "acetaminophen"을 확인하세요.
+  - generic [ref=e19]:
+    - generic [ref=e20]: 약문약답
+    - generic [ref=e21]: 똑똑한 약사의 파트너
