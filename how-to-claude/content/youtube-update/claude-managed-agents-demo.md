@@ -15,7 +15,7 @@ source_url: "https://youtube.com/watch?v=NLWiIj47IdI"
 
 이 영상은 Anthropic 공식 채널에서 Managed Agents의 실제 동작을 세 가지 데모로 보여줍니다 — 칸반 보드(업무 관리 도구) 연동, SaaS(클라우드 소프트웨어) 가격 추적 에이전트, 멀티에이전트(여러 AI가 협력하는 구조) 인시던트 대응.
 
-> 기본 개념(Managed Agents가 무엇인지, 어떻게 생성하는지)은 [Claude Managed Agents 입문 문서](/claude-managed-agents-intro)를 먼저 참고하세요.
+> 기본 개념(Managed Agents가 무엇인지, 어떻게 생성하는지)은 [Claude Managed Agents 입문 문서](/docs/youtube-update/claude-managed-agents-intro)를 먼저 참고하세요.
 
 ---
 
