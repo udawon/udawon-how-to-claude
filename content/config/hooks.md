@@ -1,0 +1,281 @@
+---
+title: "Hooks 설정 가이드"
+description: "Claude Code의 자동화 규칙 - 특정 상황에서 자동으로 실행되는 명령 설정법"
+order: 2
+tags: ["설정", "Hooks", "자동화", "보호", "알림"]
+---
+
+## Hooks란?
+
+**Claude Code가 특정 행동을 할 때 자동으로 실행되는 규칙**입니다.
+
+비유: 집의 '자동화 시스템'
+
+현관문이 열리면 → 자동으로 불이 켜진다
+밤 11시가 되면 → 자동으로 보일러가 꺼진다
+창문이 열리면 → 자동으로 에어컨이 꺼진다
+
+이처럼 '~하면 → 자동으로 ~해라'를 설정하는 것이 <span class="keyword-highlight">Hooks</span>
+
+CLAUDE.md가 **'이렇게 해줘'라는 부탁**이라면,
+Hooks는 **'이 상황에서는 반드시 이걸 실행해'라는 자동 규칙**입니다.
+
+부탁은 가끔 무시될 수 있지만, Hooks는 **100% 실행**됩니다.
+
+## 왜 필요한가?
+
+CLAUDE.md에 '코드 수정 후 항상 정리해줘'라고 적어도:
+→ Claude가 가끔 잊어버릴 수 있음 (부탁이니까)
+
+<span class="keyword-highlight">Hooks</span>로 '코드 수정 후 자동 정리' 설정하면:
+→ 100% 매번 자동 실행 (규칙이니까)
+
+비유:
+'출근할 때 문 잠가줘' 메모 (CLAUDE.md) - 까먹을 수 있음
+현관문 자동 잠금 장치 (<span class="keyword-highlight">Hooks</span>) - 절대 안 까먹음
+
+## 언제 실행되나? (Hook 이벤트 종류)
+
+Claude Code의 작업 흐름에서 **특정 순간**마다 Hook을 걸 수 있습니다.
+
+| 순간 (이벤트) | 언제 발동되나 | 비유 |
+|---|---|---|
+| **SessionStart** | 세션이 시작될 때 | 출근해서 자리에 앉을 때 |
+| **UserPromptSubmit** | 사용자가 메시지를 보낼 때 | 상사가 지시를 내릴 때 |
+| **PreToolUse** | Claude가 도구를 쓰기 직전 | 직원이 작업을 시작하려 할 때 |
+| **PostToolUse** | Claude가 도구를 쓴 직후 | 직원이 작업을 마쳤을 때 |
+| **PostToolUseFailure** | Claude가 도구 사용에 실패한 직후 | 직원이 작업에 실패했을 때 |
+| **PermissionRequest** | 권한 확인 대화상자가 표시될 때 | 직원이 결재를 요청할 때 |
+| **Stop** | Claude가 응답을 끝낼 때 | 직원이 '다 했습니다' 할 때 |
+| **Notification** | Claude가 알림을 보낼 때 | 직원이 도움 요청할 때 |
+| **PreCompact** | 대화 압축 직전 | 회의록 요약 전 |
+| **SessionEnd** | 세션이 종료될 때 | 퇴근할 때 |
+| **ConfigChange** | 설정 파일이 바뀔 때 | 사규가 변경될 때 |
+| **SubagentStart** | 서브 에이전트가 시작될 때 | 파견 직원이 출근할 때 |
+| **SubagentStop** | 서브 에이전트가 끝날 때 | 파견 직원이 퇴근할 때 |
+| **TeammateIdle** | 에이전트 팀의 동료가 유휴 상태가 될 때 | 팀원이 할 일을 기다릴 때 |
+| **TaskCompleted** | 작업이 완료로 표시될 때 | 업무 완료 보고 |
+| **InstructionsLoaded** | CLAUDE.md가 불려올 때 | 업무 매뉴얼을 읽었을 때 |
+| **WorktreeCreate** | 워크트리가 생성될 때 | 별도 작업 공간 마련 |
+| **WorktreeRemove** | 워크트리가 제거될 때 | 작업 공간 정리 |
+
+## 가장 실용적인 활용 사례
+
+### 1. 알림 받기 - Claude가 부를 때 알려줘
+
+<div class="example-case">
+
+상황:
+Claude에게 큰 작업을 시키고 다른 일을 하고 있음
+Claude가 '이거 진행해도 될까요?' 물어보는데 내가 안 보고 있음
+→ 아무 알림도 없으면 Claude가 멈춰있는 걸 한참 뒤에 알게 됨
+
+<span class="keyword-highlight">Hooks</span> 설정하면:
+Claude가 나를 부를 때마다 데스크톱 알림이 뜸
+→ 다른 작업 하다가도 바로 확인 가능
+
+비유: 식당에서 진동벨
+     주문하고 다른 데 가있어도
+     음식 나오면 벨이 울림
+</div>
+
+### 2. 자동 코드 정리 - 수정하면 자동으로 깔끔하게
+
+<div class="example-case">
+
+상황:
+Claude가 파일을 수정함
+→ 들여쓰기가 삐뚤어지거나 형식이 안 맞을 수 있음
+→ 매번 '정리해줘'라고 말하기 번거로움
+
+<span class="keyword-highlight">Hooks</span> 설정하면:
+파일 수정할 때마다 자동으로 코드 정리 도구가 실행됨
+→ 항상 깔끔한 상태 유지
+
+비유: 자동 식기세척기
+     식사가 끝나면 (파일 수정) 자동으로 세척 시작 (코드 정리)
+     매번 '설거지 해줘'라고 안 말해도 됨
+</div>
+
+### 3. 파일 보호 - 이 파일은 절대 건드리지 마
+
+<div class="example-case">
+
+상황:
+프로젝트에 절대 수정하면 안 되는 중요한 설정 파일이 있음
+Claude에게 '이 파일 건드리지 마'라고 말해도 실수로 수정할 수 있음
+
+<span class="keyword-highlight">Hooks</span> 설정하면:
+Claude가 보호된 파일을 수정하려는 순간 자동으로 차단됨
+→ 실수가 원천 봉쇄됨
+
+비유: 금고 잠금장치
+     '이 금고 열지 마세요' 메모 (CLAUDE.md) - 누가 열 수도 있음
+     금고에 자물쇠 채우기 (<span class="keyword-highlight">Hooks</span>) - 물리적으로 못 염
+</div>
+
+### 4. 대화 압축 후 기억 복구 - 요약 후 중요한 거 다시 알려줘
+
+<div class="example-case">
+
+상황:
+대화가 길어져서 `/compact`로 압축함
+→ 압축 과정에서 중요한 약속이 빠질 수 있음
+'npm 대신 bun을 써야 해' 같은 규칙이 사라질 수 있음
+
+<span class="keyword-highlight">Hooks</span> 설정하면:
+압축이 끝나면 자동으로 중요한 규칙을 다시 주입
+→ 'bun 사용, 커밋 전에 테스트 실행' 등을 다시 상기시킴
+
+비유: 잠에서 깨면 자동으로 오늘 할 일 목록을 보여주는 알람
+     기억이 리셋되어도 중요한 건 다시 알려줌
+</div>
+
+### 5. 작업 완료 검증 - 진짜 다 했는지 확인해
+
+<div class="example-case">
+
+상황:
+Claude가 '다 했습니다'라고 하는데
+실제로는 빠뜨린 게 있을 수 있음
+
+<span class="keyword-highlight">Hooks</span> 설정하면:
+Claude가 '완료'라고 할 때마다 자동으로 검증
+→ 빠진 게 있으면 '아직 안 끝났어, 이것도 해'라고 자동 피드백
+
+비유: 건물 준공 검사
+     건설사가 '다 지었습니다' 하면
+     감리사가 자동으로 체크리스트 확인
+     누락이 있으면 '여기 아직 안 됐어요' 반려
+</div>
+
+## 어디에 설정하나?
+
+| 위치 | 적용 범위 | 비유 |
+|------|---------|------|
+| `~/.claude/settings.json` | 모든 프로젝트에 적용 | 회사 전체 보안 규칙 |
+| `.claude/settings.json` | 이 프로젝트에만 적용 | 이 팀만의 규칙 |
+| `.claude/settings.local.json` | 이 프로젝트, 나만 적용 | 내 개인 습관 |
+
+파일 위치 설명:
+- `~` = 내 홈 폴더 (Windows: `C:\Users\내이름`)
+- `~/.claude/` = `C:\Users\내이름\.claude\`
+- `.claude/settings.json` = 프로젝트 폴더 안의 `.claude` 폴더
+
+하지만 직접 파일을 수정할 필요 없이
+Claude Code 대화창에서 `/hooks` 명령어로 설정하면
+파일이 자동으로 생성/수정됩니다.
+
+## Hook의 4가지 타입
+
+| 타입 | 동작 | 비유 |
+|------|------|------|
+| **command** | 정해진 명령어 자동 실행 | 자동문 - 사람이 오면 열림 |
+| **http** | 외부 서버로 요청 전송 | 본사에 보고 - 결과를 기다림 |
+| **prompt** | AI가 상황을 판단해서 결정 | 보안요원 - 상황 보고 판단 |
+| **agent** | AI가 파일도 확인하며 깊이 판단 | 감사관 - 서류까지 직접 확인 |
+
+**command** (가장 기본):
+'파일 수정하면 무조건 정리 실행'
+→ 단순하고 빠름. 항상 같은 동작.
+
+**http** (외부 연동):
+'도구 사용할 때마다 외부 서버로 알림 전송'
+→ 사내 메신저, 기록 시스템 등 외부 서비스와 연결할 때 사용.
+→ `/hooks` 메뉴로는 추가 불가 — 설정 파일을 직접 편집해야 함.
+
+**prompt** (판단이 필요할 때):
+'이 작업이 적절한지 AI에게 물어봐'
+→ 상황에 따라 다른 결정 가능.
+
+**agent** (깊은 검증이 필요할 때):
+'테스트를 직접 돌려보고 통과하는지 확인해'
+→ 실제 코드를 확인하고 판단.
+
+비유:
+command = 자판기 (버튼 누르면 항상 같은 결과)
+http = 택배 발송 (외부로 보내고 결과 받기)
+prompt = 상담원 (질문하면 판단해서 답변)
+agent = 전문가 (직접 현장 확인 후 보고)
+
+## 설정 방법
+
+가장 쉬운 방법은 Claude Code에서 `/hooks` 명령어를 입력하는 것입니다.
+
+따라하기:
+1. 터미널에서 `claude` 입력하여 Claude Code를 실행
+2. Claude Code 대화창에서 `/hooks` 입력
+   → <span class="keyword-highlight">Hooks</span> 설정 화면이 나타남
+3. 원하는 이벤트 선택 (예: Notification)
+   → 화살표 키로 이동, <kbd>Enter</kbd>로 선택
+4. "Add hook" 선택
+5. Hook 이름 입력 (예: "데스크톱 알림")
+6. 실행할 명령어 입력
+7. 저장 위치 선택:
+   - User settings = 모든 프로젝트에 적용
+   - Project settings = 이 프로젝트에만 적용
+8. 완료
+
+비유: 스마트홈 앱에서
+     '현관문 열리면' → '불 켜기' 설정하는 것처럼
+     메뉴에서 선택하고 저장하면 끝
+
+## Matcher로 범위 좁히기
+
+모든 상황이 아니라 **특정 상황에서만** Hook을 실행하고 싶을 때 Matcher를 사용합니다.
+
+Matcher 없이:
+'도구를 쓸 때마다' 정리 실행
+→ 파일 읽기만 해도, 검색만 해도 정리가 돌아감 (불필요)
+
+Matcher 사용:
+'파일을 수정할 때만' 정리 실행
+→ Edit, Write 도구를 쓸 때만 정리 실행
+
+비유: 화재 경보 시스템
+     Matcher 없음 = 모든 움직임에 경보 (누가 지나가기만 해도)
+     Matcher 있음 = 연기가 감지될 때만 경보 (진짜 위험할 때만)
+
+| 이벤트 | Matcher가 필터링하는 것 | 예시 |
+|--------|---------------------|------|
+| PreToolUse, PostToolUse | 도구 이름 | Edit, Write, Bash |
+| SessionStart | 세션 시작 방식 | startup, resume, compact |
+| Notification | 알림 유형 | permission_prompt, idle_prompt |
+| ConfigChange | 설정 종류 | user_settings, project_settings |
+
+## CLAUDE.md vs Hooks 비교
+
+| 구분 | CLAUDE.md | Hooks |
+|------|-----------|-------|
+| 성격 | 부탁/가이드 | 자동 규칙 |
+| 실행 확률 | 대부분 따르지만 가끔 안 따름 | 100% 실행 |
+| 설정 난이도 | 쉬움 (글만 쓰면 됨) | 약간 어려움 (설정 파일 수정) |
+| 적합한 용도 | 스타일, 선호사항, 작업 방식 | 자동화, 보호, 알림, 검증 |
+
+**비유 정리:**
+
+CLAUDE.md = 사무실 벽에 붙인 '주의사항' 포스터
+(보긴 하는데 가끔 잊음)
+
+<span class="keyword-highlight">Hooks</span> = 자동화 시스템
+(현관문 열리면 불 켜짐, 잊을 수 없음)
+
+둘 다 필요합니다:
+CLAUDE.md로 방향을 잡고
+<span class="keyword-highlight">Hooks</span>로 중요한 건 강제 실행
+
+> 출처: [Anthropic 공식 문서 - Hooks 가이드](https://code.claude.com/docs/ko/hooks-guide)
+
+---
+
+## /loop와의 차이
+
+Hooks가 **이벤트** 기반이라면, `/loop`는 **시간** 기반입니다.
+
+| | **Hooks** | **/loop** |
+|--|--|--|
+| **트리거** | "파일 저장할 때마다" | "5분마다" |
+| **지속성** | 영구 (설정 파일 저장) | 임시 (세션 종료 시 사라짐) |
+| **실행 대상** | 쉘 명령어 | Claude 프롬프트 |
+
+자세한 비교는 [/loop 가이드](/basics/loop)를 참고하세요.

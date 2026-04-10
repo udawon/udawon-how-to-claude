@@ -1,20 +1,10 @@
-how-to-claude/node_modules/
-how-to-claude/.next/
-how-to-claude/out/
-how-to-claude/*.tsbuildinfo
-how-to-claude/next-env.d.ts
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
 .env*
-
 .vercel
 .gstack/
 .DS_Store
 .tmp/
-
-# 독립 프로젝트 폴더 (각자 git repo 보유)
-/common/
-/paperclip/
-/createyoutube/
-/youtube_update/
-/gemini/
-/blog-pilot-mac/
-/cardnews/
