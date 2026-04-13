@@ -19,13 +19,12 @@ jobs:
           node-version: '20'
 
       - name: 랭킹 데이터 수집
-        working-directory: how-to-claude
         run: node scripts/fetch-rankings.mjs
 
       - name: 변경사항 커밋 및 푸시
         run: |
           git config user.email "bot@github.com"
           git config user.name "Rankings Bot"
-          git add how-to-claude/data/rankings.json
+          git add data/rankings.json
           git diff --staged --quiet || git commit -m "data: 랭킹 업데이트 $(date +%Y-%m-%d)"
           git push
