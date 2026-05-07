@@ -175,10 +175,69 @@ claude --model deepcoder
 - **Ollama 방법 B**: 컴퓨터 사양이 중요. 최소 16GB RAM 권장
 - **기존 Anthropic 설정 충돌**: 이전에 Anthropic API를 쓰고 있었다면, `claude` 치고 안에서 `logout` 먼저 해야 충돌 안 남
 
+## 보너스: 윈도우에서 클라우드 모델만 쓰는 우회 (manifest-only 트릭)
+
+> 2026-05 추가 — AI Mantra Lab 영상에서 소개된 윈도우 한정 추가 옵션
+
+GPU 없는 윈도우 노트북에서 위 두 방법이 다 무겁다면, **Ollama의 "manifest only" 동작**을 활용해 클라우드에서 추론하는 우회법이 있습니다. Ollama가 모델을 받을 때 실제 가중치(모델의 두뇌, 보통 수십 GB) 대신 **manifest 파일(어떤 모델을 어떻게 부를지 적어둔 한 장짜리 명세서)** 만 다운로드받고, 추론은 Ollama의 클라우드에서 처리하는 흐름입니다. 내 컴퓨터에 GPU가 없어도 OpenAI의 거대한 오픈소스 모델 `gpt-oss` 120B를 무료로 쓸 수 있습니다.
+
+### 1단계: Ollama 설치 후 검증
+
+```powershell
+ollama -h
+```
+
+`command not found`가 뜨면 한 번 재부팅하고 다시 시도하세요. 윈도우는 환경변수 갱신이 늦게 반영될 때가 있습니다.
+
+### 2단계: 작업 폴더 격리 (중요)
+
+```powershell
+D:\
+mkdir cloud-projects
+cd cloud-projects
+```
+
+D 드라이브 등에 전용 폴더를 만들고 **그 안에서만 `claude` 명령을 실행**하세요. 첫 실행 시 "Yes, I trust this folder"를 누르는데, 그 시점에 AI가 만질 수 있는 범위가 그 폴더로 한정됩니다. C:\\Windows 같은 시스템 폴더에서 실행하면 AI가 시스템 파일을 건드릴 위험이 생깁니다.
+
+### 3단계: Ollama 클라우드 로그인
+
+클라우드 모델은 추론을 ollama.com 서버에서 돌리므로 **로그인이 필수**입니다 (로컬 모델만 쓸 때는 불필요).
+
+```powershell
+ollama signin
+```
+
+브라우저가 열리면서 ollama.com 계정 생성·로그인 절차로 안내됩니다. 한 번만 하면 됩니다.
+
+### 4단계: gpt-oss 120B 모델 manifest 받기
+
+```powershell
+ollama pull gpt-oss:120b-cloud
+```
+
+여기서 다운로드되는 파일은 manifest(약 수 KB)뿐이고 실제 추론은 Ollama 클라우드에서 일어납니다. 일반 로컬 모델과 사용법은 동일합니다.
+
+### 5단계: Claude Code에서 모델 선택
+
+```powershell
+claude
+```
+
+실행 후 화살표 키로 모델 목록을 스크롤하면 새로 추가된 **Cloud GPT-OSS 120B** 항목이 보입니다. 선택하고 평소처럼 자연어로 지시하면 됩니다 (예: "make a tic-tac-toe game" — 오타가 있어도 의도를 추론해 HTML/CSS/JS 3개 파일을 자동 생성).
+
+### 주의할 점 (윈도우 한정)
+
+- 연결 timeout이 자주 뜨면 **윈도우 방화벽**을 잠시 꺼보거나 인터넷 연결을 점검하세요.
+- 회사 코드처럼 외부 유출이 곤란한 자료에는 클라우드 모델을 쓰면 안 됩니다 (방법 B의 진짜 로컬 모델만 사용).
+- Ollama 클라우드는 무료 사용량이 변동될 수 있습니다. 헤비하게 쓸 거라면 ollama.com에서 현재 정책을 확인하세요.
+
+> 참고 영상: [Free Claude on Windows](https://youtube.com/watch?v=_lfruXWsCHw) — AI Mantra Lab
+
 ## 정리
 
 - **방법 A (OpenRouter)**: 설정 5분, 어떤 컴퓨터든 OK, 하루 50~1,000회 무료
-- **방법 B (Ollama)**: 설정 10분, 16GB+ RAM 필요, 무제한 + 완전 오프라인
-- 둘 다 한 번 설정하면 영구적. 매번 다시 할 필요 없음
+- **방법 B (Ollama 로컬)**: 설정 10분, 16GB+ RAM 필요, 무제한 + 완전 오프라인
+- **보너스 (Ollama manifest-only + cloud GPT-OSS 120B)**: 윈도우 노트북 + GPU 없어도 클라우드 모델 사용, 단 회사 보안 자료엔 부적합
+- 셋 다 한 번 설정하면 영구적. 매번 다시 할 필요 없음
 
 > 참고 영상: [Claude Code For Free Forever Using Ollama & OpenRouter](https://www.youtube.com/watch?v=5nbF_p6F6Lk) — To Learn AI Automation
